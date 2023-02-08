@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">EASY LEARNING DIS</string>
+
+    <string-array name="li_opciones_comunicacion">
+        <item name="it_foro">FORO</item>
+        <item name="it_chat">CHAT</item>
+
+    </string-array>
+
+    <string-array name="li_opciones_evaluacion">
+        <item name="it_encuesta">ENCUESTA</item>
+        <item name="it_leccion">LECCIÓN</item>
+        <item name="it_consulta">CONSULTA</item>
+    </string-array>
+
+    <string-array name="li_opciones_aprendizaje">
+        <item name="it_0">TAREA</item>
+        <item name="it_1">BLOG</item>
+        <item name="it_2">MATERIAL ESTUDIO</item>
+    </string-array>
+
+    <string-array name="li_opciones_perfil">
+        <item name="it_0">DATOS PERSONALES</item>
+        <item name="it_1">MIS CURSOS</item>
+        <item name="it_2">HIATORIAL ACÁDEMICO</item>
+        <item name="it_2">SALIR</item>
+    </string-array>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Nombre de la Escuela</string>
+    <string name="nav_header_subtitle">direccion de la escuela</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Salir</string>
+
+    <string name="menu_home">Principal</string>
+    <string name="menu_user">Usuarios</string>
+    <string name="menu_history">Historial</string>
+
+
+    <string name="btn_estudiante">Soy Profesor</string>
+    <string name="btn_profesor">Soy Estudiante</string>
+
+
+    <string name="txt_usuario">Usuario</string>
+    <string name="txt_pass">Contraseña</string>
+    <string name="txt_olvido">Olvidó su contraseña?</string>
+
+    <string name="btn_ingresar">Ingresar</string>
+    <string name="btn_cancelar">Cancelar</string>
+
+    <string name="lbl_title">Oto Game</string>
+    <string name="lbl_mensaje_principal">Elige tu perfil para ingresar al sistema</string>
+
+    <string name="item_nosotros">Acerca de nosotros</string>
+    <string name="item_usuarios">Administrar Usuarios</string>
+    <string name="item_noticias">Noticias</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="btn_guardar">Guardar</string>
+    <string name="chk_femenino">Femenino</string>
+    <string name="chk_masculino">Masculino</string>
+
+    <string name="txt_nombre_titulo">Easy Learning</string>
+    <string-array name="strs_tip_users">
+        <item>Administrador</item>
+        <item>Profesor</item>
+        <item>Alumno</item>
+    </string-array>
+    <string name="title_activity_menu_estudiante_principal">MenuEstudiantePrincipal</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+</resources>

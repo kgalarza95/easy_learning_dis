@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".Menu">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/linterna"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Linterna"
+                android:src="@drawable/ic_op_r1"
+                android:tooltipText="linterna"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comunicación">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/nivel"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Nivel"
+                android:src="@drawable/ic_op2">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Evaluación"></TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/musica"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Musica"
+                android:src="@drawable/ic_op3"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aprendizaje">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/musica2"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Musica 2"
+                android:src="@drawable/ic_op4">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notificaciones"></TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/perfil"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+
+                android:src="@drawable/ic_op5">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfil"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -29,12 +29,14 @@ public class LoginProfesor extends AppCompatActivity {
         btnCancelar = findViewById(R.id.btn_cancelar_prof);
         btnIngresar = findViewById(R.id.btn_ingresar_prof);
 
+        // aquí se coloca los eventos.
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(view.getContext(), MenuProfEstud.class));
             }
         });
+
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override

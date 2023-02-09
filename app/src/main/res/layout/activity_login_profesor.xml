@@ -8,6 +8,7 @@
     tools:context=".LoginProfesor">
 
 
+
     <ImageView
         android:id="@+id/logo_profe"
         android:layout_width="140dp"
@@ -18,6 +19,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/presence_video_away"
         android:contentDescription="TODO" />
+
+
 
     <TextView
         android:id="@+id/lbl_olvido_profe"

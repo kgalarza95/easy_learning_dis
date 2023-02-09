@@ -11,7 +11,10 @@ public class splash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_splash);
+
         int millSegDuracion = 3000;
         //tiempo de duracion de splash, modificar por llamada a la abase de datos o conexion con el servidor
         new Handler().postDelayed(new Runnable() {
@@ -21,5 +24,7 @@ public class splash extends AppCompatActivity {
                 startActivity(intent);
             }
         }, millSegDuracion);
+
+
     }
 }

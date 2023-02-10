@@ -5,17 +5,16 @@
         <item name="it_foro">FORO</item>
         <item name="it_chat">CHAT</item>
 
+
     </string-array>
 
     <string-array name="li_opciones_evaluacion">
         <item name="it_encuesta">ENCUESTA</item>
         <item name="it_leccion">LECCIÓN</item>
-        <item name="it_consulta">CONSULTA</item>
     </string-array>
 
     <string-array name="li_opciones_aprendizaje">
         <item name="it_0">TAREA</item>
-        <item name="it_1">BLOG</item>
         <item name="it_2">MATERIAL ESTUDIO</item>
     </string-array>
 
@@ -26,6 +25,11 @@
         <item name="it_2">SALIR</item>
     </string-array>
 
+    <string-array name="strs_tip_users">
+        <item>Administrador</item>
+        <item>Profesor</item>
+        <item>Alumno</item>
+    </string-array>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -62,13 +66,15 @@
     <string name="chk_femenino">Femenino</string>
     <string name="chk_masculino">Masculino</string>
 
+
+    <string name="btn_aula_vritual">Aula Virtual</string>
+    <string name="btn_juega_aprende">Juega y Aprende</string>
+
     <string name="txt_nombre_titulo">Easy Learning</string>
-    <string-array name="strs_tip_users">
-        <item>Administrador</item>
-        <item>Profesor</item>
-        <item>Alumno</item>
-    </string-array>
+
     <string name="title_activity_menu_estudiante_principal">MenuEstudiantePrincipal</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

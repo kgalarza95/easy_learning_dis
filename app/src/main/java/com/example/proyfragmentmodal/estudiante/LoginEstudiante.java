@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.estudiante;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.proyfragmentmodal.principal.MenuProfEstud;
+import com.example.proyfragmentmodal.R;
 
 public class LoginEstudiante extends AppCompatActivity {
 
@@ -42,7 +45,7 @@ public class LoginEstudiante extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //startActivity(new Intent(view.getContext(), PrincipalEstud.class));
-                startActivity(new Intent(view.getContext(), MainActivity.class));
+                startActivity(new Intent(view.getContext(), PreInicioEstudiante.class));
             }
         });
 

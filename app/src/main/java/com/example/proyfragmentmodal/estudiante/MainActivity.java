@@ -1,8 +1,10 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.estudiante;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.proyfragmentmodal.R;
 
 public class MainActivity extends AppCompatActivity {
 

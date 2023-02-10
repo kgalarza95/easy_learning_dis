@@ -1,10 +1,12 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.principal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.proyfragmentmodal.R;
 
 public class splash extends AppCompatActivity {
 

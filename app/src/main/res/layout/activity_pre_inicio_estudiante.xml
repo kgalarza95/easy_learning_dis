@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ninia_libro"
+    tools:context=".estudiante.PreInicioEstudiante">
+
+    <Button
+        android:id="@+id/btn_aula_virtaul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="204dp"
+        android:background="@drawable/btn_login"
+        android:text="@string/btn_aula_vritual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_juega_aprende"
+        android:layout_width="201dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/btn_login"
+        android:text="@string/btn_juega_aprende"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_aula_virtaul" />
+</androidx.constraintlayout.widget.ConstraintLayout>

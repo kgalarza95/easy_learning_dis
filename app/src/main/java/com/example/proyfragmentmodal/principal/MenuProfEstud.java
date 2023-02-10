@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.principal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
+import com.example.proyfragmentmodal.profesor.LoginProfesor;
 
 public class MenuProfEstud extends AppCompatActivity {
 

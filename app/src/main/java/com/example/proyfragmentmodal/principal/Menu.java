@@ -1,11 +1,10 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.principal;
 
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,9 +12,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.estudiante.Foro;
+import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
+import com.example.proyfragmentmodal.mini_pantalla_dos;
+import com.example.proyfragmentmodal.mini_pantalla_uno;
 
 
 public class Menu extends Fragment{
@@ -46,11 +50,9 @@ public class Menu extends Fragment{
 
         //identificar en que actividad me enceuntro
         Activity miActivity = getActivity();//obtener actividad actual
-        ImageButton btnMenu;
-
 
         //obtener los botones de la vista y agregarles eventos a cada uno.
-        btnMenu = (ImageButton) vista.findViewById(R.id.linterna);
+        ImageButton btnMenu = (ImageButton) vista.findViewById(R.id.linterna);
         ImageButton btnNivel = (ImageButton) vista.findViewById(R.id.nivel);
         ImageButton btnPerfil = (ImageButton) vista.findViewById(R.id.perfil);
 
@@ -65,7 +67,7 @@ public class Menu extends Fragment{
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(miActivity, "Botón presionado ", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(miActivity, "Botón presionado ", Toast.LENGTH_SHORT).show();
 
                /* */
 
@@ -75,13 +77,13 @@ public class Menu extends Fragment{
                         .setItems(R.array.li_opciones_comunicacion, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
                                 switch (which){
-                                    case  0:
+                                    case  0: // Foro
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Foro());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1:
@@ -141,7 +143,6 @@ public class Menu extends Fragment{
             }
         });
 
-
         vista.findViewById(R.id.musica).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,11 +160,11 @@ public class Menu extends Fragment{
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1:
+                                    case 1:// MATERIAL DE ESTUDIO
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new mini_pantalla_dos());
+                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new MaterialEstudio());
                                         miTrnsaccion_.commit();
                                         break;
                                     default:

@@ -10,10 +10,11 @@
 
     <fragment
         android:id="@+id/menu"
-        android:name="com.example.proyfragmentmodal.principal.Menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_menu_estudiante">
+        android:name="com.example.proyfragmentmodal.Empty"
+        tools:layout="@layout/fragment_empty"
+        >
 
     </fragment>
 

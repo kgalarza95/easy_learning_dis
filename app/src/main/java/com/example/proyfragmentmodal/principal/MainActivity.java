@@ -22,22 +22,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void establecerMenu(String origin) {
-        FragmentManager miManejador;//getFragmentManager(); //getParentFragmentManager();
-        FragmentTransaction miTrnsaccion;
+        //FragmentManager miManejador;//getFragmentManager(); //getParentFragmentManager();
         switch (origin) {
             case "loginEstudiante":
-                miManejador = getSupportFragmentManager();
-                miTrnsaccion = miManejador.beginTransaction();
+                FragmentManager miManejador = getSupportFragmentManager();
+                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                 //remplazar fragmento actual con el nuevo indicado en el contenedor
+                miTrnsaccion.remove(new MenuProfesor());
                 miTrnsaccion.replace(R.id.menu, new Menu());
                 miTrnsaccion.commit();
                 break;
             case "loginProfesor":
-                miManejador = getSupportFragmentManager();
-                miTrnsaccion = miManejador.beginTransaction();
+                FragmentManager miManejador_ = getSupportFragmentManager();
+                FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                 //remplazar fragmento actual con el nuevo indicado en el contenedor
-                miTrnsaccion.replace(R.id.menu, new MenuProfesor());
-                miTrnsaccion.commit();
+                miTrnsaccion_.remove(new Menu());
+                miTrnsaccion_.replace(R.id.menu, new MenuProfesor());
+                miTrnsaccion_.commit();
                 break;
             default:
                 break;

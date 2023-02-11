@@ -4,16 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.dao.DaoService;
+import com.example.proyfragmentmodal.dao.IDaoService;
+import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
+import com.google.gson.Gson;
 
-public class LoginEstudiante extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Map;
+
+public class LoginEstudiante extends AppCompatActivity implements IDaoService.DAOCallbackServicio {
 
 
     EditText txtUsuario;
@@ -21,7 +30,7 @@ public class LoginEstudiante extends AppCompatActivity {
     TextView lblOlvido;
     Button btnIngresar;
     Button btnCancelar;
-
+    View vista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +54,44 @@ public class LoginEstudiante extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DaoService.makeRequest(LoginEstudiante.this);
-                Intent intent = new Intent(view.getContext(), PreInicioEstudiante.class);
-                startActivity(intent);
+                //DaoService.getLoginAccess(LoginEstudiante.this);
+                //DaoService daoAccess = new DaoService(LoginEstudiante.this);
+                //String x = daoAccess.getLoginAccess(txtUsuario.getText().toString(), txtPass.getText().toString());
+                //String x = daoAccess.getLoginAccessSincronic(txtUsuario.getText().toString(), txtPass.getText().toString());
+
+                vista = view;
+                Map<String, String> params = new HashMap<>();
+                params.put("usuario", txtUsuario.getText().toString());
+                params.put("password", txtPass.getText().toString());
+
+                IDaoService dao = new IDaoService(LoginEstudiante.this);
+                dao.postData(params, LoginEstudiante.this);
+
+
             }
         });
 
 
+    }
+
+    Gson gson = new Gson();
+
+    @Override
+    public void onSuccess(String response) {
+        Log.d("Response==========>  ",response);
+
+        Respuesta data = gson.fromJson(response, Respuesta.class);
+        if (data.getCodResponse().equals("00")){
+            Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "DATOS INGRESADOS SON INCORRECTOS", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public void onError(VolleyError error) {
+        Log.d("ErroR:  ",error.toString());
     }
 }

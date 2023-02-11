@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".profesor.MenuProfesor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_comunicacion"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Linterna"
+                android:src="@drawable/btn_cl_48_p"
+                android:tooltipText="linterna"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comunicación">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_eval"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Nivel"
+                android:src="@drawable/btn_cl_48_r">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Evaluación"></TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_aprendizaje"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Musica"
+                android:src="@drawable/btn_cl_48_a"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aprendizaje">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_notificacion"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Musica 2"
+                android:src="@drawable/btn_cl_48">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notificaciones"></TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_perfil"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+
+                android:src="@drawable/btn_cl_48_x">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfil"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

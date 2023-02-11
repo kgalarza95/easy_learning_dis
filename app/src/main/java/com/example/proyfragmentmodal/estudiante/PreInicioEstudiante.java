@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.principal.MainActivity;
 
 public class PreInicioEstudiante extends AppCompatActivity {
 
@@ -20,7 +21,9 @@ public class PreInicioEstudiante extends AppCompatActivity {
            // ((Button)findViewById(R.id.btn_aula_virtaul)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), MainActivity.class));
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                intent.putExtra("itOrigin","loginEstudiante");
+                startActivity(intent);
             }
         });
 

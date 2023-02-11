@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.proyfragmentmodal.estudiante.MainActivity;
+import com.example.proyfragmentmodal.principal.MainActivity;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
 
@@ -48,7 +48,9 @@ public class LoginProfesor extends AppCompatActivity {
                 //startActivity(new Intent(view.getContext(), PrincipalProfesor.class));
                 //solo prueba de recyclerview
                 //  startActivity(new Intent(view.getContext(), RecyclerViewLista.class));
-                startActivity(new Intent(view.getContext(), MainActivity.class));
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                intent.putExtra("itOrigin","loginProfesor");
+                startActivity(intent);
             }
         });
 

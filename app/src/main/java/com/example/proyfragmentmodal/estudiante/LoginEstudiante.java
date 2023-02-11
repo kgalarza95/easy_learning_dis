@@ -44,8 +44,8 @@ public class LoginEstudiante extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(view.getContext(), PrincipalEstud.class));
-                startActivity(new Intent(view.getContext(), PreInicioEstudiante.class));
+                Intent intent = new Intent(view.getContext(), PreInicioEstudiante.class);
+                startActivity(intent);
             }
         });
 

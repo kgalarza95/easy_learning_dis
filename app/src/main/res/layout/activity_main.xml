@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".estudiante.MainActivity">
+    tools:context=".principal.MainActivity">
 
     <fragment
         android:id="@+id/menu"
         android:name="com.example.proyfragmentmodal.principal.Menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_menu">
+        tools:layout="@layout/fragment_menu_estudiante">
 
     </fragment>
 

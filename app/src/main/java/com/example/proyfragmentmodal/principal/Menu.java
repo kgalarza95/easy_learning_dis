@@ -21,9 +21,6 @@ import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
 import com.example.proyfragmentmodal.mini_pantalla_dos;
 import com.example.proyfragmentmodal.mini_pantalla_uno;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class Menu extends Fragment{
 
@@ -49,16 +46,14 @@ public class Menu extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View vista = inflater.inflate(R.layout.fragment_menu, container, false);
+        View vista = inflater.inflate(R.layout.fragment_menu_estudiante, container, false);
 
         //identificar en que actividad me enceuntro
         Activity miActivity = getActivity();//obtener actividad actual
 
         //obtener los botones de la vista y agregarles eventos a cada uno.
-        ImageButton btnMenu = (ImageButton) vista.findViewById(R.id.btn_mn_comunicacion);
-        ImageButton btnNivel = (ImageButton) vista.findViewById(R.id.btn_mn_eval);
-        ImageButton btnPerfil = (ImageButton) vista.findViewById(R.id.btn_mn_perfil);
-
+        ImageButton btnComunicacion = (ImageButton) vista.findViewById(R.id.btn_mn_comunicacion);
+        ImageButton btnEvaluacion = (ImageButton) vista.findViewById(R.id.btn_mn_eval);
 
 /*
         fragment = new lunes_gestionar();
@@ -67,7 +62,8 @@ public class Menu extends Fragment{
         ft.replace(R.id.fragment,fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();*/
 
-        btnMenu.setOnClickListener(new View.OnClickListener() {
+        //boton comunicacion
+        btnComunicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(miActivity, "Botón presionado ", Toast.LENGTH_SHORT).show();
@@ -109,7 +105,8 @@ public class Menu extends Fragment{
             }
         });
 
-        btnNivel.setOnClickListener(new View.OnClickListener() {
+        //menu evaluacion
+        btnEvaluacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -146,6 +143,7 @@ public class Menu extends Fragment{
             }
         });
 
+        //menu aprendizaje
         vista.findViewById(R.id.btn_mn_aprendizaje).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,6 +181,36 @@ public class Menu extends Fragment{
             }
         });
 
+        String[] listNotificaciones =
+                {"Notificacion_Uno", "Notificacion_Dos", "Notificacion_Tres"};
+        //boton notificacion
+        vista.findViewById(R.id.btn_mn_notificacion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Notificaciones")
+                        .setItems(listNotificaciones, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                switch (which){
+                                    case  0:
+                                        break;
+                                    case 1:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        });
+                //builder.create();
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        //boton perfil
         vista.findViewById(R.id.btn_mn_perfil).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,34 +249,6 @@ public class Menu extends Fragment{
         });
 
 
-        String[] listNotificaciones =
-                {"Notificacion_Uno", "Notificacion_Dos", "Notificacion_Tres"};
-
-        vista.findViewById(R.id.btn_mn_notificacion).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Notificaciones")
-                        .setItems(listNotificaciones, new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                switch (which){
-                                    case  0:
-                                        break;
-                                    case 1:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                        });
-                //builder.create();
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
         return vista;
     }
 

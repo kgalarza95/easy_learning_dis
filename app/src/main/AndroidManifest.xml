@@ -54,7 +54,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".estudiante.MainActivity"
+            android:name=".principal.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

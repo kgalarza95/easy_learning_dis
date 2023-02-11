@@ -2,6 +2,7 @@ package com.example.proyfragmentmodal.principal;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -18,12 +19,12 @@ import android.widget.Toast;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.Foro;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
+import com.example.proyfragmentmodal.estudiante.PreInicioEstudiante;
 import com.example.proyfragmentmodal.mini_pantalla_dos;
 import com.example.proyfragmentmodal.mini_pantalla_uno;
 
 
-public class Menu extends Fragment{
-
+public class Menu extends Fragment {
 
 
     public Menu() {
@@ -66,19 +67,14 @@ public class Menu extends Fragment{
         btnComunicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(miActivity, "Botón presionado ", Toast.LENGTH_SHORT).show();
-
-               /* */
-
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Lista de Opciones")
                         .setItems(R.array.li_opciones_comunicacion, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                //Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
-                                switch (which){
-                                    case  0: // Foro
+                                switch (which) {
+                                    case 0: // Foro
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
@@ -114,9 +110,8 @@ public class Menu extends Fragment{
                         .setItems(R.array.li_opciones_evaluacion, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0:
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
@@ -152,9 +147,8 @@ public class Menu extends Fragment{
                         .setItems(R.array.li_opciones_aprendizaje, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0:
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
@@ -193,8 +187,8 @@ public class Menu extends Fragment{
 
                             public void onClick(DialogInterface dialog, int which) {
 
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0:
                                         break;
                                     case 1:
                                         break;
@@ -219,9 +213,8 @@ public class Menu extends Fragment{
                         .setItems(R.array.li_opciones_perfil, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0:
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
@@ -234,6 +227,9 @@ public class Menu extends Fragment{
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new mini_pantalla_dos());
                                         miTrnsaccion_.commit();
+                                        break;
+                                    case 3:
+                                        startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:
                                         Toast.makeText(getActivity(), "Pantalla no configurada aún", Toast.LENGTH_SHORT).show();

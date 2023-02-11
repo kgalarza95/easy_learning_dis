@@ -44,4 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        //En caso de querer permitir volver atrás usa esta llamada:
+        //super.onBackPressed();
+    }
 }

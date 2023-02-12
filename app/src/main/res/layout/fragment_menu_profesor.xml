@@ -25,7 +25,7 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:contentDescription="Linterna"
-                android:src="@drawable/btn_cl_48_p"
+                android:src="@drawable/comunicacion_48"
                 android:tooltipText="linterna"></ImageButton>
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:contentDescription="Musica"
-                android:src="@drawable/btn_cl_48_a"></ImageButton>
+                android:src="@drawable/aprendizaje_48"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:contentDescription="Musica 2"
-                android:src="@drawable/btn_cl_48">
+                android:src="@drawable/notifi_48">
 
             </ImageButton>
 
@@ -101,7 +101,7 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
 
-                android:src="@drawable/btn_cl_48_x">
+                android:src="@drawable/perfil_48">
 
             </ImageButton>
 

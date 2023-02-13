@@ -40,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
                 miTrnsaccion_.replace(R.id.menu, new MenuProfesor());
                 miTrnsaccion_.commit();
                 break;
+            case "loginAdmin":
+                FragmentManager miManejadorAdmin = getSupportFragmentManager();
+                FragmentTransaction miTrnsaccionAdmin = miManejadorAdmin.beginTransaction();
+                //remplazar fragmento actual con el nuevo indicado en el contenedor
+                miTrnsaccionAdmin.remove(new Menu());
+                miTrnsaccionAdmin.remove(new MenuProfesor());
+                miTrnsaccionAdmin.replace(R.id.menu, new MenuAdmin());
+                miTrnsaccionAdmin.commit();
+                break;
             default:
                 break;
         }

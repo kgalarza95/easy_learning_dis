@@ -4,16 +4,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.VolleyError;
+import com.example.proyfragmentmodal.dao.IDaoService;
+import com.example.proyfragmentmodal.entity.EntityMap;
+import com.example.proyfragmentmodal.entity.Respuesta;
+import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
+import com.example.proyfragmentmodal.estudiante.PreInicioEstudiante;
+import com.example.proyfragmentmodal.principal.CambiarContrasenia;
 import com.example.proyfragmentmodal.principal.MainActivity;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
+import com.google.gson.Gson;
 
-public class LoginProfesor extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class LoginProfesor extends AppCompatActivity
+        implements IDaoService.DAOCallbackServicio {
 
     EditText txtUsuario;
     EditText txtPass;
@@ -48,12 +63,61 @@ public class LoginProfesor extends AppCompatActivity {
                 //startActivity(new Intent(view.getContext(), PrincipalProfesor.class));
                 //solo prueba de recyclerview
                 //  startActivity(new Intent(view.getContext(), RecyclerViewLista.class));
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
-                intent.putExtra("itOrigin","loginProfesor");
-                startActivity(intent);
+
+
+                vista = view;
+                Map<String, String> params = new HashMap<>();
+                params.put("usuario", txtUsuario.getText().toString());
+                params.put("password", txtPass.getText().toString());
+
+                IDaoService dao = new IDaoService(LoginProfesor.this);
+                dao.postData(params, LoginProfesor.this);
+
             }
         });
 
 
+    }
+
+    Gson gson = new Gson();
+    View vista;
+
+    @Override
+    public void onSuccess(String response) {
+        Log.d("Response==========>  ", response);
+
+        Respuesta data = gson.fromJson(response, Respuesta.class);
+
+        if (data.getCodResponse().equals("00")) {
+            //List<EntityMap> listRoles = (List<EntityMap>) data.getData();
+            Map<String, Object> listFilas = (Map<String, Object>) data.getData();
+            //EntityMap obj = listRoles.get(0);
+            Intent intent = new Intent(vista.getContext(), MainActivity.class);
+            //if (obj.getROL().equals("ADMINISTRADOR")) {
+            if (listFilas.get("ROL").equals("ADMINISTRADOR")) {
+                intent.putExtra("itOrigin", "loginAdmin");
+                startActivity(intent);
+            } else if (listFilas.get("ROL").equals("PROFESOR")){
+                //if (obj.getCAMBIAR_CONTRASENIA().equals("N")){
+                if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")){
+                    intent.putExtra("itOrigin", "loginProfesor");
+                }else{
+                    intent = new Intent(vista.getContext(), CambiarContrasenia.class);
+                    intent.putExtra("usuario", txtUsuario.getText().toString());
+                }
+                startActivity(intent);
+            }else{
+                Toast.makeText(this, "Usuario sin privilegios", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "DATOS INGRESADOS SON INCORRECTOS", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public void onError(VolleyError error) {
+        Log.d("Error:  ", error.toString());
+        Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }
 }

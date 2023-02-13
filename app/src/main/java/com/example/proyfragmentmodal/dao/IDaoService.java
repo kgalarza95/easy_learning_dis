@@ -47,6 +47,64 @@ public class IDaoService {
         queue.add(stringRequest);
     }
 
+
+    public void actualizarPass(final Map<String, String> params, final DAOCallbackServicio callback) {
+        String uri = URL + "configuraciones.php";
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Procesar la respuesta aquí
+                        callback.onSuccess(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Procesar el error aquí
+                        callback.onError(error);
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
+
+    public void guardarUsuario(final Map<String, String> params, final DAOCallbackServicio callback) {
+        String uri = URL + "guardar_usuario.php";
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Procesar la respuesta aquí
+                        callback.onSuccess(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Procesar el error aquí
+                        callback.onError(error);
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
+
+
+    //interfaz interna para utilizar los métodos con la data.
     public interface DAOCallbackServicio {
         void onSuccess(String response);
         void onError(VolleyError error);

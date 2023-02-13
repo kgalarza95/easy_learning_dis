@@ -48,6 +48,11 @@
     </string-array>
 
 
+    <string-array name="li_opciones_admin">
+        <item name="it_1">CREAR USUARIOS</item>
+        <item name="it_2">SALIR</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Nombre de la Escuela</string>

@@ -15,6 +15,8 @@ import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.dao.DaoService;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.Respuesta;
+import com.example.proyfragmentmodal.principal.CambiarContrasenia;
+import com.example.proyfragmentmodal.principal.MainActivity;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
 import com.google.gson.Gson;
@@ -78,13 +80,26 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
 
     @Override
     public void onSuccess(String response) {
-        Log.d("Response==========>  ",response);
+        Log.d("Response==========>  ", response);
 
         Respuesta data = gson.fromJson(response, Respuesta.class);
-        if (data.getCodResponse().equals("00")){
-            Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
-            startActivity(intent);
-        }else{
+        if (data.getCodResponse().equals("00")) {
+
+            Map<String, Object> listFilas = (Map<String, Object>) data.getData();
+            Intent intent = new Intent(vista.getContext(), MainActivity.class);
+
+            if (listFilas.get("ROL").equals("ESTUDIANTE")) {
+                if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
+                    intent.putExtra("itOrigin", "loginEstudiante");
+                } else {
+                    intent.putExtra("usuario", txtUsuario.getText().toString());
+                    intent = new Intent(vista.getContext(), CambiarContrasenia.class);
+                }
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Usuario sin privilegios de estudiante", Toast.LENGTH_SHORT).show();
+            }
+        } else {
             Toast.makeText(this, "DATOS INGRESADOS SON INCORRECTOS", Toast.LENGTH_SHORT).show();
         }
 
@@ -92,6 +107,7 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
 
     @Override
     public void onError(VolleyError error) {
-        Log.d("ErroR:  ",error.toString());
+        Log.d("Error:  ", error.toString());
+        Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,0 +1,7 @@
+$json = '{"ES_USUARIO":1}';
+
+$array = json_decode($json, true);
+
+$valor = $array["ES_USUARIO"];
+
+echo $valor;

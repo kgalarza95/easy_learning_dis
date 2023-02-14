@@ -52,13 +52,13 @@ public class Foro extends Fragment {
 
     public void init(View vista) {
         litUsuarios = new ArrayList<>();
-        litUsuarios.add("Kevin Galarza");
-        litUsuarios.add("jordan Galarza");
-        litUsuarios.add("xxxxx Galarza");
-        litUsuarios.add("yyyy Galarza");
-        litUsuarios.add("ddddd Galarza");
-        litUsuarios.add("uuuuuu Galarza");
-        litUsuarios.add("ppppp Galarza");
+        litUsuarios.add("nom estudiante");
+        litUsuarios.add("nom estudiante2");
+        litUsuarios.add("nom estudiante3");
+        litUsuarios.add("nom estudiante4");
+        litUsuarios.add("nom estudiante5");
+        litUsuarios.add("nom estudiante6");
+        litUsuarios.add("nom estudiante7");
 
 
         ListAdapter listAdapter = new ListAdapter(litUsuarios, getActivity());

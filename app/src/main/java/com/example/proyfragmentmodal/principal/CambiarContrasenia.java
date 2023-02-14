@@ -23,15 +23,18 @@ public class CambiarContrasenia extends AppCompatActivity
         implements IDaoService.DAOCallbackServicio {
 
     View vista;
+    EditText passActual;
+    EditText passNueva;
+    EditText passConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_contrasenia);
 
-        EditText passActual = findViewById(R.id.txt_pass_actual);
-        EditText passNueva = findViewById(R.id.txt_nueva_pass);
-        EditText passConfirm = findViewById(R.id.txt_confirmar_pass);
+        passActual = findViewById(R.id.txt_pass_actual);
+        passNueva = findViewById(R.id.txt_nueva_pass);
+        passConfirm = findViewById(R.id.txt_confirmar_pass);
 
         Bundle extras = getIntent().getExtras();
         String usuario = extras.getString("usuario");

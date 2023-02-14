@@ -112,6 +112,13 @@ public class Usuarios extends Fragment
         Log.d("Response==========>  ", response);
         Respuesta data = gson.fromJson(response, Respuesta.class);
         if (data.getCodResponse().equals("00")) {
+            txtNombres.setText("");
+            txtApellidos.setText("");
+            txtEdad.setText("");
+            txtUsuario.setText("");
+            txtCedula.setText("");
+            txtPassword.setText("");
+
             Toast.makeText(getActivity(), "TRANSACCIÓN OK", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getActivity(), "NO SE GUARDARON LOS DATOS", Toast.LENGTH_SHORT).show();

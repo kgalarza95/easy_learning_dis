@@ -94,7 +94,7 @@ public class Usuarios extends Fragment
                 params.put("esMasculino", rbMasculino.isChecked() ? "M" : "F");
                 params.put("solicitarPass", chSolicitarPass.isChecked() ? "S" : "N");
                 params.put("cedula", txtCedula.getText().toString());
-                params.put("rol", "1");
+                params.put("rol", String.valueOf(spTiposUsuarios.getSelectedItemPosition()+1));
 
                 IDaoService dao = new IDaoService(getActivity());
                 dao.guardarUsuario(params, Usuarios.this);

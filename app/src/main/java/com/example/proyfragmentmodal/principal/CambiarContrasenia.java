@@ -70,7 +70,7 @@ public class CambiarContrasenia extends AppCompatActivity
     @Override
     public void onSuccess(String response) {
         Toast.makeText(this, "Transacción Ok", Toast.LENGTH_SHORT).show();
-
+        Log.i("Respuesta: ================>    ", response);
         Respuesta data = gson.fromJson(response, Respuesta.class);
         if (data.getCodResponse().equals("00")) {
             startActivity(new Intent(vista.getContext(), MenuProfEstud.class));

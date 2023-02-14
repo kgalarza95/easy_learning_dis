@@ -92,8 +92,9 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
                 if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
                     intent.putExtra("itOrigin", "loginEstudiante");
                 } else {
-                    intent.putExtra("usuario", txtUsuario.getText().toString());
                     intent = new Intent(vista.getContext(), CambiarContrasenia.class);
+                    intent.putExtra("usuario", txtUsuario.getText().toString());
+
                 }
                 startActivity(intent);
             } else {

@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.profesor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.example.proyfragmentmodal.util.ListAdapterIconText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -95,6 +97,10 @@ public class MisCursosProfesor extends AppCompatActivity {
     }
 
     public void alertDialogForm(){
+        GlobalAplicacion global = new GlobalAplicacion();
+
+
+
         // Crear una instancia de la vista personalizada
         View customView = getLayoutInflater().inflate(R.layout.dialog_frm_cursos_prof, null);
 
@@ -105,7 +111,7 @@ public class MisCursosProfesor extends AppCompatActivity {
 
         // Crear el AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Título del modal")
+        builder.setTitle("Crear Nuevo Curso")
                 .setView(customView)
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -115,7 +121,10 @@ public class MisCursosProfesor extends AppCompatActivity {
                         String value3 = txtAnioLectivo.getText().toString();
                         //obtener id del usuario
                         // Mostrar los valores en un Toast
-                        Toast.makeText(getApplicationContext(), "Valor 1: " + value1 + ", Valor 2: " + value2, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Valor 1: " + value1 +
+                                ", Valor 2: " + value2+
+                                        ",  global.getGlobalUsuario(): " +  global.getGlobalUsuario()
+                                , Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

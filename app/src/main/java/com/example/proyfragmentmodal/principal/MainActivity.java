@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.profesor.MenuProfesor;
 import com.example.proyfragmentmodal.principal.Menu;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void establecerMenu(String origin) {
+        GlobalAplicacion global = new GlobalAplicacion();
+
+        global.setGlobalUsuario("PREUBA.............");
         //FragmentManager miManejador;//getFragmentManager(); //getParentFragmentManager();
         switch (origin) {
             case "loginEstudiante":

@@ -15,14 +15,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+@Deprecated
 public class DaoService {
 
     static String URL = "http://192.168.1.44/php_api_dislexia/";
     Context context = null;
-
+    @Deprecated
     public DaoService() {
     }
-
+    @Deprecated
     public DaoService(Context context) {
         this.context = context;
     }

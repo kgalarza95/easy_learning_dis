@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.proyfragmentmodal.MisCursosProfesor;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.Foro;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
@@ -57,8 +58,8 @@ public class MenuProfesor extends Fragment {
                         .setItems(R.array.li_opciones_comunicacion_prof, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                switch (which){
-                                    case  0: // Foro
+                                switch (which) {
+                                    case 0: // Foro
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
@@ -93,8 +94,8 @@ public class MenuProfesor extends Fragment {
                         .setItems(R.array.li_opciones_aprendizaje_prof, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 //Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0:
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
@@ -133,8 +134,8 @@ public class MenuProfesor extends Fragment {
 
                             public void onClick(DialogInterface dialog, int which) {
 
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0:
                                         break;
                                     case 1:
                                         break;
@@ -159,22 +160,25 @@ public class MenuProfesor extends Fragment {
                         .setItems(R.array.li_opciones_perfil_prof, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0://datos personales
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1:
+                                    case 1://mis cursos
+                                        startActivity(new Intent(v.getContext(), MisCursosProfesor.class));
+                                        break;
+                                    case 2://historial academico
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new mini_pantalla_dos());
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 3:
+                                    case 3://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:

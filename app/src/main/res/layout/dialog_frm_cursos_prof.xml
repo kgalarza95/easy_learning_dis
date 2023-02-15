@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/txt_nom_curso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del curso" />
+
+    <EditText
+        android:id="@+id/txt_descripcion_curso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción del curso" />
+
+    <EditText
+        android:id="@+id/txt_anio_lectivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Año de vigencia del curso" />
+</LinearLayout>

@@ -8,22 +8,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.dao.IDaoService;
+import com.example.proyfragmentmodal.entity.Respuesta;
+import com.example.proyfragmentmodal.principal.Usuarios;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.example.proyfragmentmodal.util.ListAdapterIconText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MisCursosProfesor extends AppCompatActivity {
+public class MisCursosProfesor extends AppCompatActivity
+        implements IDaoService.DAOCallbackServicio {
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
+    private String opcion;
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +68,21 @@ public class MisCursosProfesor extends AppCompatActivity {
 
 
     public void init() {
+        opcion = "CN";
+
+        Map<String, String> params = new HashMap<>();
+        params.put("opcion", opcion);
+        params.put("id_profesor", String.valueOf(1));
+        //params.put("id_profesor", global.getGlobalUsuario());
+        params.put("nombre", "");
+        params.put("descripcion", "");
+        params.put("anio", "");
+        params.put("estado", "S");
+
+
+        IDaoService dao = new IDaoService(MisCursosProfesor.this);
+        dao.crudCursosProf(params, MisCursosProfesor.this);
+
         List<String> litUsuarios = new ArrayList<>();
         int i = 1;
         litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
@@ -96,9 +122,8 @@ public class MisCursosProfesor extends AppCompatActivity {
         dialog.show();
     }
 
-    public void alertDialogForm(){
+    public void alertDialogForm() {
         GlobalAplicacion global = new GlobalAplicacion();
-
 
 
         // Crear una instancia de la vista personalizada
@@ -122,9 +147,24 @@ public class MisCursosProfesor extends AppCompatActivity {
                         //obtener id del usuario
                         // Mostrar los valores en un Toast
                         Toast.makeText(getApplicationContext(), "Valor 1: " + value1 +
-                                ", Valor 2: " + value2+
-                                        ",  global.getGlobalUsuario(): " +  global.getGlobalUsuario()
+                                        ", Valor 2: " + value2 +
+                                        ",  global.getGlobalUsuario(): " + global.getGlobalUsuario()
                                 , Toast.LENGTH_SHORT).show();
+
+                        opcion = "IN";
+
+                        Map<String, String> params = new HashMap<>();
+                        params.put("opcion", "IN");
+                        params.put("id_profesor", String.valueOf(1));
+                        //params.put("id_profesor", global.getGlobalUsuario());
+                        params.put("nombre", txtNombCurso.getText().toString());
+                        params.put("descripcion", txtDescripcionCurso.getText().toString());
+                        params.put("anio", txtAnioLectivo.getText().toString());
+                        params.put("estado", "S");
+
+
+                        IDaoService dao = new IDaoService(MisCursosProfesor.this);
+                        dao.crudCursosProf(params, MisCursosProfesor.this);
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -136,6 +176,30 @@ public class MisCursosProfesor extends AppCompatActivity {
         // Mostrar el AlertDialog
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    @Override
+    public void onSuccess(String response) {
+        Log.d("===========================================================  ", "");
+        Log.d("Respuesta:  ", response);
+        Respuesta data = gson.fromJson(response, Respuesta.class);
+        if (data.getCodResponse().equals("00")) {
+            if (opcion.equals("IN")) {
+
+            } else if (opcion.equals("CN")) {
+                List<String> listFilas = (List<String> ) data.getData();
+                Log.d("Respuesta:  ", String.valueOf(listFilas));
+            }
+        } else {
+            Toast.makeText(this, data.getMsjResponse(), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public void onError(VolleyError error) {
+        Log.d("Error:  ", error.toString());
+        Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -168,7 +232,6 @@ fab.setOnClickListener(new View.OnClickListener() {
             dialog.show();
         }
     });*/
-
 
 
 }

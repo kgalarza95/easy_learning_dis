@@ -2,7 +2,7 @@ package com.example.proyfragmentmodal.util;
 
 import android.app.Application;
 
-public class GlobalAplicacion extends Application {
+public class GlobalAplicacion {
 
     private static String globalUsuario;
 

@@ -1,6 +1,7 @@
 package com.example.proyfragmentmodal.dao;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -103,7 +104,38 @@ public class IDaoService {
         queue.add(stringRequest);
     }
 
+    public void crudCursosProf(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRest(URL + "crud_cursos.php", params, callback);
+    }
 
+
+    private void clienteRest(String URL,
+                             final Map<String, String> params, final DAOCallbackServicio callback){
+        Log.i("URL:        ",URL);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Procesar la respuesta aquí
+                        callback.onSuccess(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Procesar el error aquí
+                        callback.onError(error);
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+        };
+
+        queue.add(stringRequest);
+    }
     //interfaz interna para utilizar los métodos con la data.
     public interface DAOCallbackServicio {
         void onSuccess(String response);

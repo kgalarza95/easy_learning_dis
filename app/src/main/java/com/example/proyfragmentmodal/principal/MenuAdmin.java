@@ -55,7 +55,7 @@ public class MenuAdmin extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios(0));
                                         miTrnsaccion.commit();
                                         break;
                                     case 1:

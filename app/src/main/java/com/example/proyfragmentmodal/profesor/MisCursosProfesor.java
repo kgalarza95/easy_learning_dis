@@ -16,13 +16,18 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
+import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.principal.Usuarios;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.example.proyfragmentmodal.util.ListAdapterIconText;
+import com.example.proyfragmentmodal.util.ListAdapterMisCursos;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,7 +68,10 @@ public class MisCursosProfesor extends AppCompatActivity
             }
         });
 
-        init();
+        //init();
+
+        requestCursos();
+
     }
 
 
@@ -146,17 +154,17 @@ public class MisCursosProfesor extends AppCompatActivity
                         String value3 = txtAnioLectivo.getText().toString();
                         //obtener id del usuario
                         // Mostrar los valores en un Toast
-                        Toast.makeText(getApplicationContext(), "Valor 1: " + value1 +
+                        /*Toast.makeText(getApplicationContext(), "Valor 1: " + value1 +
                                         ", Valor 2: " + value2 +
                                         ",  global.getGlobalUsuario(): " + global.getGlobalUsuario()
-                                , Toast.LENGTH_SHORT).show();
+                                , Toast.LENGTH_SHORT).show();*/
 
                         opcion = "IN";
 
                         Map<String, String> params = new HashMap<>();
                         params.put("opcion", "IN");
-                        params.put("id_profesor", String.valueOf(1));
-                        //params.put("id_profesor", global.getGlobalUsuario());
+                        //params.put("id_profesor", String.valueOf(1));
+                        params.put("id_profesor", String.valueOf(global.getGlobalIdUsuario()));
                         params.put("nombre", txtNombCurso.getText().toString());
                         params.put("descripcion", txtDescripcionCurso.getText().toString());
                         params.put("anio", txtAnioLectivo.getText().toString());
@@ -185,10 +193,18 @@ public class MisCursosProfesor extends AppCompatActivity
         Respuesta data = gson.fromJson(response, Respuesta.class);
         if (data.getCodResponse().equals("00")) {
             if (opcion.equals("IN")) {
-
+                requestCursos();
             } else if (opcion.equals("CN")) {
-                List<String> listFilas = (List<String> ) data.getData();
-                Log.d("Respuesta:  ", String.valueOf(listFilas));
+                //  List<String> listFilas = (List<String>) data.getData();
+                String json = gson.toJson(data.getData());
+                Type listType = new TypeToken<List<EntityMap>>() {
+                }.getType();
+                List<EntityMap> listaCursos = gson.fromJson(json, listType);
+                Log.d("Respuesta:  ", String.valueOf(listaCursos));
+                Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
+                Log.d("Respuesta:  ", listaCursos.get(1).getNOMBRE());
+                init(listaCursos);
+
             }
         } else {
             Toast.makeText(this, data.getMsjResponse(), Toast.LENGTH_SHORT).show();
@@ -202,6 +218,32 @@ public class MisCursosProfesor extends AppCompatActivity
         Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }
 
+    public void requestCursos() {
+        GlobalAplicacion global = new GlobalAplicacion();
+        opcion = "CN";
+
+        Map<String, String> params = new HashMap<>();
+        params.put("opcion", opcion);
+        //params.put("id_profesor", String.valueOf(1));
+        params.put("id_profesor", String.valueOf(global.getGlobalIdUsuario()));
+        params.put("nombre", "");
+        params.put("descripcion", "");
+        params.put("anio", "");
+        params.put("estado", "S");
+
+        IDaoService dao = new IDaoService(MisCursosProfesor.this);
+        dao.crudCursosProf(params, MisCursosProfesor.this);
+    }
+
+    public void init(List<EntityMap> listaCursos) {
+
+
+        ListAdapterMisCursos listAdapter = new ListAdapterMisCursos(listaCursos, this);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_list_cursos);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapter);
+    }
 
     //other code de prueba
 /*    FloatingActionButton fab = findViewById(R.id.fab);

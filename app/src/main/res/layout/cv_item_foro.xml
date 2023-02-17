@@ -19,7 +19,7 @@
         android:layout_height="157dp">
 
         <TextView
-            android:id="@+id/txt_mensaje_cv"
+            android:id="@+id/txt_titulo_cr"
             android:layout_width="287dp"
             android:layout_height="69dp"
             android:layout_marginTop="16dp"

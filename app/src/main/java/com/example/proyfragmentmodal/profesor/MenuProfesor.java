@@ -20,6 +20,7 @@ import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
 import com.example.proyfragmentmodal.mini_pantalla_dos;
 import com.example.proyfragmentmodal.mini_pantalla_uno;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
+import com.example.proyfragmentmodal.principal.Usuarios;
 
 
 public class MenuProfesor extends Fragment {
@@ -163,7 +164,7 @@ public class MenuProfesor extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios(1));
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://mis cursos

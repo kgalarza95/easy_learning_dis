@@ -19,6 +19,7 @@ import com.example.proyfragmentmodal.principal.CambiarContrasenia;
 import com.example.proyfragmentmodal.principal.MainActivity;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -90,11 +91,13 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
 
             if (listFilas.get("ROL").equals("ESTUDIANTE")) {
                 if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
+                    GlobalAplicacion global = new GlobalAplicacion();
+                    GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
+                    global.setGlobalUsuario((String) listFilas.get("USUARIO"));
                     intent.putExtra("itOrigin", "loginEstudiante");
                 } else {
                     intent = new Intent(vista.getContext(), CambiarContrasenia.class);
                     intent.putExtra("usuario", txtUsuario.getText().toString());
-
                 }
                 startActivity(intent);
             } else {

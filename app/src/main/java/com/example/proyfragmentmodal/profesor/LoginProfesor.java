@@ -21,11 +21,13 @@ import com.example.proyfragmentmodal.principal.CambiarContrasenia;
 import com.example.proyfragmentmodal.principal.MainActivity;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class LoginProfesor extends AppCompatActivity
         implements IDaoService.DAOCallbackServicio {
@@ -97,16 +99,22 @@ public class LoginProfesor extends AppCompatActivity
             if (listFilas.get("ROL").equals("ADMINISTRADOR")) {
                 intent.putExtra("itOrigin", "loginAdmin");
                 startActivity(intent);
-            } else if (listFilas.get("ROL").equals("PROFESOR")){
+            } else if (listFilas.get("ROL").equals("PROFESOR")) {
                 //if (obj.getCAMBIAR_CONTRASENIA().equals("N")){
-                if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")){
+                if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
+                    Log.d(" listFilas.get(\"ID\")==========>  ", String.valueOf(listFilas.get("ID")));
+                    GlobalAplicacion global = new GlobalAplicacion();
+                   // global.setGlobalUsuario(String.valueOf((Double) listFilas.get("ID")));
+                    GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
+                    global.setGlobalUsuario((String) listFilas.get("USUARIO"));
+                    Log.d(" getGlobalUsuario==========>  ", global.getGlobalUsuario());
                     intent.putExtra("itOrigin", "loginProfesor");
-                }else{
+                } else {
                     intent = new Intent(vista.getContext(), CambiarContrasenia.class);
                     intent.putExtra("usuario", txtUsuario.getText().toString());
                 }
                 startActivity(intent);
-            }else{
+            } else {
                 Toast.makeText(this, "Usuario sin privilegios", Toast.LENGTH_SHORT).show();
             }
         } else {

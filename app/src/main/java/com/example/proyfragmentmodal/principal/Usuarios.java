@@ -30,6 +30,8 @@ import java.util.Map;
 public class Usuarios extends Fragment
         implements IDaoService.DAOCallbackServicio {
 
+    private int origeenLlamadaPagina = 0; // 0: admin,  1:otra
+
     EditText txtNombres;
     EditText txtApellidos;
     EditText txtEdad;
@@ -43,6 +45,9 @@ public class Usuarios extends Fragment
     View vista;
 
     public Usuarios() {
+    }
+    public Usuarios(int destino) {
+        origeenLlamadaPagina = destino;
     }
 
     public static Usuarios newInstance(String param1, String param2) {
@@ -81,6 +86,8 @@ public class Usuarios extends Fragment
         //Diseño cuando aparezcan las opciones
         adaptador.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spTiposUsuarios.setAdapter(adaptador);
+
+        origenPantallaConfig();
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,5 +136,13 @@ public class Usuarios extends Fragment
     public void onError(VolleyError error) {
         Log.d("Error:  ", error.toString());
         Toast.makeText(getActivity(), "Error: " + error, Toast.LENGTH_SHORT).show();
+    }
+
+    public void origenPantallaConfig(){
+        if (this.origeenLlamadaPagina == 0){//admin
+            chSolicitarPass.setVisibility(View.VISIBLE);
+        }else{ // otra
+            chSolicitarPass.setVisibility(View.GONE);
+        }
     }
 }

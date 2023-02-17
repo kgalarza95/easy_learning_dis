@@ -64,7 +64,7 @@ public class ListAdapterIconText extends RecyclerView.Adapter<ListAdapterIconTex
             super(itemView);
             manejoVista = itemView;
             iv = itemView.findViewById(R.id.ic_descargar);
-            txtNomPDF = itemView.findViewById(R.id.txt_mensaje_cv);
+            txtNomPDF = itemView.findViewById(R.id.txt_titulo_cr);
         }
 
         void bindData(final  String itemCv){

@@ -18,7 +18,7 @@
         android:layout_height="157dp">
 
         <TextView
-            android:id="@+id/txt_mensaje_cv"
+            android:id="@+id/txt_titulo_cr"
             android:layout_width="178dp"
             android:layout_height="29dp"
             android:layout_marginTop="16dp"
@@ -40,7 +40,7 @@
             app:srcCompat="@drawable/atomo_48" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txt_descripcion_cr"
             android:layout_width="245dp"
             android:layout_height="84dp"
             android:layout_marginStart="16dp"
@@ -49,7 +49,7 @@
             app:layout_constraintEnd_toStartOf="@+id/ic_descargar"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_mensaje_cv" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_titulo_cr" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

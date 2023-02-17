@@ -5,6 +5,7 @@ import android.app.Application;
 public class GlobalAplicacion {
 
     private static String globalUsuario;
+    private static int globalIdUsuario;
 
     public GlobalAplicacion() {
     }
@@ -14,6 +15,14 @@ public class GlobalAplicacion {
     }
 
     public void setGlobalUsuario(String globalUsuario) {
-        this.globalUsuario = globalUsuario;
+        GlobalAplicacion.globalUsuario = globalUsuario;
+    }
+
+    public static int getGlobalIdUsuario() {
+        return globalIdUsuario;
+    }
+
+    public static void setGlobalIdUsuario(int globalIdUsuario) {
+        GlobalAplicacion.globalIdUsuario = globalIdUsuario;
     }
 }

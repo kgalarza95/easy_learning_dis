@@ -20,11 +20,16 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
+import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Usuarios extends Fragment
@@ -43,9 +48,13 @@ public class Usuarios extends Fragment
     CheckBox chSolicitarPass;
     Button btnGuardar;
     View vista;
+    Spinner spTiposUsuarios;
+
+    private String opcion;
 
     public Usuarios() {
     }
+
     public Usuarios(int destino) {
         origeenLlamadaPagina = destino;
     }
@@ -79,7 +88,7 @@ public class Usuarios extends Fragment
         btnGuardar = vista.findViewById(R.id.btn_save_user);
 
         //Declrar componentes
-        Spinner spTiposUsuarios = vista.findViewById(R.id.sp_usuarios);
+         spTiposUsuarios = vista.findViewById(R.id.sp_usuarios);
         //Adaptador con layout por defecto
         ArrayAdapter<CharSequence> adaptador = ArrayAdapter.createFromResource(getActivity(), R.array.strs_tip_users,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
@@ -87,24 +96,38 @@ public class Usuarios extends Fragment
         adaptador.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spTiposUsuarios.setAdapter(adaptador);
 
+
         origenPantallaConfig();
+        initConsDtos();
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Map<String, String> params = new HashMap<>();
+
+                if (origeenLlamadaPagina == 0) {//admin
+                    chSolicitarPass.setVisibility(View.VISIBLE);
+                    opcion = "IN";
+                    params.put("opcion", "IN");
+                    params.put("solicitarPass", chSolicitarPass.isChecked() ? "S" : "N");
+                    params.put("id_usuario", "0");
+                } else { // otra
+                    opcion = "AC";
+                    params.put("opcion", "AC");
+                    params.put("solicitarPass", "N");
+                    params.put("id_usuario", String.valueOf(global.getGlobalIdUsuario()));
+                }
                 params.put("nombres", txtUsuario.getText().toString());
                 params.put("apellidos", txtApellidos.getText().toString());
                 params.put("edad", txtEdad.getText().toString());
                 params.put("usuario", txtUsuario.getText().toString());
                 params.put("contrasenia", txtPassword.getText().toString());
                 params.put("esMasculino", rbMasculino.isChecked() ? "M" : "F");
-                params.put("solicitarPass", chSolicitarPass.isChecked() ? "S" : "N");
                 params.put("cedula", txtCedula.getText().toString());
-                params.put("rol", String.valueOf(spTiposUsuarios.getSelectedItemPosition()+1));
+                params.put("rol", String.valueOf(spTiposUsuarios.getSelectedItemPosition() + 1));
 
                 IDaoService dao = new IDaoService(getActivity());
-                dao.guardarUsuario(params, Usuarios.this);
+                dao.crudUsuario(params, Usuarios.this);
             }
         });
 
@@ -113,22 +136,43 @@ public class Usuarios extends Fragment
     }
 
     Gson gson = new Gson();
+    GlobalAplicacion global = new GlobalAplicacion();
 
     @Override
     public void onSuccess(String response) {
         Log.d("Response==========>  ", response);
         Respuesta data = gson.fromJson(response, Respuesta.class);
         if (data.getCodResponse().equals("00")) {
-            txtNombres.setText("");
-            txtApellidos.setText("");
-            txtEdad.setText("");
-            txtUsuario.setText("");
-            txtCedula.setText("");
-            txtPassword.setText("");
+            if (opcion.equals("IN")) {
+                txtNombres.setText("");
+                txtApellidos.setText("");
+                txtEdad.setText("");
+                txtUsuario.setText("");
+                txtCedula.setText("");
+                txtPassword.setText("");
+            } else if (opcion.equals("CN")) {
+
+                Map<String, Object> listFilas = (Map<String, Object>) data.getData();
+
+                txtNombres.setText((String) listFilas.get("NOMBRES"));
+                txtApellidos.setText((String) listFilas.get("APELLIDOS"));
+                txtEdad.setText(String.valueOf((String)  listFilas.get("EDAD")));
+                txtUsuario.setText((String) listFilas.get("USUARIO"));
+                txtCedula.setText((String) listFilas.get("CEDULA"));
+                //txtPassword.setText((String) "");
+                spTiposUsuarios.setSelection(Integer.parseInt((String) listFilas.get("ID_ROL"))-1);
+
+                if (listFilas.get("SEXO").equals("M")){
+                    rbMasculino.setChecked(true);
+                }else{
+                    rbFemenino.setChecked(true);
+                }
+            }
+
 
             Toast.makeText(getActivity(), "TRANSACCIÓN OK", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getActivity(), "NO SE GUARDARON LOS DATOS", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "NO SE PROCESRON LOS DATOS", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -138,11 +182,42 @@ public class Usuarios extends Fragment
         Toast.makeText(getActivity(), "Error: " + error, Toast.LENGTH_SHORT).show();
     }
 
-    public void origenPantallaConfig(){
-        if (this.origeenLlamadaPagina == 0){//admin
+    public void origenPantallaConfig() {
+        if (this.origeenLlamadaPagina == 0) {//admin
             chSolicitarPass.setVisibility(View.VISIBLE);
-        }else{ // otra
+            btnGuardar.setText("GUARDAR");
+        } else { // otra
             chSolicitarPass.setVisibility(View.GONE);
+            btnGuardar.setText("ACTUALIZAR");
+            Log.d(" llega passss ==========>  ", String.valueOf(GlobalAplicacion.getGlobalPassword()));
+            txtPassword.setText(String.valueOf(GlobalAplicacion.getGlobalPassword()));
         }
     }
+
+    public void initConsDtos(){
+        Map<String, String> params = new HashMap<>();
+        GlobalAplicacion global = new GlobalAplicacion();
+
+        if (origeenLlamadaPagina == 0) {//admin
+        } else { // otra
+            opcion = "CN";
+            params.put("opcion", "CN");
+            params.put("solicitarPass", "N");
+            params.put("id_usuario", String.valueOf(global.getGlobalIdUsuario()));
+            params.put("nombres", "");
+            params.put("apellidos","");
+            params.put("edad", "");
+            params.put("usuario", "");
+            params.put("contrasenia", "");
+            params.put("esMasculino", "");
+            params.put("cedula", "");
+            params.put("rol", "");
+
+            IDaoService dao = new IDaoService(getActivity());
+            dao.crudUsuario(params, Usuarios.this);
+        }
+
+    }
+
+
 }

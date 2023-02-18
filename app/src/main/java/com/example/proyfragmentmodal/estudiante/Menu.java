@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.principal;
+package com.example.proyfragmentmodal.estudiante;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -17,11 +17,10 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.estudiante.Foro;
-import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
-import com.example.proyfragmentmodal.estudiante.PreInicioEstudiante;
 import com.example.proyfragmentmodal.mini_pantalla_dos;
 import com.example.proyfragmentmodal.mini_pantalla_uno;
+import com.example.proyfragmentmodal.principal.MenuProfEstud;
+import com.example.proyfragmentmodal.principal.Usuarios;
 
 
 public class Menu extends Fragment {
@@ -214,21 +213,23 @@ public class Menu extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0:
+                                    case 0://datos peronales
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios(1));
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1:
+                                    case 1://mis cursos
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new mini_pantalla_dos());
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 3:
+                                    case 2://historial
+                                        break;
+                                    case 3://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:

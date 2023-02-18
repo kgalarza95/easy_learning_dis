@@ -107,6 +107,8 @@ public class LoginProfesor extends AppCompatActivity
                    // global.setGlobalUsuario(String.valueOf((Double) listFilas.get("ID")));
                     GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
                     global.setGlobalUsuario((String) listFilas.get("USUARIO"));
+                    Log.d(" guardando passss ==========>  ", txtPass.getText().toString());
+                    global.setGlobalPassword(txtPass.getText().toString());
                     Log.d(" getGlobalUsuario==========>  ", global.getGlobalUsuario());
                     intent.putExtra("itOrigin", "loginProfesor");
                 } else {

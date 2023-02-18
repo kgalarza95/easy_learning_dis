@@ -87,13 +87,14 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
         if (data.getCodResponse().equals("00")) {
 
             Map<String, Object> listFilas = (Map<String, Object>) data.getData();
-            Intent intent = new Intent(vista.getContext(), MainActivity.class);
+            Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
 
             if (listFilas.get("ROL").equals("ESTUDIANTE")) {
                 if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
                     GlobalAplicacion global = new GlobalAplicacion();
                     GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
                     global.setGlobalUsuario((String) listFilas.get("USUARIO"));
+                    global.setGlobalPassword(txtPass.getText().toString());
                     intent.putExtra("itOrigin", "loginEstudiante");
                 } else {
                     intent = new Intent(vista.getContext(), CambiarContrasenia.class);

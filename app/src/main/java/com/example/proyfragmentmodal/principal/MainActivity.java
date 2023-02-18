@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.profesor.MenuProfesor;
-import com.example.proyfragmentmodal.principal.Menu;
+import com.example.proyfragmentmodal.estudiante.Menu;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 public class MainActivity extends AppCompatActivity {

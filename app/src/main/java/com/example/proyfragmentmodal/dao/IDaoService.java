@@ -77,8 +77,8 @@ public class IDaoService {
     }
 
 
-    public void guardarUsuario(final Map<String, String> params, final DAOCallbackServicio callback) {
-        String uri = URL + "guardar_usuario.php";
+    public void crudUsuario(final Map<String, String> params, final DAOCallbackServicio callback) {
+        String uri = URL + "crud_usuario.php";
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
                 new Response.Listener<String>() {

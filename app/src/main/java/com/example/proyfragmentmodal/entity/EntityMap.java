@@ -8,6 +8,18 @@ public class EntityMap {
     private String DESCRIPCION;
     private String ANIO;
     private String ESTADO;
+    private String esRemitente;
+    private String esEmisor;
+    private String mensaje;
+
+    public EntityMap() {
+    }
+
+    public EntityMap(String esRemitente, String esEmisor, String mensaje) {
+        this.esRemitente = esRemitente;
+        this.esEmisor = esEmisor;
+        this.mensaje = mensaje;
+    }
 
     public String getID() {
         return ID;
@@ -57,6 +69,30 @@ public class EntityMap {
         this.ESTADO = ESTADO;
     }
 
+    public String getEsRemitente() {
+        return esRemitente;
+    }
+
+    public void setEsRemitente(String esRemitente) {
+        this.esRemitente = esRemitente;
+    }
+
+    public String getEsEmisor() {
+        return esEmisor;
+    }
+
+    public void setEsEmisor(String esEmiso) {
+        this.esEmisor = esEmiso;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     @Override
     public String toString() {
         return "EntityMap{" +
@@ -66,6 +102,9 @@ public class EntityMap {
                 ", DESCRIPCION='" + DESCRIPCION + '\'' +
                 ", ANIO='" + ANIO + '\'' +
                 ", ESTADO='" + ESTADO + '\'' +
+                ", esRemitente='" + esRemitente + '\'' +
+                ", esEmisor='" + esEmisor + '\'' +
+                ", mensaje='" + mensaje + '\'' +
                 '}';
     }
 }

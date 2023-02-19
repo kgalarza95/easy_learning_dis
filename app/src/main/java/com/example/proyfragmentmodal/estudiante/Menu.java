@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.mini_pantalla_dos;
-import com.example.proyfragmentmodal.mini_pantalla_uno;
+import com.example.proyfragmentmodal.profesor.AsignacionesProfesor;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.principal.Usuarios;
 
@@ -114,7 +114,7 @@ public class Menu extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1:
@@ -151,7 +151,7 @@ public class Menu extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1:// MATERIAL DE ESTUDIO

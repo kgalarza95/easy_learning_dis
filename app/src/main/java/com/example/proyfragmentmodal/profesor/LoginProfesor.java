@@ -75,6 +75,9 @@ public class LoginProfesor extends AppCompatActivity
                 IDaoService dao = new IDaoService(LoginProfesor.this);
                 dao.postData(params, LoginProfesor.this);
 
+
+                //solo desarrollo sin conexión.
+               // preubaSinConexion();
             }
         });
 
@@ -129,5 +132,11 @@ public class LoginProfesor extends AppCompatActivity
     public void onError(VolleyError error) {
         Log.d("Error:  ", error.toString());
         Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
+    }
+
+    public void preubaSinConexion(){
+        Intent intent = new Intent(vista.getContext(), MainActivity.class);
+        intent.putExtra("itOrigin", "loginProfesor");
+        startActivity(intent);
     }
 }

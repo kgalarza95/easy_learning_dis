@@ -71,6 +71,9 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
                 dao.postData(params, LoginEstudiante.this);
 
 
+                //solo desarrollo sin conexión.
+                //preubaSinConexion();
+
             }
         });
 
@@ -114,5 +117,11 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
     public void onError(VolleyError error) {
         Log.d("Error:  ", error.toString());
         Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
+    }
+
+    public void preubaSinConexion(){
+        Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+        intent.putExtra("itOrigin", "loginEstudiante");
+        startActivity(intent);
     }
 }

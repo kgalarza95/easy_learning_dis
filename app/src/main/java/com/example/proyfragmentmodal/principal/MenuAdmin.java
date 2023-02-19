@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.mini_pantalla_uno;
 
 
 public class MenuAdmin extends Fragment {

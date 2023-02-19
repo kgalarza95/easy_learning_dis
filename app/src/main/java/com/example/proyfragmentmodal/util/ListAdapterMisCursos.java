@@ -2,6 +2,7 @@ package com.example.proyfragmentmodal.util;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.entity.EntityMap;
+import com.example.proyfragmentmodal.principal.MainActivity;
+import com.example.proyfragmentmodal.profesor.Participantes;
 
 import java.util.List;
 
@@ -81,7 +84,10 @@ public class ListAdapterMisCursos extends RecyclerView.Adapter<ListAdapterMisCur
             manejoVista.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Click.. "+objeto.getNOMBRE(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "ID Clic.. "+objeto.getID(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, Participantes.class);
+                    intent.putExtra("idCurso",objeto.getID());
+                    context.startActivity(intent);
                 }
             });
         }

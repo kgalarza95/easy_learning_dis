@@ -1,0 +1,17 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/message_remitente_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/primaryColor">
+
+    <TextView
+        android:id="@+id/mensaje_mensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:text="mensaje prueba mio"/>
+
+</RelativeLayout>

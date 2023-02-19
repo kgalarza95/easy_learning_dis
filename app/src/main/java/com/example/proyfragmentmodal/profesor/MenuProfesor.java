@@ -18,7 +18,6 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.Foro;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
 import com.example.proyfragmentmodal.mini_pantalla_dos;
-import com.example.proyfragmentmodal.mini_pantalla_uno;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.principal.Usuarios;
 
@@ -58,19 +57,12 @@ public class MenuProfesor extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0: // Foro
+                                    case 0: // Chat
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Foro());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new ParticipantesFragm());
                                         miTrnsaccion.commit();
-                                        break;
-                                    case 1:
-                                        FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                                        FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
-                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new mini_pantalla_dos());
-                                        miTrnsaccion_.commit();
                                         break;
                                     default:
                                         break;
@@ -98,7 +90,7 @@ public class MenuProfesor extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new mini_pantalla_uno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1:// MATERIAL DE ESTUDIO

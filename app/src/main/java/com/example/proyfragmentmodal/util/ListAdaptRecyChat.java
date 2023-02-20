@@ -21,11 +21,25 @@ public class ListAdaptRecyChat extends RecyclerView.Adapter<ListAdaptRecyChat.Ch
         this.litMensaje = messages;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        EntityMap message = litMensaje.get(position);
+        if (message.getEsEmisor().equals("S")) {
+            // El mensaje fue enviado por el usuario actual
+            return 0;
+        } else {
+            // El mensaje fue recibido
+            return 1;
+        }
+    }
+
+
     @NonNull
     @Override
     public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        int idLayout = viewType ==0 ? R.layout.item_burbuja_receptor:R.layout.item_burbuja_remitente;
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_burbuja_receptor, parent, false);
+                .inflate(idLayout, parent, false);
         return new ChatViewHolder(view);
     }
 

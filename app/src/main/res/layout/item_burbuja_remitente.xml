@@ -3,14 +3,18 @@
     android:id="@+id/message_remitente_container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/primaryColor">
+    android:background="@drawable/burbuja_recived"
+    android:elevation="4dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="50dp"
+    >
 
     <TextView
         android:id="@+id/mensaje_mensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:text="mensaje prueba mio"/>
 

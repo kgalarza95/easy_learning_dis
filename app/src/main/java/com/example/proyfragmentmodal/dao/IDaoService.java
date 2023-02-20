@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class IDaoService {
 
-    //static String URL = "http://192.168.1.44/php_api_dislexia/";
-    static String URL = "http://192.168.100.75/php_api_dislexia/";
+    static String URL = "http://192.168.1.44/php_api_dislexia/";
+    //static String URL = "http://192.168.100.75/php_api_dislexia/";
     private Context context;
 
     public IDaoService(Context context) {
@@ -110,6 +110,10 @@ public class IDaoService {
     }
 
 
+    public void manejoPDF(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRest(URL + "manejo_pdf.php", params, callback);
+    }
+
     private void clienteRest(String URL,
                              final Map<String, String> params, final DAOCallbackServicio callback){
         Log.i("URL:        ",URL);
@@ -137,6 +141,8 @@ public class IDaoService {
 
         queue.add(stringRequest);
     }
+
+
     //interfaz interna para utilizar los métodos con la data.
     public interface DAOCallbackServicio {
         void onSuccess(String response);

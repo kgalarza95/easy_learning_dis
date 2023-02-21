@@ -11,6 +11,14 @@ public class EntityMap {
     private String esRemitente;
     private String esEmisor;
     private String mensaje;
+    private String ID_CURSO;
+    private String RUTA;
+
+
+    private String USUARIO;
+    private String NOMBRES;
+    private String APELLIDOS;
+
 
     public EntityMap() {
     }
@@ -93,6 +101,46 @@ public class EntityMap {
         this.mensaje = mensaje;
     }
 
+    public String getID_CURSO() {
+        return ID_CURSO;
+    }
+
+    public void setID_CURSO(String ID_CURSO) {
+        this.ID_CURSO = ID_CURSO;
+    }
+
+    public String getRUTA() {
+        return RUTA;
+    }
+
+    public void setRUTA(String RUTA) {
+        this.RUTA = RUTA;
+    }
+
+    public String getUSUARIO() {
+        return USUARIO;
+    }
+
+    public void setUSUARIO(String USUARIO) {
+        this.USUARIO = USUARIO;
+    }
+
+    public String getNOMBRES() {
+        return NOMBRES;
+    }
+
+    public void setNOMBRES(String NOMBRES) {
+        this.NOMBRES = NOMBRES;
+    }
+
+    public String getAPELLIDOS() {
+        return APELLIDOS;
+    }
+
+    public void setAPELLIDOS(String APELLIDOS) {
+        this.APELLIDOS = APELLIDOS;
+    }
+
     @Override
     public String toString() {
         return "EntityMap{" +
@@ -105,6 +153,11 @@ public class EntityMap {
                 ", esRemitente='" + esRemitente + '\'' +
                 ", esEmisor='" + esEmisor + '\'' +
                 ", mensaje='" + mensaje + '\'' +
+                ", ID_CURSO='" + ID_CURSO + '\'' +
+                ", RUTA='" + RUTA + '\'' +
+                ", USUARIO='" + USUARIO + '\'' +
+                ", NOMBRES='" + NOMBRES + '\'' +
+                ", APELLIDOS='" + APELLIDOS + '\'' +
                 '}';
     }
 }

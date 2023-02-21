@@ -43,7 +43,6 @@
     <string-array name="li_opciones_perfil_prof">
         <item name="it_0">DATOS PERSONALES</item>
         <item name="it_1">MIS CURSOS</item>
-        <item name="it_2">HIATORIAL ACÁDEMICO</item>
         <item name="it_2">SALIR</item>
     </string-array>
 

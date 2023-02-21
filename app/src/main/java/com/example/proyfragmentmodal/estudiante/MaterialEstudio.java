@@ -2,7 +2,9 @@ package com.example.proyfragmentmodal.estudiante;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.DocumentsContract;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,11 +29,16 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
+import com.example.proyfragmentmodal.entity.EntityMap;
+import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.principal.Usuarios;
 import com.example.proyfragmentmodal.profesor.Participantes;
 import com.example.proyfragmentmodal.util.ListAdapter;
 import com.example.proyfragmentmodal.util.ListAdapterIconText;
+import com.example.proyfragmentmodal.util.ListAdapterIconTextObject;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +47,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,8 +57,11 @@ import java.util.Map;
 public class MaterialEstudio extends Fragment
         implements IDaoService.DAOCallbackServicio {
 
-
     private FloatingActionButton fab;
+    private String opcion = "";
+    private Gson gson = new Gson();
+    ProgressDialog progressDialog;
+
 
     public MaterialEstudio() {
         // Required empty public constructor
@@ -84,7 +96,17 @@ public class MaterialEstudio extends Fragment
 
             }
         });
-        init(vista);
+
+        progressDialog = new ProgressDialog(getActivity());
+
+
+        recyclerView = (RecyclerView) vista.findViewById(R.id.rv_list_material_estudio);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        consultarPdfsPorCurso();
+        //prueba, eliminar
+        //init(vista);
         return vista;
     }
 
@@ -110,36 +132,80 @@ public class MaterialEstudio extends Fragment
         recyclerView.setAdapter(listAdapter);
     }
 
+    RecyclerView recyclerView;
+
+    public void consultarPdfsPorCurso(){
+        Map<String, String> params = new HashMap<>();
+        opcion = "CN";
+        params.put("opcion", opcion);
+        params.put("pdf", "");
+        params.put("nombre_pdf", "");
+        IDaoService dao = new IDaoService(getActivity());
+        dao.manejoPDF(params, MaterialEstudio.this);
+    }
+
+    public void initConsulta(List<EntityMap> litUsuarios) {
+        ListAdapterIconTextObject listAdapter = new ListAdapterIconTextObject(litUsuarios, getActivity());
+        recyclerView.setAdapter(listAdapter);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            Uri uri = data.getData();
-            File file = new File(uri.getPath());
-            try {
-                InputStream inputStream = getContext().getContentResolver().openInputStream(uri);
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                int len;
-                while ((len = inputStream.read(buffer)) != -1) {
-                    byteArrayOutputStream.write(buffer, 0, len);
+        String fileName = "";
+        try {
+            if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+                Uri uri = data.getData();
+                File file = new File(uri.getPath());
+
+                Cursor cursor = getActivity().getContentResolver().query(uri, null, null, null, null);
+                if (cursor.moveToFirst()) {
+                    int columnIndex = cursor.getColumnIndex(DocumentsContract.Document.COLUMN_DISPLAY_NAME);
+                    fileName = cursor.getString(columnIndex);
+                    System.out.println("fileName ====>:  " + fileName);
                 }
-                String encodedFile = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
+                cursor.close();
 
-                //enviar al servidor el pdf
-                sendPDFToServer(encodedFile);
+                try {
+                    InputStream inputStream = getContext().getContentResolver().openInputStream(uri);
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    int len;
+                    while ((len = inputStream.read(buffer)) != -1) {
+                        byteArrayOutputStream.write(buffer, 0, len);
+                    }
+                    String encodedFile = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
 
-                Map<String, String> params = new HashMap<>();
-                //params.put("opcion", "CN");
-                params.put("pdf", encodedFile);
-                IDaoService dao = new IDaoService(getActivity());
-                dao.manejoPDF(params, MaterialEstudio.this);
 
-            } catch (IOException e) {
-                e.printStackTrace();
+                    //==================================================================================
+                    //Enaviar al servidor.
+
+                    //enviar al servidor el pdf
+                    //sendPDFToServer(encodedFile);// de prueba  original
+
+                    progressDialog.setMessage("Cargando...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+
+                    Map<String, String> params = new HashMap<>();
+                    opcion = "IN";
+                    params.put("opcion", "IN");
+                    params.put("pdf", encodedFile);
+                    params.put("nombre_pdf", fileName);
+                    IDaoService dao = new IDaoService(getActivity());
+                    dao.manejoPDF(params, MaterialEstudio.this);
+
+                } catch (IOException  e) {
+                    e.printStackTrace();
+                }catch (java.lang.OutOfMemoryError ex) {
+                    ex.printStackTrace();
+                    Toast.makeText(getActivity(), "El archivo es muy pesado", Toast.LENGTH_SHORT).show();
+                }
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+
     }
 
     private void sendPDFToServer(String encodedPDF) {
@@ -179,14 +245,41 @@ public class MaterialEstudio extends Fragment
         Volley.newRequestQueue(getContext()).add(request);
     }
 
-
     @Override
     public void onSuccess(String response) {
+        progressDialog.dismiss();
         Log.i("response ============>:  ", String.valueOf(response));
+
+        Log.d("===========================================================  ", "");
+        Log.d("Respuesta:  ", response);
+        Respuesta data = gson.fromJson(response, Respuesta.class);
+        if (data.getCodResponse().equals("00")) {
+            if (opcion.equals("CN")) {
+                //  List<String> listFilas = (List<String>) data.getData();
+                String json = gson.toJson(data.getData());
+                Type listType = new TypeToken<List<EntityMap>>() {
+                }.getType();
+                List<EntityMap> listaCursos = gson.fromJson(json, listType);
+                Log.d("Respuesta:  ", String.valueOf(listaCursos));
+                Log.d("Respuesta:  ", listaCursos.get(0).getRUTA());
+                Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
+               // init(listaCursos);
+
+                initConsulta( listaCursos);
+
+            }else if (opcion.equals("IN")) {
+                consultarPdfsPorCurso();
+            }
+        } else {
+            Toast.makeText(getActivity(), data.getMsjResponse(), Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     @Override
     public void onError(VolleyError error) {
         Log.i("error ============>:  ", String.valueOf(error));
     }
+
 }

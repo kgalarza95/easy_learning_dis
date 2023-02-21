@@ -84,7 +84,7 @@ public class ListAdapterMisCursos extends RecyclerView.Adapter<ListAdapterMisCur
             manejoVista.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "ID Clic.. "+objeto.getID(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "ID Clic.. "+objeto.getID(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, Participantes.class);
                     intent.putExtra("idCurso",objeto.getID());
                     context.startActivity(intent);

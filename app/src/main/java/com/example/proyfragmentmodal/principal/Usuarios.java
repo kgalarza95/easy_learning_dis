@@ -117,7 +117,7 @@ public class Usuarios extends Fragment
                     params.put("solicitarPass", "N");
                     params.put("id_usuario", String.valueOf(global.getGlobalIdUsuario()));
                 }
-                params.put("nombres", txtUsuario.getText().toString());
+                params.put("nombres", txtNombres.getText().toString());
                 params.put("apellidos", txtApellidos.getText().toString());
                 params.put("edad", txtEdad.getText().toString());
                 params.put("usuario", txtUsuario.getText().toString());

@@ -30,7 +30,9 @@ public class PreInicioEstudiante extends AppCompatActivity {
         findViewById(R.id.btn_juega_aprende).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(v.getContext(), PantallaJuego.class);
+                //intent.putExtra("itOrigin","loginEstudiante");
+                startActivity(intent);
             }
         });
     }

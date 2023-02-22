@@ -15,9 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.estudiante.Foro;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
-import com.example.proyfragmentmodal.mini_pantalla_dos;
+import com.example.proyfragmentmodal.estudiante.misCursosEstudiante;
 import com.example.proyfragmentmodal.principal.MenuProfEstud;
 import com.example.proyfragmentmodal.principal.Usuarios;
 
@@ -116,7 +115,7 @@ public class MenuProfesor extends Fragment {
         String[] listNotificaciones =
                 {"Notificacion_Uno", "Notificacion_Dos", "Notificacion_Tres"};
         //boton notificacion
-        vista.findViewById(R.id.btn_mn_notificacion_).setOnClickListener(new View.OnClickListener() {
+       /* vista.findViewById(R.id.btn_mn_notificacion_).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -141,7 +140,7 @@ public class MenuProfesor extends Fragment {
                 dialog.show();
             }
         });
-
+*/
         //boton perfil
         vista.findViewById(R.id.btn_mn_perfil_).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,14 +161,14 @@ public class MenuProfesor extends Fragment {
                                     case 1://mis cursos
                                         startActivity(new Intent(v.getContext(), MisCursosProfesor.class));
                                         break;
-                                    case 2://historial academico
+                                    case 99://historial academico
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new mini_pantalla_dos());
+                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new misCursosEstudiante());
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 3://salir
+                                    case 2://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:

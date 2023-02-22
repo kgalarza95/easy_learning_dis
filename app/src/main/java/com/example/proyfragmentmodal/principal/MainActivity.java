@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.profesor.MenuProfesor;
-import com.example.proyfragmentmodal.estudiante.Menu;
+import com.example.proyfragmentmodal.estudiante.MenuEstudiante;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                 //remplazar fragmento actual con el nuevo indicado en el contenedor
                 miTrnsaccion.remove(new MenuProfesor());
-                miTrnsaccion.replace(R.id.menu, new Menu());
+                miTrnsaccion.replace(R.id.menu, new MenuEstudiante());
                 miTrnsaccion.commit();
                 break;
             case "loginProfesor":
                 FragmentManager miManejador_ = getSupportFragmentManager();
                 FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                 //remplazar fragmento actual con el nuevo indicado en el contenedor
-                miTrnsaccion_.remove(new Menu());
+                miTrnsaccion_.remove(new MenuEstudiante());
                 miTrnsaccion_.replace(R.id.menu, new MenuProfesor());
                 miTrnsaccion_.commit();
                 break;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager miManejadorAdmin = getSupportFragmentManager();
                 FragmentTransaction miTrnsaccionAdmin = miManejadorAdmin.beginTransaction();
                 //remplazar fragmento actual con el nuevo indicado en el contenedor
-                miTrnsaccionAdmin.remove(new Menu());
+                miTrnsaccionAdmin.remove(new MenuEstudiante());
                 miTrnsaccionAdmin.remove(new MenuProfesor());
                 miTrnsaccionAdmin.replace(R.id.menu, new MenuAdmin());
                 miTrnsaccionAdmin.commit();

@@ -75,9 +75,10 @@ public class ListAdapterParticipantes extends
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "item Clic.. " + item, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, ChatGeneral.class);
+                String[] split = item.split(" ");
                 intent.putExtra("idCurso", item);
+                intent.putExtra("idEstudiante", split[0]);
                 context.startActivity(intent);
             }
         });

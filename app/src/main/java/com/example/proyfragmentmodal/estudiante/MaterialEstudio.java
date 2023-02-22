@@ -61,10 +61,13 @@ public class MaterialEstudio extends Fragment
     private String opcion = "";
     private Gson gson = new Gson();
     ProgressDialog progressDialog;
-
+    private int origenLlamada = 0;
 
     public MaterialEstudio() {
         // Required empty public constructor
+    }
+    public MaterialEstudio(int origen) {
+        origenLlamada = origen;
     }
 
     public static MaterialEstudio newInstance(String param1, String param2) {
@@ -96,6 +99,10 @@ public class MaterialEstudio extends Fragment
 
             }
         });
+
+        if (origenLlamada != 0){
+            fab.setVisibility(View.GONE);
+        }
 
         progressDialog = new ProgressDialog(getActivity());
 
@@ -134,7 +141,7 @@ public class MaterialEstudio extends Fragment
 
     RecyclerView recyclerView;
 
-    public void consultarPdfsPorCurso(){
+    public void consultarPdfsPorCurso() {
         Map<String, String> params = new HashMap<>();
         opcion = "CN";
         params.put("opcion", opcion);
@@ -195,9 +202,9 @@ public class MaterialEstudio extends Fragment
                     IDaoService dao = new IDaoService(getActivity());
                     dao.manejoPDF(params, MaterialEstudio.this);
 
-                } catch (IOException  e) {
+                } catch (IOException e) {
                     e.printStackTrace();
-                }catch (java.lang.OutOfMemoryError ex) {
+                } catch (java.lang.OutOfMemoryError ex) {
                     ex.printStackTrace();
                     Toast.makeText(getActivity(), "El archivo es muy pesado", Toast.LENGTH_SHORT).show();
                 }
@@ -263,11 +270,11 @@ public class MaterialEstudio extends Fragment
                 Log.d("Respuesta:  ", String.valueOf(listaCursos));
                 Log.d("Respuesta:  ", listaCursos.get(0).getRUTA());
                 Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
-               // init(listaCursos);
+                // init(listaCursos);
 
-                initConsulta( listaCursos);
+                initConsulta(listaCursos);
 
-            }else if (opcion.equals("IN")) {
+            } else if (opcion.equals("IN")) {
                 consultarPdfsPorCurso();
             }
         } else {

@@ -2,12 +2,12 @@
     <string name="app_name">EASY LEARNING DIS</string>
 
     <string-array name="li_opciones_comunicacion">
-        <item name="it_foro">FORO</item>
+        <!-- <item name="it_foro">FORO</item>-->
         <item name="it_chat">CHAT</item>
     </string-array>
 
     <string-array name="li_opciones_evaluacion">
-        <item name="it_encuesta">ENCUESTA</item>
+        <!--<item name="it_encuesta">ENCUESTA</item>-->
         <item name="it_leccion">LECCIÓN</item>
     </string-array>
 

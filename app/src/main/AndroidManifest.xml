@@ -13,12 +13,19 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo_easy_lear"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@drawable/logo_easy_lear"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyFragmentModal"
         android:usesCleartextTraffic="true"
-        android:largeHeap="true"
         tools:targetApi="31">
+        <activity
+            android:name=".estudiante.PantallaJuego"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ChatGeneral"
             android:exported="false">

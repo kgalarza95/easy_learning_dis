@@ -114,6 +114,10 @@ public class IDaoService {
         clienteRest(URL + "manejo_pdf.php", params, callback);
     }
 
+    public void apiMensajes(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRest(URL + "api_mensajes.php", params, callback);
+    }
+
     private void clienteRest(String URL,
                              final Map<String, String> params, final DAOCallbackServicio callback){
         Log.i("URL:        ",URL);

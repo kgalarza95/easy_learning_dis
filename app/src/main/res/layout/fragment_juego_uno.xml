@@ -3,14 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mini_pantalla_dos">
+    tools:context=".estudiante.JuegoUno">
 
     <!-- TODO: Update blank fragment layout -->
-
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="314dp"
-        android:layout_height="189dp"
-        android:text="MINI PANTALLA DOS" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

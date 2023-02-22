@@ -43,4 +43,6 @@ public class GlobalAplicacion {
     public static void setGlobalNomUsuario(String globalNomUsuario) {
         GlobalAplicacion.globalNomUsuario = globalNomUsuario;
     }
+
+
 }

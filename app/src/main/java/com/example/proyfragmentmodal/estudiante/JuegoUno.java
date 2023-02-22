@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.estudiante;
 
 import android.os.Bundle;
 
@@ -8,19 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyfragmentmodal.R;
 
-public class mini_pantalla_dos extends Fragment {
+public class JuegoUno extends Fragment {
 
-
-
-    public mini_pantalla_dos() {
+    public JuegoUno() {
         // Required empty public constructor
     }
 
-    public static mini_pantalla_dos newInstance(String param1, String param2) {
-        mini_pantalla_dos fragment = new mini_pantalla_dos();
+    public static JuegoUno newInstance(String param1, String param2) {
+        JuegoUno fragment = new JuegoUno();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -28,13 +26,15 @@ public class mini_pantalla_dos extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
+
+    View vista;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        vista = inflater.inflate(R.layout.fragment_juego_uno, container, false);
 
-        return inflater.inflate(R.layout.fragment_mini_pantalla_dos, container, false);
+        return vista;
     }
 }

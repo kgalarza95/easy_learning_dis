@@ -1,13 +1,8 @@
-package com.example.proyfragmentmodal.profesor;
+package com.example.proyfragmentmodal.estudiante;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,13 +14,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.util.Filtro;
-import com.example.proyfragmentmodal.util.ListAdapterMisCursos;
 import com.example.proyfragmentmodal.util.ListAdapterParticipantes;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ParticipantesFragm extends Fragment
+public class ParticipantesFragmEstud extends Fragment
         implements IDaoService.DAOCallbackServicio {
 
     private ListAdapterParticipantes adapter;
@@ -47,13 +42,12 @@ public class ParticipantesFragm extends Fragment
     private List<EntityMap> listaEstudiantes;
     private ProgressDialog progressDialog;
 
-    public ParticipantesFragm() {
+    public ParticipantesFragmEstud() {
     }
 
-    public static ParticipantesFragm newInstance(String param1, String param2) {
-        ParticipantesFragm fragment = new ParticipantesFragm();
+    public static ParticipantesFragmEstud newInstance(String param1, String param2) {
+        ParticipantesFragmEstud fragment = new ParticipantesFragmEstud();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -72,8 +66,6 @@ public class ParticipantesFragm extends Fragment
 
         ArrayList<String> items = new ArrayList<>();
         items.add("Estudent uno");
-        items.add("Estudent dos");
-        items.add("Estudent tres");
 
         ListView listView = vista.findViewById(R.id.lv_lista_participantes_fr);
         adapter = new ListAdapterParticipantes((Context) getActivity(), (ArrayList<String>) items.clone());
@@ -127,7 +119,7 @@ public class ParticipantesFragm extends Fragment
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        opcion = "CE";//CONSULTA MENSAJES
+        opcion = "CT";//CONSULTA MENSAJES
 
         Map<String, String> params = new HashMap<>();
         params.put("opcion", opcion);
@@ -135,7 +127,7 @@ public class ParticipantesFragm extends Fragment
         params.put("id_persona2", "");
 
         IDaoService dao = new IDaoService(getActivity());
-        dao.apiMensajes(params, ParticipantesFragm.this);
+        dao.apiMensajes(params, ParticipantesFragmEstud.this);
     }
 
     public void llenarEsudiantes(ArrayList<String> items) {
@@ -170,7 +162,7 @@ public class ParticipantesFragm extends Fragment
             Log.d("Respuesta:  ", response);
             Respuesta data = gson.fromJson(response, Respuesta.class);
             if (data.getCodResponse().equals("00")) {
-                if (opcion.equals("CE")) {
+                if (opcion.equals("CE") || opcion.equals("CT")) {
                     String json = gson.toJson(data.getData());
                     Type listType = new TypeToken<List<EntityMap>>() {
                     }.getType();

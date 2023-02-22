@@ -19,6 +19,9 @@ public class EntityMap {
     private String NOMBRES;
     private String APELLIDOS;
 
+    private String ID_MENSAJE_RELACION;
+    private String ID_DUENIO_SMS;
+
 
     public EntityMap() {
     }
@@ -141,6 +144,22 @@ public class EntityMap {
         this.APELLIDOS = APELLIDOS;
     }
 
+    public String getID_MENSAJE_RELACION() {
+        return ID_MENSAJE_RELACION;
+    }
+
+    public void setID_MENSAJE_RELACION(String ID_MENSAJE_RELACION) {
+        this.ID_MENSAJE_RELACION = ID_MENSAJE_RELACION;
+    }
+
+    public String getID_DUENIO_SMS() {
+        return ID_DUENIO_SMS;
+    }
+
+    public void setID_DUENIO_SMS(String ID_DUENIO_SMS) {
+        this.ID_DUENIO_SMS = ID_DUENIO_SMS;
+    }
+
     @Override
     public String toString() {
         return "EntityMap{" +
@@ -158,6 +177,8 @@ public class EntityMap {
                 ", USUARIO='" + USUARIO + '\'' +
                 ", NOMBRES='" + NOMBRES + '\'' +
                 ", APELLIDOS='" + APELLIDOS + '\'' +
+                ", ID_MENSAJE_RELACION='" + ID_MENSAJE_RELACION + '\'' +
+                ", ID_DUENIO_SMS='" + ID_DUENIO_SMS + '\'' +
                 '}';
     }
 }

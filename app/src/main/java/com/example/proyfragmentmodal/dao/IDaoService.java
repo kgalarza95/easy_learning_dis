@@ -1,15 +1,21 @@
 package com.example.proyfragmentmodal.dao;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 public class IDaoService {
@@ -117,6 +123,9 @@ public class IDaoService {
     public void apiMensajes(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRest(URL + "api_mensajes.php", params, callback);
     }
+    public void apiJuegos(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRestUTF8(URL + "api_juegos.php", params, callback);
+    }
 
     private void clienteRest(String URL,
                              final Map<String, String> params, final DAOCallbackServicio callback){
@@ -146,6 +155,49 @@ public class IDaoService {
         queue.add(stringRequest);
     }
 
+    private void clienteRestUTF8(String URL,
+                             final Map<String, String> params, final DAOCallbackServicio callback){
+        Log.i("URL:        ",URL);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Procesar la respuesta aquí
+                        callback.onSuccess(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Procesar el error aquí
+                        callback.onError(error);
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                try {
+                    // Obtiene la cadena de bytes de la respuesta HTTP
+                    String charset = HttpHeaderParser.parseCharset(response.headers, "UTF-8");
+                    String jsonString = new String(response.data, charset);
+
+                    // Devuelve la cadena de caracteres utilizando la codificación adecuada
+                    return Response.success(jsonString, HttpHeaderParser.parseCacheHeaders(response));
+                } catch (UnsupportedEncodingException e) {
+                    // Manejo de errores
+                    Log.e(TAG, "Error de codificación de caracteres", e);
+                    return Response.error(new ParseError(e));
+                }
+            }
+
+        };
+
+        queue.add(stringRequest);
+    }
 
     //interfaz interna para utilizar los métodos con la data.
     public interface DAOCallbackServicio {

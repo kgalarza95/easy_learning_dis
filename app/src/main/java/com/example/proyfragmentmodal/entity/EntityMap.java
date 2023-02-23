@@ -22,6 +22,13 @@ public class EntityMap {
     private String ID_MENSAJE_RELACION;
     private String ID_DUENIO_SMS;
 
+    private String PALABRA_INC;
+    private String PALABRA;
+    private String OP1;
+    private String OP2;
+    private String OP3;
+    private String OP4;
+    private String OP_CORRECTA;
 
     public EntityMap() {
     }
@@ -160,25 +167,59 @@ public class EntityMap {
         this.ID_DUENIO_SMS = ID_DUENIO_SMS;
     }
 
-    @Override
-    public String toString() {
-        return "EntityMap{" +
-                "ID='" + ID + '\'' +
-                ", ID_PROFESOR='" + ID_PROFESOR + '\'' +
-                ", NOMBRE='" + NOMBRE + '\'' +
-                ", DESCRIPCION='" + DESCRIPCION + '\'' +
-                ", ANIO='" + ANIO + '\'' +
-                ", ESTADO='" + ESTADO + '\'' +
-                ", esRemitente='" + esRemitente + '\'' +
-                ", esEmisor='" + esEmisor + '\'' +
-                ", mensaje='" + mensaje + '\'' +
-                ", ID_CURSO='" + ID_CURSO + '\'' +
-                ", RUTA='" + RUTA + '\'' +
-                ", USUARIO='" + USUARIO + '\'' +
-                ", NOMBRES='" + NOMBRES + '\'' +
-                ", APELLIDOS='" + APELLIDOS + '\'' +
-                ", ID_MENSAJE_RELACION='" + ID_MENSAJE_RELACION + '\'' +
-                ", ID_DUENIO_SMS='" + ID_DUENIO_SMS + '\'' +
-                '}';
+    public String getPALABRA_INC() {
+        return PALABRA_INC;
+    }
+
+    public void setPALABRA_INC(String PALABRA_INC) {
+        this.PALABRA_INC = PALABRA_INC;
+    }
+
+    public String getPALABRA() {
+        return PALABRA;
+    }
+
+    public void setPALABRA(String PALABRA) {
+        this.PALABRA = PALABRA;
+    }
+
+    public String getOP1() {
+        return OP1;
+    }
+
+    public void setOP1(String OP1) {
+        this.OP1 = OP1;
+    }
+
+    public String getOP2() {
+        return OP2;
+    }
+
+    public void setOP2(String OP2) {
+        this.OP2 = OP2;
+    }
+
+    public String getOP3() {
+        return OP3;
+    }
+
+    public void setOP3(String OP3) {
+        this.OP3 = OP3;
+    }
+
+    public String getOP4() {
+        return OP4;
+    }
+
+    public void setOP4(String OP4) {
+        this.OP4 = OP4;
+    }
+
+    public String getOP_CORRECTA() {
+        return OP_CORRECTA;
+    }
+
+    public void setOP_CORRECTA(String OP_CORRECTA) {
+        this.OP_CORRECTA = OP_CORRECTA;
     }
 }

@@ -20,11 +20,11 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/btn_mn_comunicacion_"
+                android:id="@+id/btn_game1"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:contentDescription="Linterna"
-                android:src="@drawable/comunicacion_48"
+                android:src="@drawable/game2"
                 android:tooltipText="linterna"></ImageButton>
 
             <TextView
@@ -46,11 +46,11 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/btn_mn_aprendizaje_"
+                android:id="@+id/btn_game2"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:contentDescription="Musica"
-                android:src="@drawable/aprendizaje_48"></ImageButton>
+                android:src="@drawable/game1"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"

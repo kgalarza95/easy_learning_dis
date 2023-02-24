@@ -63,6 +63,8 @@ public class JuegoUno extends Fragment
     private MediaPlayer sonidoAcierto;
     private MediaPlayer sonidoError;
 
+    private String enPantalla;
+
     public JuegoUno() {
         // Required empty public constructor
     }
@@ -105,6 +107,8 @@ public class JuegoUno extends Fragment
         btn3 = vista.findViewById(R.id.btn3);
         btn4 = vista.findViewById(R.id.btn4);
 
+        enPantalla = "aqui";
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,14 +142,43 @@ public class JuegoUno extends Fragment
         return vista;
     }
 
-    public void bloquearBotones(){
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // Aquí puedes hacer cualquier acción que desees al salir de la pantalla
+        // Por ejemplo, puedes finalizar el fragment utilizando el método getActivity().getFragmentManager().popBackStack()
+        super.onDestroyView();
+
+        // Aquí detienes la reproducción del MediaPlayer para detener el sonido
+        if (sonidoError != null && sonidoError.isPlaying()) {
+            sonidoError.stop();
+            sonidoError.release();
+            sonidoError = null;
+        }
+
+        if (sonidoAcierto != null && sonidoAcierto.isPlaying()) {
+            sonidoAcierto.stop();
+            sonidoAcierto.release();
+            sonidoAcierto = null;
+        }
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+
+        enPantalla = "";
+        Log.i("onDestroyView | enPantalla: ==============================> ", enPantalla);
+    }
+
+    public void bloquearBotones() {
         btn1.setEnabled(false);
         btn2.setEnabled(false);
         btn3.setEnabled(false);
         btn4.setEnabled(false);
     }
 
-    public void desbloquearBotones(){
+    public void desbloquearBotones() {
         btn1.setEnabled(true);
         btn2.setEnabled(true);
         btn3.setEnabled(true);
@@ -157,10 +190,10 @@ public class JuegoUno extends Fragment
         stopTimer();
         txtPalabra.setText(listaRespuesta.get(progreso - 1).getPALABRA());
 
-        Log.i("resp: ",resp);
-        Log.i("correcta: ",listaRespuesta.get(progreso - 1).getOP_CORRECTA());
+        Log.i("resp: ", resp);
+        Log.i("correcta: ", listaRespuesta.get(progreso - 1).getOP_CORRECTA());
         if (resp.equalsIgnoreCase(listaRespuesta.get(progreso - 1).getOP_CORRECTA())) {
-            score +=100;
+            score += 100;
             txtScore.setText(String.valueOf(score));
             sonidoAcierto.start();
         } else {
@@ -182,6 +215,31 @@ public class JuegoUno extends Fragment
         Log.i("===========================>", "onViewCreated");
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        // Aquí detienes la reproducción del MediaPlayer para detener el sonido
+        if (sonidoError != null && sonidoError.isPlaying()) {
+            sonidoError.stop();
+            sonidoError.release();
+            sonidoError = null;
+        }
+
+        if (sonidoAcierto != null && sonidoAcierto.isPlaying()) {
+            sonidoAcierto.stop();
+            sonidoAcierto.release();
+            sonidoAcierto = null;
+        }
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+
+        enPantalla = "";
+        Log.i("onPause | enPantalla: ==============================> ", enPantalla);
+    }
+
     private void startTimer(long milliseconds) {
         timeLeftInMillis = milliseconds;
         countDownTimer = new CountDownTimer(milliseconds, 1000) {
@@ -198,10 +256,13 @@ public class JuegoUno extends Fragment
             @Override
             public void onFinish() {
                 try {
-                    timeLeftInMillis = 0;
-                    updateCountdownText();
-                    pasarNivel("xxxxxxxxxxxxxxxx");
-                    Toast.makeText(getContext(), "¡Tiempo terminado!", Toast.LENGTH_SHORT).show();
+                    Log.i("enPantalla: ==============================> ", enPantalla);
+                    if (enPantalla.equals("aqui")) {
+                        timeLeftInMillis = 0;
+                        updateCountdownText();
+                        pasarNivel("xxxxxxxxxxxxxxxx");
+                        Toast.makeText(getContext(), "¡Tiempo terminado!", Toast.LENGTH_SHORT).show();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -230,7 +291,7 @@ public class JuegoUno extends Fragment
         Map<String, String> params = new HashMap<>();
         params.put("opcion", opcion);
 
-        Log.i("================================> ", String.valueOf(params));
+        Log.i("Parametros: ================================> ", String.valueOf(params));
         IDaoService dao = new IDaoService(getActivity());
         dao.apiJuegos(params, JuegoUno.this);
     }

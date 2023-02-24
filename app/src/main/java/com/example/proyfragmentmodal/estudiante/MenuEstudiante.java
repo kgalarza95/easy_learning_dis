@@ -147,20 +147,21 @@ public class MenuEstudiante extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0:
-                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
-                                        miTrnsaccion.commit();
-                                        break;
-                                    case 1:// MATERIAL DE ESTUDIO
+                                    case 0:// MATERIAL DE ESTUDIO
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new MaterialEstudio(1));
                                         miTrnsaccion_.commit();
                                         break;
+                                    case 1:
+                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
+                                        miTrnsaccion.commit();
+                                        break;
+
                                     default:
                                         Toast.makeText(getActivity(), "Pantalla no configurada aún", Toast.LENGTH_SHORT).show();
                                         break;
@@ -175,7 +176,7 @@ public class MenuEstudiante extends Fragment {
         });
 
         String[] listNotificaciones =
-                {"Notificacion_Uno", "Notificacion_Dos", "Notificacion_Tres"};
+                {"Se te añadió a un curso", "Tienes un mensaje nuevo", "Tienes una tarea"};
         //boton notificacion
         vista.findViewById(R.id.btn_mn_notificacion).setOnClickListener(new View.OnClickListener() {
             @Override

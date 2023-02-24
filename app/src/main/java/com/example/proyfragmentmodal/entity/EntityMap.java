@@ -30,6 +30,10 @@ public class EntityMap {
     private String OP4;
     private String OP_CORRECTA;
 
+    String  FRASE;
+    String  PALABRA_ERRADA;
+    String  PALABRA_CORRECTA;
+
     public EntityMap() {
     }
 
@@ -221,5 +225,29 @@ public class EntityMap {
 
     public void setOP_CORRECTA(String OP_CORRECTA) {
         this.OP_CORRECTA = OP_CORRECTA;
+    }
+
+    public String getFRASE() {
+        return FRASE;
+    }
+
+    public void setFRASE(String FRASE) {
+        this.FRASE = FRASE;
+    }
+
+    public String getPALABRA_ERRADA() {
+        return PALABRA_ERRADA;
+    }
+
+    public void setPALABRA_ERRADA(String PALABRA_ERRADA) {
+        this.PALABRA_ERRADA = PALABRA_ERRADA;
+    }
+
+    public String getPALABRA_CORRECTA() {
+        return PALABRA_CORRECTA;
+    }
+
+    public void setPALABRA_CORRECTA(String PALABRA_CORRECTA) {
+        this.PALABRA_CORRECTA = PALABRA_CORRECTA;
     }
 }

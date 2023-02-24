@@ -85,14 +85,14 @@ public class MenuProfesor extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 //Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
                                 switch (which) {
-                                    case 0:
+                                    case 1:
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1:// MATERIAL DE ESTUDIO
+                                    case 0:// MATERIAL DE ESTUDIO
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor

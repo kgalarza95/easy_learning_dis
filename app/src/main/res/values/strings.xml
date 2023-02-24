@@ -12,8 +12,8 @@
     </string-array>
 
     <string-array name="li_opciones_aprendizaje">
-        <item name="it_0">TAREA</item>
         <item name="it_2">MATERIAL ESTUDIO</item>
+        <!--<item name="it_0">TAREA</item>-->
     </string-array>
 
     <string-array name="li_opciones_perfil">
@@ -36,8 +36,8 @@
     </string-array>
 
     <string-array name="li_opciones_aprendizaje_prof">
-        <item name="it_0">ASIGNACIONES</item>
         <item name="it_2">MATERIAL ESTUDIO</item>
+        <!--  <item name="it_0">ASIGNACIONES</item>-->
     </string-array>
 
     <string-array name="li_opciones_perfil_prof">

@@ -18,7 +18,6 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.principal.Usuarios;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.example.proyfragmentmodal.util.ListAdapterIconText;
 import com.example.proyfragmentmodal.util.ListAdapterMisCursos;
@@ -26,7 +25,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -6,20 +6,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.proyfragmentmodal.ChatGeneral;
+import com.example.proyfragmentmodal.general.ChatGeneral;
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.profesor.Participantes;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListAdapterParticipantes extends
         //BaseAdapter //CursorAdapter

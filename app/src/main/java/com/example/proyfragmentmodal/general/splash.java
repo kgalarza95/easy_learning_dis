@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.principal;
+package com.example.proyfragmentmodal.general;
 
 import androidx.appcompat.app.AppCompatActivity;
 

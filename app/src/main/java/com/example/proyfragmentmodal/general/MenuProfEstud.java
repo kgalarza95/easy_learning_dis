@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.principal;
+package com.example.proyfragmentmodal.general;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,9 @@ import android.widget.Button;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
+import com.example.proyfragmentmodal.estudiante.NivelJuegos;
 import com.example.proyfragmentmodal.profesor.LoginProfesor;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 public class MenuProfEstud extends AppCompatActivity {
 
@@ -35,7 +37,17 @@ public class MenuProfEstud extends AppCompatActivity {
         btnEstudiante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GlobalAplicacion.esEstudiante = "S";
                 startActivity(new Intent(view.getContext(), LoginEstudiante.class));
+            }
+        });
+
+        findViewById(R.id.btn_prueba).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalAplicacion.esEstudiante = "N";
+                Intent intent = new Intent(view.getContext(), NivelJuegos.class);
+                startActivity(intent);
             }
         });
     }

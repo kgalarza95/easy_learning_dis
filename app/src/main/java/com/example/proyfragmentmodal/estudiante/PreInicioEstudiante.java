@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.principal.MainActivity;
+import com.example.proyfragmentmodal.general.MainActivity;
 
 public class PreInicioEstudiante extends AppCompatActivity {
 
@@ -30,7 +30,7 @@ public class PreInicioEstudiante extends AppCompatActivity {
         findViewById(R.id.btn_juega_aprende).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), PantallaJuego.class);
+                Intent intent = new Intent(v.getContext(), NivelJuegos.class);
                 //intent.putExtra("itOrigin","loginEstudiante");
                 startActivity(intent);
             }

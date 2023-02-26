@@ -13,21 +13,16 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.dao.IDaoService;
-import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
-import com.example.proyfragmentmodal.estudiante.PreInicioEstudiante;
-import com.example.proyfragmentmodal.principal.CambiarContrasenia;
-import com.example.proyfragmentmodal.principal.MainActivity;
-import com.example.proyfragmentmodal.principal.MenuProfEstud;
+import com.example.proyfragmentmodal.general.CambiarContrasenia;
+import com.example.proyfragmentmodal.general.MainActivity;
+import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class LoginProfesor extends AppCompatActivity
         implements IDaoService.DAOCallbackServicio {

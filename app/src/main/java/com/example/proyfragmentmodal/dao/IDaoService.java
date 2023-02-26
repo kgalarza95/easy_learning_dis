@@ -127,6 +127,9 @@ public class IDaoService {
     public void apiJuegos(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRestUTF8(URL + "api_juegos.php", params, callback);
     }
+    public void crudAsignacion(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRestUTF8(URL + "crud_asignaciones.php", params, callback);
+    }
 
     private void clienteRest(String URL,
                              final Map<String, String> params, final DAOCallbackServicio callback){

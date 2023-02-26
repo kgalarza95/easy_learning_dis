@@ -37,7 +37,7 @@
 
     <string-array name="li_opciones_aprendizaje_prof">
         <item name="it_2">MATERIAL ESTUDIO</item>
-        <!--  <item name="it_0">ASIGNACIONES</item>-->
+        <item name="it_0">ASIGNACIONES</item>
     </string-array>
 
     <string-array name="li_opciones_perfil_prof">
@@ -46,6 +46,9 @@
         <item name="it_2">SALIR</item>
     </string-array>
 
+    <string-array name="li_opciones_perfil_prueba">
+        <item name="it_2">SALIR</item>
+    </string-array>
 
     <string-array name="li_opciones_admin">
         <item name="it_1">CREAR USUARIOS</item>

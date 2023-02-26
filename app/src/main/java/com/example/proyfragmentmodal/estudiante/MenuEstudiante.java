@@ -17,9 +17,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.profesor.AsignacionesProfesor;
-import com.example.proyfragmentmodal.principal.MenuProfEstud;
-import com.example.proyfragmentmodal.principal.Usuarios;
+import com.example.proyfragmentmodal.general.MenuProfEstud;
+import com.example.proyfragmentmodal.general.Usuarios;
+import com.example.proyfragmentmodal.profesor.CrearAsignacion;
 
 
 public class MenuEstudiante extends Fragment {
@@ -120,7 +120,7 @@ public class MenuEstudiante extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new CrearAsignacion());
                                         miTrnsaccion.commit();
                                         break;
 
@@ -154,11 +154,11 @@ public class MenuEstudiante extends Fragment {
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new MaterialEstudio(1));
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 1:
+                                    case 1://crear asignaciones
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new AsignacionesProfesor());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new CrearAsignacion());
                                         miTrnsaccion.commit();
                                         break;
 

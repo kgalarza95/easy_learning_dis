@@ -1,28 +1,23 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.general;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.profesor.Participantes;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.example.proyfragmentmodal.util.ListAdaptRecyChat;
-import com.example.proyfragmentmodal.util.ListAdapterChatMensajes;
-import com.example.proyfragmentmodal.util.ListAdapterIconText;
-import com.example.proyfragmentmodal.util.ListAdapterParticipantes;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

@@ -9,6 +9,11 @@ public class GlobalAplicacion {
     private static String globalNomUsuario;
     private static int globalIdUsuario;
 
+    //pantalla de juegos
+    public static long miliSegundos;
+    public static String nivel;
+    public static String esEstudiante = "N";
+
     public GlobalAplicacion() {
     }
 

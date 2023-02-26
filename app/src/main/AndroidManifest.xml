@@ -20,6 +20,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".NivelJuegos"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".estudiante.PantallaJuego"
             android:exported="false">
             <meta-data
@@ -27,7 +34,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChatGeneral"
+            android:name=".general.ChatGeneral"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -48,7 +55,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".principal.CambiarContrasenia"
+            android:name=".general.CambiarContrasenia"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -76,14 +83,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".principal.MenuProfEstud"
+            android:name=".general.MenuProfEstud"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".principal.splash"
+            android:name=".general.splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -95,8 +102,16 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
-            android:name=".principal.MainActivity"
+            android:name=".general.MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".estudiante.NivelJuegos"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

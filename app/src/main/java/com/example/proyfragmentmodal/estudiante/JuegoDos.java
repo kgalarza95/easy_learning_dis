@@ -52,6 +52,7 @@ public class JuegoDos extends Fragment
     private long timeLeftInMillis;
     private TextView txtScore;
     private GridLayout gridLayout;
+    private int puntaje = 100;
 
     public JuegoDos() {
         // Required empty public constructor
@@ -88,6 +89,26 @@ public class JuegoDos extends Fragment
         progreso = 0;
         score = 0;
         milliseconds = 60000; // 60 segundos
+        int miliSegundos = 0;
+        String tipoNivel = "";
+        miliSegundos = (int) GlobalAplicacion.miliSegundos;
+        tipoNivel = GlobalAplicacion.nivel;
+        switch (tipoNivel) {
+            case "F":
+                puntaje = 100;
+                break;
+            case "I":
+                puntaje = 150;
+                break;
+            case "D":
+                puntaje = 200;
+                break;
+            default:
+        }
+
+        //milliseconds = 60000; // 60 segundos
+        milliseconds = miliSegundos; // 60 segundos
+        startTimer(milliseconds);
         startTimer(milliseconds);
 
         consultarFrases();
@@ -264,14 +285,16 @@ public class JuegoDos extends Fragment
         Log.i("resp: ", resp);
         Log.i("palabra_errada: ", palabraErrada);
         if (resp.trim().equalsIgnoreCase(palabraErrada)) {
-            score += 100;
+            score += puntaje;
             txtScore.setText(String.valueOf(score));
             sonidoAcierto.start();
         } else {
             sonidoError.start();
         }
 
-        insertarScore();
+        if(!GlobalAplicacion.esEstudiante.equalsIgnoreCase("N")){
+            insertarScore();
+        }
 
         if (btn != null) {
 

@@ -1,6 +1,5 @@
 package com.example.proyfragmentmodal.estudiante;
 
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -10,13 +9,11 @@ import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,13 +23,11 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.principal.MenuProfEstud;
-import com.example.proyfragmentmodal.principal.splash;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -59,7 +54,7 @@ public class JuegoUno extends Fragment
     private Button btn4;
     private ProgressBar progressBar;
     private long milliseconds;
-
+    private int puntaje = 100;
     private MediaPlayer sonidoAcierto;
     private MediaPlayer sonidoError;
 
@@ -97,7 +92,32 @@ public class JuegoUno extends Fragment
         progressBar.setProgress(5);
         progreso = 0;
         score = 0;
-        milliseconds = 60000; // 60 segundos
+
+        Bundle args = getArguments();
+        int miliSegundos = 0;
+        String tipoNivel = "";
+        if (args != null) {
+            miliSegundos = args.getInt("nivelFrg");
+            tipoNivel = args.getString("tipoNivel");
+            // hacer algo con los valores recuperados
+        }
+        miliSegundos = (int) GlobalAplicacion.miliSegundos;
+        tipoNivel = GlobalAplicacion.nivel;
+        switch (tipoNivel) {
+            case "F":
+                puntaje = 100;
+                break;
+            case "I":
+                puntaje = 150;
+                break;
+            case "D":
+                puntaje = 200;
+                break;
+            default:
+        }
+
+        //milliseconds = 60000; // 60 segundos
+        milliseconds = miliSegundos; // 60 segundos
         startTimer(milliseconds);
 
         txtPalabra = vista.findViewById(R.id.txt_palabra);
@@ -193,12 +213,17 @@ public class JuegoUno extends Fragment
         Log.i("resp: ", resp);
         Log.i("correcta: ", listaRespuesta.get(progreso - 1).getOP_CORRECTA());
         if (resp.equalsIgnoreCase(listaRespuesta.get(progreso - 1).getOP_CORRECTA())) {
-            score += 100;
+            score += puntaje;
             txtScore.setText(String.valueOf(score));
             sonidoAcierto.start();
         } else {
             sonidoError.start();
         }
+
+        if(!GlobalAplicacion.esEstudiante.equalsIgnoreCase("N")){
+            insertarScore();
+        }
+
         //Thread.sleep(3000);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -321,6 +346,19 @@ public class JuegoUno extends Fragment
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void insertarScore() {
+        opcion = "IN";//CONSULTA FRASES
+
+        Map<String, String> params = new HashMap<>();
+        params.put("opcion", opcion);
+        params.put("id_usuario", String.valueOf(GlobalAplicacion.getGlobalIdUsuario()));
+        params.put("score", txtScore.getText().toString());
+
+        Log.i("Parametros ================================> ", String.valueOf(params));
+        IDaoService dao = new IDaoService(getActivity());
+        dao.apiJuegos(params, JuegoUno.this);
     }
 
     int progreso = 0;

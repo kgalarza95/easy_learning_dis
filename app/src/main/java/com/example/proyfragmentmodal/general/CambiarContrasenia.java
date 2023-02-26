@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.principal;
+package com.example.proyfragmentmodal.general;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +13,6 @@ import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
 import com.google.gson.Gson;
 
 import java.util.HashMap;

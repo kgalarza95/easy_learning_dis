@@ -1,6 +1,5 @@
-package com.example.proyfragmentmodal.principal;
+package com.example.proyfragmentmodal.general;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,16 +19,11 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
-import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Usuarios extends Fragment

@@ -34,6 +34,10 @@ public class EntityMap {
     String  PALABRA_ERRADA;
     String  PALABRA_CORRECTA;
 
+    String  TITULO;
+    String  INSTRUCCIONES;
+    String  FECHA_VENCIMIENTO;
+
     public EntityMap() {
     }
 
@@ -249,5 +253,29 @@ public class EntityMap {
 
     public void setPALABRA_CORRECTA(String PALABRA_CORRECTA) {
         this.PALABRA_CORRECTA = PALABRA_CORRECTA;
+    }
+
+    public String getTITULO() {
+        return TITULO;
+    }
+
+    public void setTITULO(String TITULO) {
+        this.TITULO = TITULO;
+    }
+
+    public String getINSTRUCCIONES() {
+        return INSTRUCCIONES;
+    }
+
+    public void setINSTRUCCIONES(String INSTRUCCIONES) {
+        this.INSTRUCCIONES = INSTRUCCIONES;
+    }
+
+    public String getFECHA_VENCIMIENTO() {
+        return FECHA_VENCIMIENTO;
+    }
+
+    public void setFECHA_VENCIMIENTO(String FECHA_VENCIMIENTO) {
+        this.FECHA_VENCIMIENTO = FECHA_VENCIMIENTO;
     }
 }

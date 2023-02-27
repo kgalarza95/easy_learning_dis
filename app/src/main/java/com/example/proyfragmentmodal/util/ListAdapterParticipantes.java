@@ -60,7 +60,7 @@ public class ListAdapterParticipantes extends
         // ListItem item = items.get(position);
         String item = listaElementos.get(position);
 
-        TextView textView = convertView.findViewById(R.id.txt_nom_participante);
+        TextView textView = convertView.findViewById(R.id.txt_titulo_asig);
         textView.setText(item);
         //textView.setText(item.getText());
 

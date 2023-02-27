@@ -108,8 +108,8 @@ public class CrearAsignacion extends Fragment
                 Map<String, String> params = new HashMap<>();
                 opcion = "IN";
                 params.put("opcion", opcion);
-                //params.put("curso_id", String.valueOf(spinnerCursos.getSelectedItemId()));
-                params.put("curso_id", String.valueOf(idCursoSeleccionado));
+                //params.put("id_curso", String.valueOf(spinnerCursos.getSelectedItemId()));
+                params.put("id_curso", String.valueOf(idCursoSeleccionado));
                 params.put("titulo", tituloAsignacion.getText().toString());
                 params.put("instrucciones", instrucciones.getText().toString());
                 params.put("fecha_vencimiento", String.format("%02d/%02d/%d", fechaVencimiento.getDayOfMonth(), fechaVencimiento.getMonth() + 1, fechaVencimiento.getYear()));

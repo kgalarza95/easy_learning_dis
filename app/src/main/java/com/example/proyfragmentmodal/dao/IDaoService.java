@@ -31,98 +31,30 @@ public class IDaoService {
 
     public void postData(final Map<String, String> params, final DAOCallbackServicio callback) {
         String uri = URL + "validar_usuario.php";
-        RequestQueue queue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Procesar la respuesta aquí
-                        callback.onSuccess(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Procesar el error aquí
-                        callback.onError(error);
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                return params;
-            }
-        };
-
-        queue.add(stringRequest);
+        clienteRestUTF8(URL + "validar_usuario.php", params, callback);
     }
 
 
     public void actualizarPass(final Map<String, String> params, final DAOCallbackServicio callback) {
-        String uri = URL + "configuraciones.php";
-        RequestQueue queue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Procesar la respuesta aquí
-                        callback.onSuccess(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Procesar el error aquí
-                        callback.onError(error);
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                return params;
-            }
-        };
-
-        queue.add(stringRequest);
+        clienteRestUTF8(URL + "configuraciones.php", params, callback);
     }
 
 
     public void crudUsuario(final Map<String, String> params, final DAOCallbackServicio callback) {
-        String uri = URL + "crud_usuario.php";
-        RequestQueue queue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Procesar la respuesta aquí
-                        callback.onSuccess(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Procesar el error aquí
-                        callback.onError(error);
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                return params;
-            }
-        };
-
-        queue.add(stringRequest);
+        clienteRestUTF8(URL + "crud_usuario.php", params, callback);
     }
 
     public void crudCursosProf(final Map<String, String> params, final DAOCallbackServicio callback) {
-        clienteRest(URL + "crud_cursos.php", params, callback);
+        clienteRestUTF8(URL + "crud_cursos.php", params, callback);
     }
 
 
     public void manejoPDF(final Map<String, String> params, final DAOCallbackServicio callback) {
-        clienteRest(URL + "manejo_pdf.php", params, callback);
+        clienteRestUTF8(URL + "manejo_pdf.php", params, callback);
     }
 
     public void apiMensajes(final Map<String, String> params, final DAOCallbackServicio callback) {
-        clienteRest(URL + "api_mensajes.php", params, callback);
+        clienteRestUTF8(URL + "api_mensajes.php", params, callback);
     }
     public void apiJuegos(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRestUTF8(URL + "api_juegos.php", params, callback);
@@ -182,6 +114,7 @@ public class IDaoService {
             protected Map<String, String> getParams() {
                 return params;
             }
+
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
                 try {

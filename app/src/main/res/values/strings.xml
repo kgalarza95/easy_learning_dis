@@ -8,7 +8,8 @@
 
     <string-array name="li_opciones_evaluacion">
         <!--<item name="it_encuesta">ENCUESTA</item>-->
-        <item name="it_leccion">LECCIÓN</item>
+        <!--  <item name="it_leccion">LECCIÓN</item>-->
+        <item name="it_0">TAREA</item>
     </string-array>
 
     <string-array name="li_opciones_aprendizaje">

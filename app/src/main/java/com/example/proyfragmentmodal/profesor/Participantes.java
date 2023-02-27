@@ -21,6 +21,7 @@ import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.util.ListAdapterParticipantes;
+import com.example.proyfragmentmodal.util.ListAdapterTareas;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -84,11 +85,18 @@ public class Participantes extends AppCompatActivity
         // Obtener el Intent que inició esta actividad y extraer el dato de tipo String
         Intent intent = getIntent();
         idCursoPertenece = intent.getStringExtra("idCurso");
+        String origenCall = intent.getStringExtra("origenCall");
 
         Log.d("idCursoPertenece===============================================================> ", idCursoPertenece);
         Log.d("idCursoPertenece: ", idCursoPertenece);
 
-        consultarParticipantesDisponibles();
+        if (origenCall.equalsIgnoreCase("prof")) {
+            consultarParticipantesDisponibles();
+            fab.setVisibility(View.VISIBLE);
+        } else {
+            consultarTareasPorCurso();
+            fab.setVisibility(View.GONE);
+        }
     }
 
 
@@ -208,6 +216,23 @@ public class Participantes extends AppCompatActivity
         dao.crudCursosProf(params, Participantes.this);
     }
 
+    public void consultarTareasPorCurso() {
+        opcion = "CT";//CONSULTA TAREAS
+
+        Map<String, String> params = new HashMap<>();
+        params.put("opcion", opcion);
+        params.put("id_profesor", "");
+        params.put("nombre", "");
+        params.put("descripcion", "");
+        params.put("anio", "");
+        params.put("estado", "S");
+        params.put("id_curso", idCursoPertenece);
+
+        Log.i("consultarTareasPorCurso | parámetros de envío:  ", String.valueOf(params));
+        IDaoService dao = new IDaoService(Participantes.this);
+        dao.crudCursosProf(params, Participantes.this);
+    }
+
     @Override
     public void onSuccess(String response) {
         try {
@@ -260,6 +285,17 @@ public class Participantes extends AppCompatActivity
 
                     ListView listView = findViewById(R.id.lv_lista_participantes);
                     ListAdapterParticipantes adapter = new ListAdapterParticipantes(this, items);
+                    listView.setAdapter(adapter);
+
+                } else if (opcion.equals("CT")) {
+                    String json = gson.toJson(data.getData());
+                    Type listType = new TypeToken<List<EntityMap>>() {
+                    }.getType();
+                    List<EntityMap> listaPartic = gson.fromJson(json, listType);
+                    Log.d("Respuesta:  ", String.valueOf(listaPartic));
+
+                    ListView listView = findViewById(R.id.lv_lista_participantes);
+                    ListAdapterTareas adapter = new ListAdapterTareas(this, listaPartic);
                     listView.setAdapter(adapter);
 
                 }

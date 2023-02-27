@@ -5,54 +5,63 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cursos: " />
+            android:text="Cursos: "
+            android:layout_marginBottom="5dp"/>
 
         <Spinner
             android:id="@+id/spinner_cursos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
 
         </Spinner>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Título de Asignación: " />
+            android:text="Título de Asignación: "
+            android:layout_marginBottom="5dp"/>
 
         <EditText
             android:id="@+id/titulo_asignacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título Asignación" />
+            android:hint="Título Asignación"
+            android:layout_marginBottom="30dp"
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Instrucciones: " />
+            android:text="Instrucciones: "
+            android:layout_marginBottom="5dp"/>
 
         <EditText
             android:id="@+id/instrucciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginBottom="30dp"
             android:hint="Instrucciones de asignación" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha de Entrega: " />
+            android:text="Fecha de Entrega: "
+            android:layout_marginBottom="5dp"/>
 
         <DatePicker
             android:id="@+id/fecha_vencimiento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="20dp"/>
 
 
         <LinearLayout

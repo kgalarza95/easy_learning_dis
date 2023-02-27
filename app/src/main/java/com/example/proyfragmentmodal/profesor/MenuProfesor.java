@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
-import com.example.proyfragmentmodal.estudiante.misCursosEstudiante;
+import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 
@@ -165,7 +165,7 @@ public class MenuProfesor extends Fragment {
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new misCursosEstudiante());
+                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new MisCursosEstudiante());
                                         miTrnsaccion_.commit();
                                         break;
                                     case 2://salir

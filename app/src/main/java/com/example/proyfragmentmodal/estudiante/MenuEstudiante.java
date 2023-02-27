@@ -113,7 +113,7 @@ public class MenuEstudiante extends Fragment {
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new misCursosEstudiante());
+                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new MisCursosEstudiante());
                                         miTrnsaccion_.commit();
                                         break;
                                     case 1:
@@ -225,7 +225,7 @@ public class MenuEstudiante extends Fragment {
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new misCursosEstudiante());
+                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new MisCursosEstudiante());
                                         miTrnsaccion_.commit();
                                         break;
                                     case 2://historial

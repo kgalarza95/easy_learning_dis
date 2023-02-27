@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.entity.EntityMap;
+import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
+import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 import com.example.proyfragmentmodal.profesor.Participantes;
 
 import java.util.List;
@@ -84,6 +86,12 @@ public class ListAdapterMisCursos extends RecyclerView.Adapter<ListAdapterMisCur
                     //Toast.makeText(context, "ID Clic.. "+objeto.getID(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, Participantes.class);
                     intent.putExtra("idCurso",objeto.getID());
+
+                    if (context instanceof MisCursosProfesor){
+                        intent.putExtra("origenCall","prof");
+                    }else{
+                        intent.putExtra("origenCall","estud");
+                    }
                     context.startActivity(intent);
                 }
             });

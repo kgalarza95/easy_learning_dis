@@ -17,7 +17,6 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.example.proyfragmentmodal.util.ListAdapterMisCursos;
 import com.google.gson.Gson;
@@ -29,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class misCursosEstudiante extends Fragment
+public class MisCursosEstudiante extends Fragment
         implements IDaoService.DAOCallbackServicio {
 
 
@@ -37,12 +36,12 @@ public class misCursosEstudiante extends Fragment
     private String opcion;
     private Gson gson = new Gson();
 
-    public misCursosEstudiante() {
+    public MisCursosEstudiante() {
         // Required empty public constructor
     }
 
-    public static misCursosEstudiante newInstance(String param1, String param2) {
-        misCursosEstudiante fragment = new misCursosEstudiante();
+    public static MisCursosEstudiante newInstance(String param1, String param2) {
+        MisCursosEstudiante fragment = new MisCursosEstudiante();
         Bundle args = new Bundle();
 
         fragment.setArguments(args);
@@ -85,7 +84,7 @@ public class misCursosEstudiante extends Fragment
         Log.i("================================================================================= ", "");
         Log.i("Parámetros enviados ", String.valueOf(params));
         IDaoService dao = new IDaoService(getActivity());
-        dao.crudCursosProf(params, misCursosEstudiante.this);
+        dao.crudCursosProf(params, MisCursosEstudiante.this);
     }
 
     public void init(List<EntityMap> listaCursos) {

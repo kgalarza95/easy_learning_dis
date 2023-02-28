@@ -21,7 +21,7 @@ import java.util.Map;
 public class IDaoService {
 
     //static String URL = "http://servidor.local//php_api_dislexia/";
-    static String URL = "http://192.168.1.44/php_api_dislexia/";
+    static String URL = "http://192.168.1.46/php_api_dislexia/";
     //static String URL = "http://192.168.100.75/php_api_dislexia/";
     private Context context;
 

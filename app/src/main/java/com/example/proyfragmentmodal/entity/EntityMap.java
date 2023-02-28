@@ -37,6 +37,7 @@ public class EntityMap {
     String  TITULO;
     String  INSTRUCCIONES;
     String  FECHA_VENCIMIENTO;
+    String  SCORE;
 
     public EntityMap() {
     }
@@ -277,5 +278,13 @@ public class EntityMap {
 
     public void setFECHA_VENCIMIENTO(String FECHA_VENCIMIENTO) {
         this.FECHA_VENCIMIENTO = FECHA_VENCIMIENTO;
+    }
+
+    public String getSCORE() {
+        return SCORE;
+    }
+
+    public void setSCORE(String SCORE) {
+        this.SCORE = SCORE;
     }
 }

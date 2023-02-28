@@ -229,6 +229,11 @@ public class MenuEstudiante extends Fragment {
                                         miTrnsaccion_.commit();
                                         break;
                                     case 2://historial
+                                        FragmentManager x = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction y = x.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        y.replace(R.id.contenedor_fragment, new HistorialAcademico());
+                                        y.commit();
                                         break;
                                     case 3://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));

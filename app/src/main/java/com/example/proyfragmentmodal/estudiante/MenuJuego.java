@@ -38,6 +38,7 @@ public class MenuJuego extends Fragment {
     }
 
     View vista;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +62,17 @@ public class MenuJuego extends Fragment {
                 FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                 //remplazar fragmento actual con el nuevo indicado en el contenedor
                 miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoDos());
+                miTrnsaccion.commit();
+            }
+        });
+
+        vista.findViewById(R.id.btn_game3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                //remplazar fragmento actual con el nuevo indicado en el contenedor
+                miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
                 miTrnsaccion.commit();
             }
         });

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 public class CustomView extends View {
+
     private Paint paint;
     private Path path;
     private Button clearButton;
@@ -21,6 +22,7 @@ public class CustomView extends View {
     private float startX, startY;
     private Tool currentTool = Tool.PENCIL;
     Canvas canvas;
+
     enum Tool {
         PENCIL,
         LINE,
@@ -48,7 +50,7 @@ public class CustomView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-       // super.onDraw(canvas);
+        // super.onDraw(canvas);
         this.canvas = canvas;// canvas.drawLine(startX, startY, endX, endY, paint);
 
       /*  if (action.equals("down")){
@@ -72,20 +74,20 @@ public class CustomView extends View {
         return true;
     }
 
-    float x,y;
+    float x, y;
 
     private boolean dibujarBien(MotionEvent event) {
         Log.i("dibujarLineal==============>  ", "init");
-         x = event.getX();
-         y = event.getY();
+        x = event.getX();
+        y = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN://solo click en la pantalla
                 action = "down";
-                path.moveTo(x,y);
+                path.moveTo(x, y);
                 return true;
             case MotionEvent.ACTION_MOVE:
                 action = "move";
-                path.lineTo(x,y);
+                path.lineTo(x, y);
                 Log.i("MotionEvent==============>  ", "ACTION_MOVE");
                 break;
             default:
@@ -221,6 +223,11 @@ public class CustomView extends View {
                 invalidate();
             }
         });
+    }
+
+    public void clearLinea() {
+        path.reset();
+        invalidate();
     }
 }
 

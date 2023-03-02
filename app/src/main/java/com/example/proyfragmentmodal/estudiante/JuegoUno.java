@@ -127,6 +127,11 @@ public class JuegoUno extends Fragment
         btn3 = vista.findViewById(R.id.btn3);
         btn4 = vista.findViewById(R.id.btn4);
 
+        btn1.setAllCaps(false);
+        btn2.setAllCaps(false);
+        btn3.setAllCaps(false);
+        btn4.setAllCaps(false);
+
         enPantalla = "aqui";
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -333,7 +338,8 @@ public class JuegoUno extends Fragment
                 if (progreso != 0) {
                     startTimer(milliseconds);
                 }
-                btn1.setText(listaRespuesta.get(progreso).getOP1());
+
+                btn1.setText(listaRespuesta.get(progreso).getOP1().toLowerCase());
                 btn2.setText(listaRespuesta.get(progreso).getOP2());
                 btn3.setText(listaRespuesta.get(progreso).getOP3());
                 btn4.setText(listaRespuesta.get(progreso).getOP4());

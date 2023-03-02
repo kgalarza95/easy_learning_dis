@@ -8,8 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DibujoGame extends Fragment {
@@ -18,22 +23,13 @@ public class DibujoGame extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public DibujoGame() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DibujoGame.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static DibujoGame newInstance(String param1, String param2) {
         DibujoGame fragment = new DibujoGame();
         Bundle args = new Bundle();
@@ -53,15 +49,53 @@ public class DibujoGame extends Fragment {
     }
 
     View vista;
+    Button btnNext;
+    List<Integer> listaLineas = new ArrayList<>();
+    int i;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        i = 0;
+        listaLineas.add(R.drawable.linea_f);
+        listaLineas.add(R.drawable.linea_e);
+        listaLineas.add(R.drawable.linea_a);
+        listaLineas.add(R.drawable.linea_c);
+        listaLineas.add(R.drawable.linea_d);
+        listaLineas.add(R.drawable.linea_y);
+        listaLineas.add(R.drawable.linea_i);
+        listaLineas.add(R.drawable.linea_p);
+        listaLineas.add(R.drawable.linea_q);
+        listaLineas.add(R.drawable.linea_r);
+        listaLineas.add(R.drawable.linea_s);
+        listaLineas.add(R.drawable.linea_t);
+        listaLineas.add(R.drawable.linea_u);
+        listaLineas.add(R.drawable.linea_w);
+        listaLineas.add(R.drawable.linea_x);
 
         vista = inflater.inflate(R.layout.fragment_dibujo_game, container, false);
         CustomView customView = vista.findViewById(R.id.customView);
         Button clearButton = vista.findViewById(R.id.clearButton);
         customView.setClearButton(clearButton);
+
+        btnNext = vista.findViewById(R.id.btn_next);
+        FrameLayout fragmentVentana = vista.findViewById(R.id.vista_draw);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // fragmentVentana.setBackgroundResource(R.drawable.linea_d);
+                fragmentVentana.setBackgroundResource(listaLineas.get(i));
+                i++;
+                customView.clearLinea();
+                Toast.makeText(getActivity(), "Enviado para calificación.", Toast.LENGTH_SHORT).show();
+
+                if (i == listaLineas.size()) {
+                    i = 0;
+                    Toast.makeText(getActivity(), "Fin del juego, vuelve a intentarlo.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         return vista;
     }
 }

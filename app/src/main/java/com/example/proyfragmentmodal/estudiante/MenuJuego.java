@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.UsoDeLaH;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
@@ -71,8 +72,10 @@ public class MenuJuego extends Fragment {
             public void onClick(View v) {
                 FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                 FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                //remplazar fragmento actual con el nuevo indicado en el contenedor
-                miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
+
+
+                //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
+                miTrnsaccion.replace(R.id.contenedor_fragment, new UsoDeLaH());
                 miTrnsaccion.commit();
             }
         });

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vista_draw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/trazo1">
+    android:background="@drawable/linea_u">
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:text="mamá"
         android:textColor="#FFFFFF"
-        android:textSize="120sp"
-        android:gravity="center"/>
-
+        android:textSize="120sp" />-->
 
 
     <com.example.proyfragmentmodal.estudiante.CustomView
@@ -21,11 +21,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/clearButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:text="Clear" />
+    <!-- android:layout_gravity="bottom|center_horizontal"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:text="Limpiar"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Siguiente"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
 
 </FrameLayout>

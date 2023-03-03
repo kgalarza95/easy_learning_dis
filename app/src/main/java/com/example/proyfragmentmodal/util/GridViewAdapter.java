@@ -67,6 +67,7 @@ public class GridViewAdapter extends BaseAdapter {
         String palabra = listNombres.get(position);
         holder.textView.setText(palabra);
         // Configura el Spinner
+        //ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, opcionesSpinner);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, opcionesSpinner);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         holder.spinner.setAdapter(spinnerAdapter);

@@ -14,9 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.proyfragmentmodal.FragmentCuentos;
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.estudiante.DibujoGame;
 import com.example.proyfragmentmodal.estudiante.JuegoDos;
 import com.example.proyfragmentmodal.estudiante.JuegoUno;
+import com.example.proyfragmentmodal.estudiante.UsoDeLaH;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,6 +92,40 @@ public class MenuJuegoPrueba extends Fragment {
                 FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                 //remplazar fragmento actual con el nuevo indicado en el contenedor
                 miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoDos());
+                miTrnsaccion.commit();
+            }
+        });
+
+        vista.findViewById(R.id.btn_game3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
+                miTrnsaccion.commit();
+            }
+        });
+
+        vista.findViewById(R.id.btn_game4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+
+
+                //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
+                miTrnsaccion.replace(R.id.contenedor_fragment, new UsoDeLaH());
+                miTrnsaccion.commit();
+            }
+        });
+
+        vista.findViewById(R.id.btn_game5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+
+                miTrnsaccion.replace(R.id.contenedor_fragment, new FragmentCuentos());
                 miTrnsaccion.commit();
             }
         });

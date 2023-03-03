@@ -21,8 +21,8 @@
 
             <ImageButton
                 android:id="@+id/btn_game1"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:contentDescription="Linterna"
                 android:src="@drawable/game2"
                 android:tooltipText="linterna"></ImageButton>
@@ -30,13 +30,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comunicación">
+                android:text="Completa">
 
             </TextView>
         </LinearLayout>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="3dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -47,21 +47,21 @@
 
             <ImageButton
                 android:id="@+id/btn_game2"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:contentDescription="Musica"
                 android:src="@drawable/game1"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Aprendizaje">
+                android:text="Encuentra">
 
             </TextView>
         </LinearLayout>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="3dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -72,22 +72,71 @@
 
             <ImageButton
                 android:id="@+id/btn_game3"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
                 android:contentDescription="Musica"
                 android:src="@drawable/dibujo_j"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Aprendizaje">
+                android:text="Dibuja">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="3dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_game4"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:contentDescription="Musica"
+                android:src="@drawable/h"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Con H">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="3dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_game5"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:contentDescription="Musica"
+                android:src="@drawable/lib"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lectura">
 
             </TextView>
         </LinearLayout>
         
-
         <Space
-            android:layout_width="25dp"
+            android:layout_width="3dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -98,8 +147,8 @@
 
             <ImageButton
                 android:id="@+id/btn_mn_perfil_"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
 
                 android:src="@drawable/perfil_48">
 

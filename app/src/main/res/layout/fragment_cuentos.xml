@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vista_cuentos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/a"
+    tools:context=".FragmentCuentos">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp"
+        android:id="@+id/ly_preguntas">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="48sp"
+                android:layout_marginRight="10dp"
+                android:text="Score:"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/txt_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="48sp"
+                android:text="0"
+
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/pregunta1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¿Con qué jugaba la araña en la playa?" />
+
+        <RadioGroup
+            android:id="@+id/opciones1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/opcion11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Con una pelota" />
+
+            <RadioButton
+                android:id="@+id/opcion12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Con una aleta" />
+
+            <RadioButton
+                android:id="@+id/opcion13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Con su móvil" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/pregunta2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¿De quién era el anillo que estaba en la lancha?" />
+
+        <RadioGroup
+            android:id="@+id/opciones2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/opcion21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No tenia dueño" />
+
+            <RadioButton
+                android:id="@+id/opcion22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="De una avispa" />
+
+            <RadioButton
+                android:id="@+id/opcion23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No se sabe" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Siguiente"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</FrameLayout>

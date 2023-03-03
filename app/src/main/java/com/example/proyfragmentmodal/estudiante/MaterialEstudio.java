@@ -63,6 +63,7 @@ public class MaterialEstudio extends Fragment
     public MaterialEstudio() {
         // Required empty public constructor
     }
+
     public MaterialEstudio(int origen) {
         origenLlamada = origen;
     }
@@ -85,72 +86,92 @@ public class MaterialEstudio extends Fragment
         View vista = inflater.inflate(R.layout.fragment_material_estudio, container, false);
         //vista.findViewById(R.id.rv_list_material_estudio);
 
-        fab = vista.findViewById(R.id.fab_material);
+        try {
+            fab = vista.findViewById(R.id.fab_material);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("application/pdf");
-                startActivityForResult(Intent.createChooser(intent, "Select PDF"), 1);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType("application/pdf");
+                    startActivityForResult(Intent.createChooser(intent, "Select PDF"), 1);
 
+                }
+            });
+
+            if (origenLlamada != 0) {
+                fab.setVisibility(View.GONE);
             }
-        });
 
-        if (origenLlamada != 0){
-            fab.setVisibility(View.GONE);
+            progressDialog = new ProgressDialog(getActivity());
+
+
+            recyclerView = (RecyclerView) vista.findViewById(R.id.rv_list_material_estudio);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+            consultarPdfsPorCurso();
+            //prueba, eliminar
+            //init(vista);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        progressDialog = new ProgressDialog(getActivity());
-
-
-        recyclerView = (RecyclerView) vista.findViewById(R.id.rv_list_material_estudio);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        consultarPdfsPorCurso();
-        //prueba, eliminar
-        //init(vista);
         return vista;
     }
 
     public void init(View vista) {
-        List<String> litUsuarios = new ArrayList<>();
-        int i = 1;
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-        litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+        try {
+            List<String> litUsuarios = new ArrayList<>();
+            int i = 1;
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
+            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
 
 
-        ListAdapterIconText listAdapter = new ListAdapterIconText(litUsuarios, getActivity());
-        RecyclerView recyclerView = (RecyclerView) vista.findViewById(R.id.rv_list_material_estudio);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(listAdapter);
+            ListAdapterIconText listAdapter = new ListAdapterIconText(litUsuarios, getActivity());
+            RecyclerView recyclerView = (RecyclerView) vista.findViewById(R.id.rv_list_material_estudio);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setAdapter(listAdapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     RecyclerView recyclerView;
 
     public void consultarPdfsPorCurso() {
-        Map<String, String> params = new HashMap<>();
-        opcion = "CN";
-        params.put("opcion", opcion);
-        params.put("pdf", "");
-        params.put("nombre_pdf", "");
-        IDaoService dao = new IDaoService(getActivity());
-        dao.manejoPDF(params, MaterialEstudio.this);
+        try {
+            Map<String, String> params = new HashMap<>();
+            opcion = "CN";
+            params.put("opcion", opcion);
+            params.put("pdf", "");
+            params.put("nombre_pdf", "");
+            IDaoService dao = new IDaoService(getActivity());
+            dao.manejoPDF(params, MaterialEstudio.this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void initConsulta(List<EntityMap> litUsuarios) {
-        ListAdapterIconTextObject listAdapter = new ListAdapterIconTextObject(litUsuarios, getActivity());
-        recyclerView.setAdapter(listAdapter);
+        try {
+            ListAdapterIconTextObject listAdapter = new ListAdapterIconTextObject(litUsuarios, getActivity());
+            recyclerView.setAdapter(listAdapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -251,39 +272,48 @@ public class MaterialEstudio extends Fragment
 
     @Override
     public void onSuccess(String response) {
-        progressDialog.dismiss();
-        Log.i("response ============>:  ", String.valueOf(response));
+        try {
+            progressDialog.dismiss();
+            Log.i("response ============>:  ", String.valueOf(response));
 
-        Log.d("===========================================================  ", "");
-        Log.d("Respuesta:  ", response);
-        Respuesta data = gson.fromJson(response, Respuesta.class);
-        if (data.getCodResponse().equals("00")) {
-            if (opcion.equals("CN")) {
-                //  List<String> listFilas = (List<String>) data.getData();
-                String json = gson.toJson(data.getData());
-                Type listType = new TypeToken<List<EntityMap>>() {
-                }.getType();
-                List<EntityMap> listaCursos = gson.fromJson(json, listType);
-                Log.d("Respuesta:  ", String.valueOf(listaCursos));
-                Log.d("Respuesta:  ", listaCursos.get(0).getRUTA());
-                Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
-                // init(listaCursos);
+            Log.d("===========================================================  ", "");
+            Log.d("Respuesta:  ", response);
+            Respuesta data = gson.fromJson(response, Respuesta.class);
+            if (data.getCodResponse().equals("00")) {
+                if (opcion.equals("CN")) {
+                    //  List<String> listFilas = (List<String>) data.getData();
+                    String json = gson.toJson(data.getData());
+                    Type listType = new TypeToken<List<EntityMap>>() {
+                    }.getType();
+                    List<EntityMap> listaCursos = gson.fromJson(json, listType);
+                    Log.d("Respuesta:  ", String.valueOf(listaCursos));
+                    Log.d("Respuesta:  ", listaCursos.get(0).getRUTA());
+                    Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
+                    // init(listaCursos);
 
-                initConsulta(listaCursos);
+                    initConsulta(listaCursos);
 
-            } else if (opcion.equals("IN")) {
-                consultarPdfsPorCurso();
+                } else if (opcion.equals("IN")) {
+                    consultarPdfsPorCurso();
+                }
+            } else {
+                Toast.makeText(getActivity(), data.getMsjResponse(), Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(getActivity(), data.getMsjResponse(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
     }
 
     @Override
     public void onError(VolleyError error) {
-        Log.i("error ============>:  ", String.valueOf(error));
+        try {
+            progressDialog.dismiss();
+            Toast.makeText(getActivity(), String.valueOf(error), Toast.LENGTH_SHORT).show();
+            Log.i("error ============>:  ", String.valueOf(error));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

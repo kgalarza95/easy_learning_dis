@@ -41,6 +41,7 @@
         <item name="it_2">MATERIAL ESTUDIO</item>
         <item name="it_0">CREAR ASIGNACIONES</item>
         <item name="it_0">VER ASIGNACIONES</item>
+        <item name="it_0">VER DIBUJOS</item>
     </string-array>
 
     <string-array name="li_opciones_perfil_prof">

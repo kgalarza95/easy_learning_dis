@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.proyfragmentmodal.ParticipantesDibujo;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.VerAsignaciones;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
@@ -106,6 +107,13 @@ public class MenuProfesor extends Fragment {
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccionX.replace(R.id.contenedor_fragment, new VerAsignaciones());
                                         miTrnsaccionX.commit();
+                                        break;
+                                    case 3:
+                                        FragmentManager verDi = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction myDib = verDi.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        myDib.replace(R.id.contenedor_fragment, new ParticipantesDibujo());
+                                        myDib.commit();
                                         break;
                                     default:
                                         Toast.makeText(getActivity(), "Pantalla no configurada aún", Toast.LENGTH_SHORT).show();

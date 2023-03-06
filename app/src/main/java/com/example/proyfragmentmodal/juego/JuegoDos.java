@@ -1,8 +1,10 @@
-package com.example.proyfragmentmodal.estudiante;
+package com.example.proyfragmentmodal.juego;
 
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -93,6 +95,7 @@ public class JuegoDos extends Fragment
         String tipoNivel = "";
         miliSegundos = (int) GlobalAplicacion.miliSegundos;
         tipoNivel = GlobalAplicacion.nivel;
+
         switch (tipoNivel) {
             case "F":
                 puntaje = 100;
@@ -108,8 +111,17 @@ public class JuegoDos extends Fragment
 
         //milliseconds = 60000; // 60 segundos
         milliseconds = miliSegundos; // 60 segundos
-        startTimer(milliseconds);
-        startTimer(milliseconds);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Información");
+        builder.setMessage("Encuentra la palabra mal escrita.");
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startTimer(milliseconds);
+            }
+        });
 
         consultarFrases();
         return vista;
@@ -156,6 +168,7 @@ public class JuegoDos extends Fragment
         params.put("opcion", opcion);
         params.put("id_usuario", String.valueOf(GlobalAplicacion.getGlobalIdUsuario()));
         params.put("score", txtScore.getText().toString());
+        params.put("id_juego", String.valueOf(4));
 
         Log.i("Parametros ================================> ", String.valueOf(params));
         IDaoService dao = new IDaoService(getActivity());
@@ -180,10 +193,11 @@ public class JuegoDos extends Fragment
 
                 // Crea un objeto LayoutParams para los TextViews
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                params.width = GridLayout.LayoutParams.WRAP_CONTENT;
-                params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+                params.width = GridLayout.LayoutParams.MATCH_PARENT;
+                params.height = GridLayout.LayoutParams.MATCH_PARENT;
                 //params.setMargins(8, 8, 8, 8); // establece los márgenes deseados
 
+               // gridLayout.setLayoutParams(params);
                 // Crea una instance de TextView
                 Button button;
 
@@ -195,7 +209,8 @@ public class JuegoDos extends Fragment
                         LinearLayout.LayoutParams.WRAP_CONTENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
-                paramsL.setMargins(0, 0, 0, 0);
+
+                //paramsL.setMargins(0, 0, 0, 0);
 
 
                 // Crear un objeto de tipo View.OnClickListener() y sobrescribir onClick()
@@ -217,7 +232,7 @@ public class JuegoDos extends Fragment
                 for (int i = 0; i < split.length; i++) {
                     button = new Button(getActivity());
                     button.setText(split[i]);
-                    button.setTextSize(18);
+                    button.setTextSize(17);
                     button.setLayoutParams(paramsL);
             /*button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));*/
@@ -252,7 +267,7 @@ public class JuegoDos extends Fragment
                 try {
                     timeLeftInMillis = 0;
                     updateCountdownText();
-                    pasarNivel("xxxxxxxxxxxxxxxx", null);
+                    //pasarNivel("xxxxxxxxxxxxxxxx", null);
                     Toast.makeText(getContext(), "¡Tiempo terminado!", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();

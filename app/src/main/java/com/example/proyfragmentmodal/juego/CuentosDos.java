@@ -1,9 +1,11 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.juego;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -20,11 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.Cuento;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.estudiante.UsoDeLaH;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
 
@@ -33,7 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FragmentCuentos extends Fragment
+
+public class CuentosDos extends Fragment
         implements IDaoService.DAOCallbackServicio{
 
     private View vista;
@@ -60,13 +63,17 @@ public class FragmentCuentos extends Fragment
     private RadioButton opcion21;
     private RadioButton opcion22;
     private RadioButton opcion23;
+    int score = 0;
+    private TextView txtScore;
 
-    public FragmentCuentos() {
+    public CuentosDos() {
+        // Required empty public constructor
     }
 
-    public static FragmentCuentos newInstance(String param1, String param2) {
-        FragmentCuentos fragment = new FragmentCuentos();
+    public static CuentosDos newInstance(String param1, String param2) {
+        CuentosDos fragment = new CuentosDos();
         Bundle args = new Bundle();
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -79,7 +86,16 @@ public class FragmentCuentos extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista = inflater.inflate(R.layout.fragment_cuentos, container, false);
+        vista = inflater.inflate(R.layout.fragment_cuentos_dos, container, false);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Información");
+        builder.setMessage("Contesta las pregntas de la lectura.");
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
 
         pregunta1 = vista.findViewById(R.id.pregunta1);
         pregunta2 = vista.findViewById(R.id.pregunta2);
@@ -96,16 +112,16 @@ public class FragmentCuentos extends Fragment
         llenarList();
 
         listaLineas = new ArrayList<>();
-        listaLineas.add(R.drawable.a);
-        listaLineas.add(R.drawable.b);
-        listaLineas.add(R.drawable.c);
-        listaLineas.add(R.drawable.d);
-        listaLineas.add(R.drawable.e);
-        listaLineas.add(R.drawable.f);
-        listaLineas.add(R.drawable.g);
-        listaLineas.add(R.drawable.h_);
-        listaLineas.add(R.drawable.i);
-        listaLineas.add(R.drawable.j);
+        listaLineas.add(R.drawable.a_c1);
+        listaLineas.add(R.drawable.b_c1);
+        listaLineas.add(R.drawable.c_c1);
+        listaLineas.add(R.drawable.d_c1);
+        listaLineas.add(R.drawable.e_c1);
+        listaLineas.add(R.drawable.f_c1);
+        listaLineas.add(R.drawable.g_c1);
+        listaLineas.add(R.drawable.h_c1);
+        listaLineas.add(R.drawable.i_c1);
+        listaLineas.add(R.drawable.j_c1);
 
         i = 0;
         j = 0;
@@ -133,23 +149,19 @@ public class FragmentCuentos extends Fragment
                         Cuento cuento = listCuentos.get(j);
                         pregunta1.setText(cuento.getPregunta1());
                         opcion11.setText(cuento.getOp1());
-                        opcion12.setText(cuento.getOp2());
                         opcion13.setText(cuento.getOpCorrecta());
 
                         pregunta2.setText(cuento.getPregunta2());
                         opcion21.setText(cuento.getOp2_1());
-                        opcion22.setText(cuento.getOp2_2());
                         opcion23.setText(cuento.getOpCorrecta2());
                     } else {
                         Cuento cuento = listCuentos.get(j);
                         pregunta1.setText(cuento.getPregunta1());
                         opcion11.setText(cuento.getOpCorrecta());
-                        opcion12.setText(cuento.getOp1());
                         opcion13.setText(cuento.getOp2());
 
                         pregunta2.setText(cuento.getPregunta2());
                         opcion21.setText(cuento.getOpCorrecta2());
-                        opcion22.setText(cuento.getOp2_1());
                         opcion23.setText(cuento.getOp2_2());
                     }
 
@@ -216,71 +228,63 @@ public class FragmentCuentos extends Fragment
         });
 
         return vista;
+
     }
 
     private void llenarList() {
         listCuentos = new ArrayList<>();
 
-        listCuentos.add(new Cuento("¿Con qué jugaba la araña en la playa?",
-                "Con una pelota", "Con su móvil", "Con una aleta",
-                "¿De quién era el anillo que estaba en la lancha?", "No tenia dueño ",
-                "De una gata", "De una avispa"));
+        listCuentos.add(new Cuento("¿Qué palabras están mal escritas en esta lectura ?",
+                "araña, jugando,ahogando", "arañe, fugando,aogando",
+                "¿De estas palabras de la lectura  cuales se tildan?",
+                "monto, autobus, subio, arbol ","montó, autobús, subió, árbol"));
 
-        listCuentos.add(new Cuento("¿Encima de qué se cayó la bruja?",
-                "De un barco", "	De un banco", "De una casa",
-                "¿Qué animal pescó la bruja?", "Un pez ",
-                "Un pulpo", " Una ballena"));
+        listCuentos.add(new Cuento("¿Qué palabras están escritas de manera correcta?",
+                "abia,vruja,bolando,vallena", "había, bruja, volando, ballena",
+                "¿Qué palabras se tildan?",
+                "dio, tenia, cayo, pesco  ","dió, tenía, cayó, pescó"));
 
-        listCuentos.add(new Cuento("¿Cómo se llama el caracol?",
-                "Juan", "Carlos", "Pedro",
-                "¿Cuántas vueltas en el cohete dio el caracol sobre el mundo?", "Dos ",
-                "Cuatro", "Cinco "));
+        listCuentos.add(new Cuento("¿Identifica las palabras bien escritas?",
+                "zo, cielo, coete", "sol, cielo, cohete",
+                "¿Qué palabras no llevan acento?",
+                "día, tenía, camión ","caracol, campanas, letras"));
 
-        listCuentos.add(new Cuento("¿Cómo se llama el dinosaurio?",
-                "Juan", "David", "Pedro",
-                "¿Qué se puso hacer el dinosaurio para que se le salgan los peces?", "Cantar ",
-                "Correr", "Saltar "));
+        listCuentos.add(new Cuento("¿Identifica qué palabras están mal escritas del texto?",
+                "llamaba, beber, barriga", "peces, dinosaurio, agua","yamava, vever, peses",
+                "¿Cuántas tildes puedes observar en el texto?",
+                "ninguna  ","2 tildes ","10 tildes"));
 
+        listCuentos.add(new Cuento("¿Qué palabras están escritas de manera incorrecta?",
+                "noche, volar, elefante, cielo", "erizo, bes, zuelo, estreyas",
+                "¿Qué palabras se tildan?",
+                "elefante, espejo,bonito ","escorpión, mágico"));
 
-        listCuentos.add(new Cuento("¿En que se convirtieron el erizo y el escorpión al verse al espejo mágico?",
-                "Pumas", "Elefantes", "Jirafas",
-                "¿Cómo se llamaba la estrella donde se quedaron a vivir?", "Luna ",
-                "Mercurio", "E"));
+        listCuentos.add(new Cuento("¿Qué palabras están mal escritas en el texto?",
+                "fantasma, farola, animales", "bolar, zoológico, bio",
+                "¿Qué palabras llevan acento?",
+                "animales, casa, niño","zoológico, encontró, había "));
 
+        listCuentos.add(new Cuento("¿Qué palabras están mal escritas?",
+                "gusano, vivió, gallo", "gusano, callo, galletas",
+                "¿Cuántas tildes observamos en el texto?",
+                "ninguna","11 tildes "));
 
-        listCuentos.add(new Cuento("¿Cómo se llama el fantasma?",
-                "Juan", "Fofi", "Pedro",
-                "¿Para donde se fue el fantasma con el elefante?", "A la casa ",
-                "Al zoológico ", "A la playa "));
+        listCuentos.add(new Cuento("¿Qué palabras están mal escritas según el texto?",
+                "ninguna", "avia, uerta, ueyas, ueso, ierba",
+                "¿Qué letra les hace falta a las palabras mal escritas?",
+                "B","H "));
 
+        listCuentos.add(new Cuento("¿Qué palabras están mal escritas?",
+                "indio,hierro,imán ", "hindio, habion, ierro",
+                "¿Qué letra les hace falta a las palabras mal escritas?",
+                "O","H "));
 
-        listCuentos.add(new Cuento("¿Cómo se llama el gusano?",
-                "Juan", "Gonzalo", "Pedro",
-                "¿Qué le vendió el gallo al gusano?", "Una manzana ",
-                "Unas gafas de sol ", "Agua "));
-
-        //H
-
-        listCuentos.add(new Cuento("¿De dónde salió el hipopótamo pequeño?",
-                "De la hierba", "De la granja", "Del huevo",
-                "¿Qué comió el hipopótamo pequeño al nacer?", "Una manzana ",
-                "Comió hueso y hierba ", "Agua "));
-
-
-        listCuentos.add(new Cuento("¿Cómo se llama el indio?",
-                "Juan", "Imi", "Pedro",
-                "¿En qué llego montado el indio a la isla?", "En bote",
-                "En barco ", "En avión "));
-
-
-        listCuentos.add(new Cuento("¿Qué estaba comiendo la jirafa?",
-                "Una manzana", "Agua ", "Hojas de los arboles y jamón ",
-                "La bruja que convirtió a la jirafa en pájaro era ", "Bruja buena",
-                "Bruja regular", "Bruja mala "));
+        listCuentos.add(new Cuento("¿Qué palabras están mal escritas?",
+                "manzana, jirafa, bruja", "hojas, izo, asta, ",
+                "¿Qué letra le hace falta a las palabras mal escritas?",
+                "V","H"));
     }
 
-    int score = 0;
-    private TextView txtScore;
 
     public void insertarScore() {
         opcion = "IN";//CONSULTA FRASES
@@ -290,10 +294,11 @@ public class FragmentCuentos extends Fragment
         params.put("id_usuario", String.valueOf(GlobalAplicacion.getGlobalIdUsuario()));
         params.put("score", txtScore.getText().toString());
         // params.put("score", String.valueOf(score));
+        params.put("id_juego", String.valueOf(7));
 
         Log.i("Parametros ================================> ", String.valueOf(params));
         IDaoService dao = new IDaoService(getActivity());
-        dao.apiJuegos(params, FragmentCuentos.this);
+        dao.apiJuegos(params, CuentosDos.this);
     }
 
 

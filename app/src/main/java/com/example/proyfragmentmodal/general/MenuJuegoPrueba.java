@@ -14,12 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.proyfragmentmodal.FragmentCuentos;
+import com.example.proyfragmentmodal.juego.FragmentCuentos;
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.estudiante.DibujoGame;
-import com.example.proyfragmentmodal.estudiante.JuegoDos;
-import com.example.proyfragmentmodal.estudiante.JuegoUno;
-import com.example.proyfragmentmodal.estudiante.UsoDeLaH;
+import com.example.proyfragmentmodal.juego.DibujoGame;
+import com.example.proyfragmentmodal.juego.JuegoDos;
+import com.example.proyfragmentmodal.juego.JuegoUno;
+import com.example.proyfragmentmodal.juego.UsoDeLaH;
 
 /**
  * A simple {@link Fragment} subclass.

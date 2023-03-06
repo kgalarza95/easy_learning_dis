@@ -30,13 +30,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Completa">
+                android:text="Juegos 1">
 
             </TextView>
         </LinearLayout>
 
         <Space
-            android:layout_width="3dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -55,13 +55,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Encuentra">
+                android:text="Juegos 2">
 
             </TextView>
         </LinearLayout>
 
         <Space
-            android:layout_width="3dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -80,13 +80,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dibuja">
+                android:text="Juegos 3">
 
             </TextView>
         </LinearLayout>
 
         <Space
-            android:layout_width="3dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -100,43 +100,18 @@
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:contentDescription="Musica"
-                android:src="@drawable/h"></ImageButton>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Con H">
-
-            </TextView>
-        </LinearLayout>
-
-        <Space
-            android:layout_width="3dp"
-            android:layout_height="1dp"></Space>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btn_game5"
-                android:layout_width="63dp"
-                android:layout_height="63dp"
-                android:contentDescription="Musica"
                 android:src="@drawable/lib"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lectura">
+                android:text="Juegos 4">
 
             </TextView>
         </LinearLayout>
-        
+
         <Space
-            android:layout_width="3dp"
+            android:layout_width="10dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout

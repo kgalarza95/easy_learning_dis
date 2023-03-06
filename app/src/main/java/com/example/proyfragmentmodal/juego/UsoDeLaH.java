@@ -1,7 +1,9 @@
-package com.example.proyfragmentmodal.estudiante;
+package com.example.proyfragmentmodal.juego;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -19,17 +21,13 @@ import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.Cuento;
-import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.example.proyfragmentmodal.util.GridViewAdapter;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.Map;
 
@@ -174,6 +172,17 @@ public class UsoDeLaH extends Fragment
             Button btnComprobar = vista.findViewById(R.id.btn_comprobar);
             txtScore = vista.findViewById(R.id.txt_score);
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Información");
+            builder.setMessage("Selecciona si la palabra inicia con la H");
+            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            builder.show();
+
             btnComprobar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -234,6 +243,7 @@ public class UsoDeLaH extends Fragment
         params.put("opcion", opcion);
         params.put("id_usuario", String.valueOf(GlobalAplicacion.getGlobalIdUsuario()));
         params.put("score", txtScore.getText().toString());
+        params.put("id_juego", String.valueOf(2));
         // params.put("score", String.valueOf(score));
 
         Log.i("Parametros ================================> ", String.valueOf(params));

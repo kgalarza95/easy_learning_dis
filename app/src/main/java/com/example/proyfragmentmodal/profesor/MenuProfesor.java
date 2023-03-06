@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.VerAsignaciones;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
 import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
@@ -85,6 +86,13 @@ public class MenuProfesor extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 //Toast.makeText(getActivity(), "which: "+which, Toast.LENGTH_SHORT).show();
                                 switch (which) {
+                                    case 0:// MATERIAL DE ESTUDIO
+                                        FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new MaterialEstudio());
+                                        miTrnsaccion_.commit();
+                                        break;
                                     case 1:
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
@@ -92,12 +100,12 @@ public class MenuProfesor extends Fragment {
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new CrearAsignacion());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 0:// MATERIAL DE ESTUDIO
-                                        FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                                        FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
+                                    case 2:
+                                        FragmentManager miManejadorX = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccionX = miManejadorX.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new MaterialEstudio());
-                                        miTrnsaccion_.commit();
+                                        miTrnsaccionX.replace(R.id.contenedor_fragment, new VerAsignaciones());
+                                        miTrnsaccionX.commit();
                                         break;
                                     default:
                                         Toast.makeText(getActivity(), "Pantalla no configurada aún", Toast.LENGTH_SHORT).show();
@@ -161,14 +169,14 @@ public class MenuProfesor extends Fragment {
                                     case 1://mis cursos
                                         startActivity(new Intent(v.getContext(), MisCursosProfesor.class));
                                         break;
-                                    case 99://historial academico
+                                    case 2://historial academico
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new MisCursosEstudiante());
+                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new HistorialAcademicoProfesor());
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 2://salir
+                                    case 3://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:

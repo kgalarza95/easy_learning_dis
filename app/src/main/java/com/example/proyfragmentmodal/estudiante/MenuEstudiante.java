@@ -235,7 +235,11 @@ public class MenuEstudiante extends Fragment {
                                         y.replace(R.id.contenedor_fragment, new HistorialAcademico());
                                         y.commit();
                                         break;
-                                    case 3://salir
+                                    case 3://historial
+                                        Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+                                        startActivity(intent);
+                                        break;
+                                    case 4://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:

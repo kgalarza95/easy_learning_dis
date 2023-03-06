@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.general.MenuJuegoPrueba;
+import com.example.proyfragmentmodal.juego.JuegoUno;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 public class PantallaJuego extends AppCompatActivity {

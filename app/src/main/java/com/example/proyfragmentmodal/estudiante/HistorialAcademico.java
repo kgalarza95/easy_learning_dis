@@ -29,11 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HistorialAcademico#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HistorialAcademico extends Fragment
         implements IDaoService.DAOCallbackServicio {
 
@@ -44,33 +40,13 @@ public class HistorialAcademico extends Fragment
     private List<EntityMap> listaEstudiantes;
     private ProgressDialog progressDialog;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public HistorialAcademico() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HistorialAcademico.
-     */
-    // TODO: Rename and change types and number of parameters
     public static HistorialAcademico newInstance(String param1, String param2) {
         HistorialAcademico fragment = new HistorialAcademico();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -78,10 +54,6 @@ public class HistorialAcademico extends Fragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -93,7 +65,7 @@ public class HistorialAcademico extends Fragment
 
         ListView listView = vista.findViewById(R.id.lv_lista);
         consultar();
-        
+
         return vista;
     }
 
@@ -120,7 +92,7 @@ public class HistorialAcademico extends Fragment
     }
 
 
-    ArrayList<String> opciones;
+    private ArrayList<String> opciones;
 
     @Override
     public void onSuccess(String response) {
@@ -141,7 +113,9 @@ public class HistorialAcademico extends Fragment
                     opciones = new ArrayList<>();
 
                     for (EntityMap obj : listaEstudiantes) {
-                        opciones.add( "Estud: " + obj.getNOMBRES() + " - puntos: " + obj.getSCORE());
+                        String datosPer = "Estud: " + obj.getNOMBRES() + " - puntos: " + obj.getSCORE() + "\n";
+                        String juego = obj.getNOMBRE_JUEGO() + "\n";
+                        opciones.add(datosPer + juego);
                     }
 
                     llenarInf(opciones);

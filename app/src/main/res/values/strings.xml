@@ -21,6 +21,7 @@
         <item name="it_0">DATOS PERSONALES</item>
         <item name="it_1">MIS CURSOS</item>
         <item name="it_2">HISTORIAL ACADÉMICO</item>
+        <item name="it_2">MENÚ PRINCIPAL</item>
         <item name="it_2">SALIR</item>
     </string-array>
 
@@ -38,10 +39,18 @@
 
     <string-array name="li_opciones_aprendizaje_prof">
         <item name="it_2">MATERIAL ESTUDIO</item>
-        <item name="it_0">ASIGNACIONES</item>
+        <item name="it_0">CREAR ASIGNACIONES</item>
+        <item name="it_0">VER ASIGNACIONES</item>
     </string-array>
 
     <string-array name="li_opciones_perfil_prof">
+        <item name="it_0">DATOS PERSONALES</item>
+        <item name="it_1">MIS CURSOS</item>
+        <item name="it_1">HISTORIAL ACÁDEMICO</item>
+        <item name="it_2">SALIR</item>
+    </string-array>
+
+    <string-array name="li_opciones_perfil_juego">
         <item name="it_0">DATOS PERSONALES</item>
         <item name="it_1">MIS CURSOS</item>
         <item name="it_2">SALIR</item>
@@ -54,6 +63,22 @@
     <string-array name="li_opciones_admin">
         <item name="it_1">CREAR USUARIOS</item>
         <item name="it_2">SALIR</item>
+    </string-array>
+
+
+    <string-array name="li_op_juego1">
+        <item name="it_chat">Dibujo Varios</item>
+        <item name="it_chat">Dibujo Letras</item>
+    </string-array>
+
+    <string-array name="li_op_juego2">
+        <item name="it_chat">Palabra mal escrita en la frase</item>
+        <item name="it_chat">Palabra Correcta</item>
+    </string-array>
+
+    <string-array name="li_op_juego4">
+        <item name="it_chat">Cuentos preguntas</item>
+        <item name="it_chat">Cuentos palabras mal escritas</item>
     </string-array>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -79,7 +104,7 @@
     <string name="btn_ingresar">Ingresar</string>
     <string name="btn_cancelar">Cancelar</string>
 
-    <string name="lbl_title">Oto Game</string>
+    <string name="lbl_title">Easy Learning DIS</string>
     <string name="lbl_mensaje_principal">Elige tu perfil para ingresar al sistema</string>
 
     <string name="item_nosotros">Acerca de nosotros</string>

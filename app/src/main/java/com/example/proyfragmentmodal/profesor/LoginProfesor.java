@@ -2,6 +2,7 @@ package com.example.proyfragmentmodal.profesor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class LoginProfesor extends AppCompatActivity
     TextView lblOlvido;
     Button btnIngresar;
     Button btnCancelar;
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,8 @@ public class LoginProfesor extends AppCompatActivity
         lblOlvido = findViewById(R.id.lbl_olvido_profe);
         btnCancelar = findViewById(R.id.btn_cancelar_prof);
         btnIngresar = findViewById(R.id.btn_ingresar_prof);
+
+        progressDialog = new ProgressDialog(this);
 
         // aquí se coloca los eventos.
         btnCancelar.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +64,9 @@ public class LoginProfesor extends AppCompatActivity
                 //solo prueba de recyclerview
                 //  startActivity(new Intent(view.getContext(), RecyclerViewLista.class));
 
+                progressDialog.setMessage("Cargando...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
 
                 vista = view;
                 Map<String, String> params = new HashMap<>();
@@ -84,6 +90,7 @@ public class LoginProfesor extends AppCompatActivity
 
     @Override
     public void onSuccess(String response) {
+        progressDialog.dismiss();
         Log.d("Response==========>  ", response);
 
         Respuesta data = gson.fromJson(response, Respuesta.class);
@@ -125,6 +132,7 @@ public class LoginProfesor extends AppCompatActivity
 
     @Override
     public void onError(VolleyError error) {
+        progressDialog.dismiss();
         Log.d("Error:  ", error.toString());
         Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }

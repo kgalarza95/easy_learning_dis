@@ -52,7 +52,7 @@ public class ListAdapterScore extends
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_participante, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_gen, parent, false);
         }
 
         // ListItem item = items.get(position);

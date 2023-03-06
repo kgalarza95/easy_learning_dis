@@ -63,6 +63,10 @@ public class IDaoService {
         clienteRestUTF8(URL + "crud_asignaciones.php", params, callback);
     }
 
+    public void manejoImagenes(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRestUTF8(URL + "manejo_imagen.php", params, callback);
+    }
+
     private void clienteRest(String URL,
                              final Map<String, String> params, final DAOCallbackServicio callback){
         Log.i("URL:        ",URL);

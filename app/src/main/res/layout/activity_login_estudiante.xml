@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bosque_libro"
+    android:background="@drawable/fond_disl"
     tools:context=".estudiante.LoginEstudiante">
 
 
@@ -24,6 +24,7 @@
         android:layout_width="158dp"
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         android:text="@string/txt_olvido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.897"

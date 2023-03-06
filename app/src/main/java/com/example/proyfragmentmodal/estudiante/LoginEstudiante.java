@@ -2,6 +2,7 @@ package com.example.proyfragmentmodal.estudiante;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
     Button btnIngresar;
     Button btnCancelar;
     View vista;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
         lblOlvido = findViewById(R.id.lbl_olvido);
         btnCancelar = findViewById(R.id.btn_cancelar_est);
         btnIngresar = findViewById(R.id.btn_ingresar_est);
+
+        progressDialog = new ProgressDialog(this);
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +63,9 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
                 //DaoService daoAccess = new DaoService(LoginEstudiante.this);
                 //String x = daoAccess.getLoginAccess(txtUsuario.getText().toString(), txtPass.getText().toString());
                 //String x = daoAccess.getLoginAccessSincronic(txtUsuario.getText().toString(), txtPass.getText().toString());
-
+                progressDialog.setMessage("Cargando...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 vista = view;
                 Map<String, String> params = new HashMap<>();
                 params.put("usuario", txtUsuario.getText().toString());
@@ -82,6 +88,7 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
 
     @Override
     public void onSuccess(String response) {
+        progressDialog.dismiss();
         Log.d("Response==========>  ", response);
 
         Respuesta data = gson.fromJson(response, Respuesta.class);
@@ -113,6 +120,7 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
 
     @Override
     public void onError(VolleyError error) {
+        progressDialog.dismiss();
         Log.d("Error:  ", error.toString());
         Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }

@@ -14,10 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.proyfragmentmodal.FragmentCuentos;
+import com.example.proyfragmentmodal.juego.PalabraCorrecta;
+import com.example.proyfragmentmodal.juego.PalabrasConBD;
+import com.example.proyfragmentmodal.juego.CuentosDos;
+import com.example.proyfragmentmodal.juego.DibujoGame;
+import com.example.proyfragmentmodal.juego.FragmentCuentos;
+import com.example.proyfragmentmodal.juego.FragmentDibujoLetras;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
+import com.example.proyfragmentmodal.juego.JuegoDos;
+import com.example.proyfragmentmodal.juego.JuegoUno;
+import com.example.proyfragmentmodal.juego.UsoDeLaH;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 
 public class MenuJuego extends Fragment {
@@ -45,59 +53,155 @@ public class MenuJuego extends Fragment {
                              Bundle savedInstanceState) {
         vista = inflater.inflate(R.layout.fragment_menu_juego, container, false);
 
+        // juego de letras.
         vista.findViewById(R.id.btn_game1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                //remplazar fragmento actual con el nuevo indicado en el contenedor
-                miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoUno());
-                miTrnsaccion.commit();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Lista de Opciones")
+                        .setItems(R.array.li_op_juego1, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                switch (which) {
+                                    case 0: // juego uno
+                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoUno());
+                                        miTrnsaccion.commit();
+                                        break;
+                                    case 1://uso de la ha
+                                        FragmentManager useH = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction frmH = useH.beginTransaction();
+                                        //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
+                                        frmH.replace(R.id.contenedor_fragment, new UsoDeLaH());
+                                        frmH.commit();
+                                        break;
+                                    case 2://uso de la bd
+                                        FragmentManager useBD = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction frmBD = useBD.beginTransaction();
+                                        //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
+                                        frmBD.replace(R.id.contenedor_fragment, new PalabrasConBD());
+                                        frmBD.commit();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 
+        // juego de  frases y encontrar la palabra
         vista.findViewById(R.id.btn_game2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                //remplazar fragmento actual con el nuevo indicado en el contenedor
-                miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoDos());
-                miTrnsaccion.commit();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Lista de Opciones")
+                        .setItems(R.array.li_op_juego2, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                switch (which) {
+                                    case 0: // juego dos palabra mla escrita en frase
+                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoDos());
+                                        miTrnsaccion.commit();
+                                        break;
+                                    case 1://juego dos
+                                        FragmentManager miManejadorP = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsac = miManejadorP.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsac.replace(R.id.contenedor_fragment, new PalabraCorrecta());
+                                        miTrnsac.commit();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
             }
         });
 
+        //juego de dibujos
         vista.findViewById(R.id.btn_game3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
-                miTrnsaccion.commit();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Lista de Opciones")
+                        .setItems(R.array.li_op_juego1, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                switch (which) {
+                                    case 0: // Dibujo Game
+                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
+                                        miTrnsaccion.commit();
+                                        break;
+                                    case 1://Dibujo letras
+                                        FragmentManager miManejadorL = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miManejadorX = miManejadorL.beginTransaction();
+
+                                        //miTrnsaccion.replace(R.id.contenedor_fragment, new FragmentCuentos());
+                                        miManejadorX.replace(R.id.contenedor_fragment, new FragmentDibujoLetras());
+                                        miManejadorX.commit();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
             }
         });
 
+        //juego cuentos
         vista.findViewById(R.id.btn_game4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Lista de Opciones")
+                        .setItems(R.array.li_op_juego4, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
 
+                                switch (which) {
+                                    case 0: // Dibujo Game
+                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new FragmentCuentos());
+                                        miTrnsaccion.commit();
+                                        break;
+                                    case 1://Dibujo letras
+                                        FragmentManager miManejador2 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion2 = miManejador2.beginTransaction();
+                                        miTrnsaccion2.replace(R.id.contenedor_fragment, new CuentosDos());
+                                        miTrnsaccion2.commit();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        });
 
-                //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
-                miTrnsaccion.replace(R.id.contenedor_fragment, new UsoDeLaH());
-                miTrnsaccion.commit();
-            }
-        });
-
-        vista.findViewById(R.id.btn_game5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-
-                miTrnsaccion.replace(R.id.contenedor_fragment, new FragmentCuentos());
-                miTrnsaccion.commit();
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -106,7 +210,7 @@ public class MenuJuego extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Lista de Opciones")
-                        .setItems(R.array.li_opciones_perfil_prof, new DialogInterface.OnClickListener() {
+                        .setItems(R.array.li_opciones_perfil_juego, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {

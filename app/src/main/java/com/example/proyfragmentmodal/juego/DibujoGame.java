@@ -1,7 +1,9 @@
-package com.example.proyfragmentmodal.estudiante;
+package com.example.proyfragmentmodal.juego;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.util.CustomView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +83,18 @@ public class DibujoGame extends Fragment {
 
         btnNext = vista.findViewById(R.id.btn_next);
         FrameLayout fragmentVentana = vista.findViewById(R.id.vista_draw);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Información");
+        builder.setMessage("Dibuja sobre las líneas.");
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
+
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

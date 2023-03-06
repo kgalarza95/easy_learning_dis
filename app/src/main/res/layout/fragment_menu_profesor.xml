@@ -37,7 +37,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -61,8 +61,8 @@
             </TextView>
         </LinearLayout>
 
-       <!-- <Space
-            android:layout_width="50dp"
+        <Space
+            android:layout_width="25dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -84,10 +84,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Notificaciones"></TextView>
-        </LinearLayout>-->
+        </LinearLayout>
 
         <Space
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout

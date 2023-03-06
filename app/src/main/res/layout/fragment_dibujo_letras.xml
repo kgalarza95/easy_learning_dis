@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".juego.FragmentDibujoLetras"
+    android:id="@+id/vista_dibujo_img">
+
+<!--    <com.example.proyfragmentmodal.juego.DibujoMove
+        android:id="@+id/vista_dibujo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+
+    <com.example.proyfragmentmodal.util.CustomView
+        android:id="@+id/customView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center">
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:text="Limpiar"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Siguiente"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+
+</FrameLayout>

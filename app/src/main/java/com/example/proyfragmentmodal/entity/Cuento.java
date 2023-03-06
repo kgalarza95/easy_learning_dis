@@ -26,6 +26,15 @@ public class Cuento {
         this.opCorrecta2 = opCorrecta2;
     }
 
+    public Cuento(String pregunta1, String op1, String opCorrecta, String pregunta2, String op2_1, String opCorrecta2) {
+        this.pregunta1 = pregunta1;
+        this.op1 = op1;
+        this.opCorrecta = opCorrecta;
+        this.pregunta2 = pregunta2;
+        this.op2_1 = op2_1;
+        this.opCorrecta2 = opCorrecta2;
+    }
+
     public String getPregunta1() {
         return pregunta1;
     }

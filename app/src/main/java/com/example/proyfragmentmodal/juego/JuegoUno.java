@@ -1,10 +1,12 @@
-package com.example.proyfragmentmodal.estudiante;
+package com.example.proyfragmentmodal.juego;
 
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -118,7 +120,19 @@ public class JuegoUno extends Fragment
 
         //milliseconds = 60000; // 60 segundos
         milliseconds = miliSegundos; // 60 segundos
-        startTimer(milliseconds);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Información");
+        builder.setMessage("Identifica que letra copmpleta la palabra");
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startTimer(milliseconds);
+
+            }
+        });
+        builder.show();
+
 
         txtPalabra = vista.findViewById(R.id.txt_palabra);
         txtScore = vista.findViewById(R.id.txt_score);
@@ -361,6 +375,7 @@ public class JuegoUno extends Fragment
         params.put("opcion", opcion);
         params.put("id_usuario", String.valueOf(GlobalAplicacion.getGlobalIdUsuario()));
         params.put("score", txtScore.getText().toString());
+        params.put("id_juego", String.valueOf(1));
 
         Log.i("Parametros ================================> ", String.valueOf(params));
         IDaoService dao = new IDaoService(getActivity());

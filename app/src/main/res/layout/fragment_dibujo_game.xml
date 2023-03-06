@@ -16,7 +16,7 @@
         android:textSize="120sp" />-->
 
 
-    <com.example.proyfragmentmodal.estudiante.CustomView
+    <com.example.proyfragmentmodal.util.CustomView
         android:id="@+id/customView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

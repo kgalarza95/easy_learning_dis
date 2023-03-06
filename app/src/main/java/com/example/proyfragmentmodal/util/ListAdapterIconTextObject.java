@@ -97,46 +97,50 @@ public class ListAdapterIconTextObject
 
     @Override
     public void onSuccess(String response) {
-        Log.i("response============>:  ", response);
-        Respuesta data = gson.fromJson(response, Respuesta.class);
-
-        if (data.getCodResponse().equals("00")) {
-            try {
-                Log.d("data:  ", (String) data.getData());
-                String base64String = (String) data.getData(); // Cadena de texto en base64
-                byte[] dataB64 = Base64.decode(base64String, Base64.DEFAULT); // Decodificar la cadena base64
-
-                //String filename = "archivo_123.pdf";
-                // Crear un archivo en el directorio de descargas del dispositivo
-                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
-
-                // Escribir los datos decodificados en el archivo
+        try {
 
 
-                fos = new FileOutputStream(file);
-                fos.write(dataB64);
-                fos.close();
+            progressDialog.dismiss();
+            Log.i("response============>:  ", response);
+            Respuesta data = gson.fromJson(response, Respuesta.class);
 
-                //showNotificationWithAttachment(context, file);
+            if (data.getCodResponse().equals("00")) {
+                try {
+                    Log.d("data:  ", (String) data.getData());
+                    String base64String = (String) data.getData(); // Cadena de texto en base64
+                    byte[] dataB64 = Base64.decode(base64String, Base64.DEFAULT); // Decodificar la cadena base64
 
-                // Primero, crea un canal de notificación
-                String channelId = "my_channel_id";
-                NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    NotificationChannel channel = new NotificationChannel(channelId, "My Channel Name", NotificationManager.IMPORTANCE_DEFAULT);
-                    notificationManager.createNotificationChannel(channel);
-                }
+                    //String filename = "archivo_123.pdf";
+                    // Crear un archivo en el directorio de descargas del dispositivo
+                    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
 
-                // Crea una notificación
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                        .setSmallIcon(R.drawable.ic_op1) // Icono de la notificación
-                        .setContentTitle("Notificación de Archivo Descargado") // Título de la notificación
-                        .setContentText("El archivo PDF se ha guardado en la carpeta de descargas") // Contenido de la notificación
-                        .setPriority(NotificationCompat.PRIORITY_HIGH) // Prioridad de la notificación
-                        .setAutoCancel(true); // Cancela la notificación al tocarla
+                    // Escribir los datos decodificados en el archivo
 
-                // Muestra la notificación
-                notificationManager.notify(/* ID de la notificación */ 1, builder.build());
+
+                    fos = new FileOutputStream(file);
+                    fos.write(dataB64);
+                    fos.close();
+
+                    //showNotificationWithAttachment(context, file);
+
+                    // Primero, crea un canal de notificación
+                    String channelId = "my_channel_id";
+                    NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        NotificationChannel channel = new NotificationChannel(channelId, "My Channel Name", NotificationManager.IMPORTANCE_DEFAULT);
+                        notificationManager.createNotificationChannel(channel);
+                    }
+
+                    // Crea una notificación
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
+                            .setSmallIcon(R.drawable.ic_op1) // Icono de la notificación
+                            .setContentTitle("Notificación de Archivo Descargado") // Título de la notificación
+                            .setContentText("El archivo PDF se ha guardado en la carpeta de descargas") // Contenido de la notificación
+                            .setPriority(NotificationCompat.PRIORITY_HIGH) // Prioridad de la notificación
+                            .setAutoCancel(true); // Cancela la notificación al tocarla
+
+                    // Muestra la notificación
+                    notificationManager.notify(/* ID de la notificación */ 1, builder.build());
 
           /*      // Show notification with progress bar
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
@@ -162,7 +166,7 @@ public class ListAdapterIconTextObject
                         .setOngoing(false);
                 notificationManager.notify(1, builder.build());*/
 
-                // Download the file using a background thread
+                    // Download the file using a background thread
                /* new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -197,25 +201,30 @@ public class ListAdapterIconTextObject
                     }
                 }).start();
 */
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            } else {
+                Toast.makeText(context, data.getMsjResponse(), Toast.LENGTH_SHORT).show();
             }
 
-
-        } else {
-            Toast.makeText(context, data.getMsjResponse(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
-        //apaagar barra de progreso
-        progressDialog.dismiss();
     }
 
     @Override
     public void onError(VolleyError error) {
-        Log.e("response============>:  ", String.valueOf(error));
+        try {
+            progressDialog.dismiss();
+            Log.e("response============>:  ", String.valueOf(error));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

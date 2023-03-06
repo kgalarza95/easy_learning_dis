@@ -30,14 +30,21 @@ public class EntityMap {
     private String OP4;
     private String OP_CORRECTA;
 
-    String  FRASE;
-    String  PALABRA_ERRADA;
-    String  PALABRA_CORRECTA;
+    private String  FRASE;
+    private String  PALABRA_ERRADA;
+    private String  PALABRA_CORRECTA;
 
-    String  TITULO;
-    String  INSTRUCCIONES;
-    String  FECHA_VENCIMIENTO;
-    String  SCORE;
+    private String  TITULO;
+    private String  INSTRUCCIONES;
+    private String  FECHA_VENCIMIENTO;
+    private String  SCORE;
+
+    private String  ID_JUEGO;
+    private String  NOMBRE_JUEGO;
+
+    private String  ENTREGA;
+    private String  FECHA_ENTREGA;
+    private String  CALIFICACION;
 
     public EntityMap() {
     }
@@ -286,5 +293,45 @@ public class EntityMap {
 
     public void setSCORE(String SCORE) {
         this.SCORE = SCORE;
+    }
+
+    public String getID_JUEGO() {
+        return ID_JUEGO;
+    }
+
+    public void setID_JUEGO(String ID_JUEGO) {
+        this.ID_JUEGO = ID_JUEGO;
+    }
+
+    public String getNOMBRE_JUEGO() {
+        return NOMBRE_JUEGO;
+    }
+
+    public void setNOMBRE_JUEGO(String NOMBRE_JUEGO) {
+        this.NOMBRE_JUEGO = NOMBRE_JUEGO;
+    }
+
+    public String getENTREGA() {
+        return ENTREGA;
+    }
+
+    public void setENTREGA(String ENTREGA) {
+        this.ENTREGA = ENTREGA;
+    }
+
+    public String getFECHA_ENTREGA() {
+        return FECHA_ENTREGA;
+    }
+
+    public void setFECHA_ENTREGA(String FECHA_ENTREGA) {
+        this.FECHA_ENTREGA = FECHA_ENTREGA;
+    }
+
+    public String getCALIFICACION() {
+        return CALIFICACION;
+    }
+
+    public void setCALIFICACION(String CALIFICACION) {
+        this.CALIFICACION = CALIFICACION;
     }
 }

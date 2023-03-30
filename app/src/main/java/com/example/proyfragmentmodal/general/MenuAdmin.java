@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.profesor.ParticipantesFragm;
 
 
 public class MenuAdmin extends Fragment {
@@ -40,6 +41,36 @@ public class MenuAdmin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_menu_admin, container, false);
+
+        //boton comunicacion
+        vista.findViewById(R.id.btn_mn_comunicacion).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Lista de Opciones")
+                        .setItems(R.array.li_opciones_comunicacion_prof, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                switch (which) {
+                                    case 0: // Chat
+                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new ParticipantesFragm(true));
+                                        miTrnsaccion.commit();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
+        });
+
         //boton perfil
         vista.findViewById(R.id.btn_mn_perfil_).setOnClickListener(new View.OnClickListener() {
             @Override

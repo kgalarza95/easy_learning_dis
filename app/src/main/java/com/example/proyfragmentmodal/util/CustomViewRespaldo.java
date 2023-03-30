@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-public class CustomView extends View {
+public class CustomViewRespaldo extends View {
 
     private Paint paint;
     private Path path;
@@ -34,7 +34,7 @@ public class CustomView extends View {
     //
     String action = "accion";
 
-    public CustomView(Context context, AttributeSet attrs) {
+    public CustomViewRespaldo(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint = new Paint();
         paint.setColor(Color.GREEN);

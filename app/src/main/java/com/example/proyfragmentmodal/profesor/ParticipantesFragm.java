@@ -46,8 +46,14 @@ public class ParticipantesFragm extends Fragment
     private View vistaG;
     private List<EntityMap> listaEstudiantes;
     private ProgressDialog progressDialog;
+    private boolean isAdmin = false;
 
     public ParticipantesFragm() {
+        isAdmin = false;
+    }
+
+    public ParticipantesFragm(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public static ParticipantesFragm newInstance(String param1, String param2) {
@@ -127,7 +133,11 @@ public class ParticipantesFragm extends Fragment
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        opcion = "CE";//CONSULTA MENSAJES
+        if (this.isAdmin) {
+            opcion = "CP";//CONSULTA MENSAJES PARA PROFESORES
+        } else {
+            opcion = "CE";//CONSULTA MENSAJES
+        }
 
         Map<String, String> params = new HashMap<>();
         params.put("opcion", opcion);
@@ -170,7 +180,7 @@ public class ParticipantesFragm extends Fragment
             Log.d("Respuesta:  ", response);
             Respuesta data = gson.fromJson(response, Respuesta.class);
             if (data.getCodResponse().equals("00")) {
-                if (opcion.equals("CE")) {
+                if (opcion.equals("CE") || opcion.equals("CP")) {
                     String json = gson.toJson(data.getData());
                     Type listType = new TypeToken<List<EntityMap>>() {
                     }.getType();

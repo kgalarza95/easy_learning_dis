@@ -21,7 +21,7 @@ import java.util.Map;
 public class IDaoService {
 
     //static String URL = "http://servidor.local//php_api_dislexia/";
-    static String URL = "http://192.168.1.46/php_api_dislexia/";
+    static String URL = "http://192.168.1.48/php_api_dislexia/";
     //static String URL = "http://192.168.100.75/php_api_dislexia/";
     private Context context;
 
@@ -56,9 +56,11 @@ public class IDaoService {
     public void apiMensajes(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRestUTF8(URL + "api_mensajes.php", params, callback);
     }
+
     public void apiJuegos(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRestUTF8(URL + "api_juegos.php", params, callback);
     }
+
     public void crudAsignacion(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRestUTF8(URL + "crud_asignaciones.php", params, callback);
     }
@@ -68,8 +70,8 @@ public class IDaoService {
     }
 
     private void clienteRest(String URL,
-                             final Map<String, String> params, final DAOCallbackServicio callback){
-        Log.i("URL:        ",URL);
+                             final Map<String, String> params, final DAOCallbackServicio callback) {
+        Log.i("URL:        ", URL);
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
@@ -96,8 +98,9 @@ public class IDaoService {
     }
 
     private void clienteRestUTF8(String URL,
-                             final Map<String, String> params, final DAOCallbackServicio callback){
-        Log.i("URL:        ",URL);
+                                 final Map<String, String> params,
+                                 final DAOCallbackServicio callback) {
+        Log.i("URL:        ", URL);
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
@@ -143,6 +146,7 @@ public class IDaoService {
     //interfaz interna para utilizar los métodos con la data.
     public interface DAOCallbackServicio {
         void onSuccess(String response);
+
         void onError(VolleyError error);
     }
 

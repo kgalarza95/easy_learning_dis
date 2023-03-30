@@ -15,7 +15,32 @@
         android:weightSum="1">
 
         <Space
-            android:layout_width="300dp"
+            android:layout_width="150dp"
+            android:layout_height="1dp"></Space>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_comunicacion"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="Linterna"
+                android:src="@drawable/comunicacion_48"
+                android:tooltipText="linterna"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comunicación">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="50dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout

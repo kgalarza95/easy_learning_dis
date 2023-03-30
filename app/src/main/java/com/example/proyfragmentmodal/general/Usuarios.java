@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -41,8 +42,10 @@ public class Usuarios extends Fragment
     RadioButton rbFemenino;
     CheckBox chSolicitarPass;
     Button btnGuardar;
+    Button btnBuscarCedula;
     View vista;
     Spinner spTiposUsuarios;
+    TextView txtMensaje;
 
     private String opcion;
 
@@ -80,9 +83,11 @@ public class Usuarios extends Fragment
         rbFemenino = vista.findViewById(R.id.rd_femenino);
         chSolicitarPass = vista.findViewById(R.id.checkBox);
         btnGuardar = vista.findViewById(R.id.btn_save_user);
+        btnBuscarCedula = vista.findViewById(R.id.btn_buscar_cedula);
+        txtMensaje = (TextView) vista.findViewById(R.id.lbl_inf);
 
         //Declrar componentes
-         spTiposUsuarios = vista.findViewById(R.id.sp_usuarios);
+        spTiposUsuarios = vista.findViewById(R.id.sp_usuarios);
         //Adaptador con layout por defecto
         ArrayAdapter<CharSequence> adaptador = ArrayAdapter.createFromResource(getActivity(), R.array.strs_tip_users,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
@@ -125,6 +130,28 @@ public class Usuarios extends Fragment
             }
         });
 
+        btnBuscarCedula.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map<String, String> params = new HashMap<>();
+
+                opcion = "CNC";
+                params.put("opcion", opcion);
+                params.put("solicitarPass", "N");
+                params.put("id_usuario", "");
+                params.put("nombres", txtNombres.getText().toString());
+                params.put("apellidos", txtApellidos.getText().toString());
+                params.put("edad", txtEdad.getText().toString());
+                params.put("usuario", txtUsuario.getText().toString());
+                params.put("contrasenia", txtPassword.getText().toString());
+                params.put("esMasculino", rbMasculino.isChecked() ? "M" : "F");
+                params.put("cedula", txtCedula.getText().toString());
+                params.put("rol", String.valueOf(spTiposUsuarios.getSelectedItemPosition() + 1));
+
+                IDaoService dao = new IDaoService(getActivity());
+                dao.crudUsuario(params, Usuarios.this);
+            }
+        });
 
         return vista;
     }
@@ -134,40 +161,44 @@ public class Usuarios extends Fragment
 
     @Override
     public void onSuccess(String response) {
-        Log.d("Response==========>  ", response);
-        Respuesta data = gson.fromJson(response, Respuesta.class);
-        if (data.getCodResponse().equals("00")) {
-            if (opcion.equals("IN")) {
-                txtNombres.setText("");
-                txtApellidos.setText("");
-                txtEdad.setText("");
-                txtUsuario.setText("");
-                txtCedula.setText("");
-                txtPassword.setText("");
-            } else if (opcion.equals("CN")) {
+        try {
+            Log.d("Response==========>  ", response);
+            Respuesta data = gson.fromJson(response, Respuesta.class);
+            if (data.getCodResponse().equals("00")) {
+                if (opcion.equals("IN")) {
+                    txtNombres.setText("");
+                    txtApellidos.setText("");
+                    txtEdad.setText("");
+                    txtUsuario.setText("");
+                    txtCedula.setText("");
+                    txtPassword.setText("");
+                } else if (opcion.equals("CN") || opcion.equals("CNC")) {
 
-                Map<String, Object> listFilas = (Map<String, Object>) data.getData();
+                    Map<String, Object> listFilas = (Map<String, Object>) data.getData();
 
-                txtNombres.setText((String) listFilas.get("NOMBRES"));
-                txtApellidos.setText((String) listFilas.get("APELLIDOS"));
-                txtEdad.setText(String.valueOf((String)  listFilas.get("EDAD")));
-                txtUsuario.setText((String) listFilas.get("USUARIO"));
-                txtCedula.setText((String) listFilas.get("CEDULA"));
-                //txtPassword.setText((String) "");
-                spTiposUsuarios.setSelection(Integer.parseInt((String) listFilas.get("ID_ROL"))-1);
+                    txtNombres.setText((String) listFilas.get("NOMBRES"));
+                    txtApellidos.setText((String) listFilas.get("APELLIDOS"));
+                    txtEdad.setText(String.valueOf((String) listFilas.get("EDAD")));
+                    txtUsuario.setText((String) listFilas.get("USUARIO"));
+                    txtCedula.setText((String) listFilas.get("CEDULA"));
+                    //txtPassword.setText((String) "");
+                    spTiposUsuarios.setSelection(Integer.parseInt((String) listFilas.get("ID_ROL")) - 1);
 
-                if (listFilas.get("SEXO").equals("M")){
-                    rbMasculino.setChecked(true);
-                }else{
-                    rbFemenino.setChecked(true);
+                    if (listFilas.get("SEXO").equals("M")) {
+                        rbMasculino.setChecked(true);
+                    } else {
+                        rbFemenino.setChecked(true);
+                    }
                 }
+
+                Toast.makeText(getActivity(), "TRANSACCIÓN OK", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "NO SE PROCESARON LOS DATOS", Toast.LENGTH_SHORT).show();
             }
-
-
-            Toast.makeText(getActivity(), "TRANSACCIÓN OK", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), "NO SE PROCESRON LOS DATOS", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("Error local", e.toString());
         }
+
     }
 
     @Override
@@ -179,16 +210,22 @@ public class Usuarios extends Fragment
     public void origenPantallaConfig() {
         if (this.origeenLlamadaPagina == 0) {//admin
             chSolicitarPass.setVisibility(View.VISIBLE);
+            btnBuscarCedula.setVisibility(View.VISIBLE);
+            txtMensaje.setVisibility(View.VISIBLE);
+            spTiposUsuarios.setVisibility(View.VISIBLE);
             btnGuardar.setText("GUARDAR");
         } else { // otra
             chSolicitarPass.setVisibility(View.GONE);
+            btnBuscarCedula.setVisibility(View.GONE);
+            txtMensaje.setVisibility(View.GONE);
+            spTiposUsuarios.setVisibility(View.GONE);
             btnGuardar.setText("ACTUALIZAR");
             Log.d(" llega passss ==========>  ", String.valueOf(GlobalAplicacion.getGlobalPassword()));
             txtPassword.setText(String.valueOf(GlobalAplicacion.getGlobalPassword()));
         }
     }
 
-    public void initConsDtos(){
+    public void initConsDtos() {
         Map<String, String> params = new HashMap<>();
         GlobalAplicacion global = new GlobalAplicacion();
 
@@ -199,7 +236,7 @@ public class Usuarios extends Fragment
             params.put("solicitarPass", "N");
             params.put("id_usuario", String.valueOf(global.getGlobalIdUsuario()));
             params.put("nombres", "");
-            params.put("apellidos","");
+            params.put("apellidos", "");
             params.put("edad", "");
             params.put("usuario", "");
             params.put("contrasenia", "");

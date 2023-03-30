@@ -20,11 +20,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/lbl_inf"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Llene los campos para agregar un nuevo usuario o busque uno existente por cédula.">
+
+        </TextView>
 
         <Spinner
             android:id="@+id/sp_usuarios"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_margin="5dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -38,7 +45,15 @@
                 android:layout_height="wrap_content"
                 android:hint="Cédula"
                 android:inputType="number" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_buscar_cedula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Buscar" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -136,6 +151,7 @@
             android:id="@+id/btn_save_user"
             android:layout_width="274dp"
             android:layout_height="49dp"
+            android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:background="@drawable/btn_login"
             android:text="@string/btn_guardar"

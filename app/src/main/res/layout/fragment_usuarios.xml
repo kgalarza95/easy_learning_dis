@@ -48,12 +48,24 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btn_buscar_cedula"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="Buscar" />
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:gravity="right">
+            <Button
+                android:id="@+id/btn_limpiar_full"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:text="Limpiar" />
+
+            <Button
+                android:id="@+id/btn_buscar_cedula"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar" />
+        </LinearLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -154,6 +166,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:background="@drawable/btn_login"
+            android:elevation="4dp"
+
             android:text="@string/btn_guardar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"

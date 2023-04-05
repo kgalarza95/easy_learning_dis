@@ -16,6 +16,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.Map;
 
 public class IDaoService {
@@ -125,10 +126,11 @@ public class IDaoService {
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
                 try {
+                    //Log.i("conversión-original", new String(response.data));
                     // Obtiene la cadena de bytes de la respuesta HTTP
                     String charset = HttpHeaderParser.parseCharset(response.headers, "UTF-8");
                     String jsonString = new String(response.data, charset);
-
+                    //Log.i("conversión-convert", jsonString);
                     // Devuelve la cadena de caracteres utilizando la codificación adecuada
                     return Response.success(jsonString, HttpHeaderParser.parseCacheHeaders(response));
                 } catch (UnsupportedEncodingException e) {

@@ -24,6 +24,7 @@ import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +47,7 @@ public class Usuarios extends Fragment
     View vista;
     Spinner spTiposUsuarios;
     TextView txtMensaje;
-
+    Button btnLimpiar;
     private String opcion;
 
     public Usuarios() {
@@ -85,7 +86,7 @@ public class Usuarios extends Fragment
         btnGuardar = vista.findViewById(R.id.btn_save_user);
         btnBuscarCedula = vista.findViewById(R.id.btn_buscar_cedula);
         txtMensaje = (TextView) vista.findViewById(R.id.lbl_inf);
-
+        btnLimpiar = vista.findViewById(R.id.btn_limpiar_full);
         //Declrar componentes
         spTiposUsuarios = vista.findViewById(R.id.sp_usuarios);
         //Adaptador con layout por defecto
@@ -98,6 +99,7 @@ public class Usuarios extends Fragment
 
         origenPantallaConfig();
         initConsDtos();
+        clearButtons();
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,11 +155,18 @@ public class Usuarios extends Fragment
             }
         });
 
+        btnLimpiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearButtons();
+            }
+        });
         return vista;
     }
 
     Gson gson = new Gson();
     GlobalAplicacion global = new GlobalAplicacion();
+
 
     @Override
     public void onSuccess(String response) {
@@ -166,12 +175,8 @@ public class Usuarios extends Fragment
             Respuesta data = gson.fromJson(response, Respuesta.class);
             if (data.getCodResponse().equals("00")) {
                 if (opcion.equals("IN")) {
-                    txtNombres.setText("");
-                    txtApellidos.setText("");
-                    txtEdad.setText("");
-                    txtUsuario.setText("");
-                    txtCedula.setText("");
-                    txtPassword.setText("");
+                    clearButtons();
+
                 } else if (opcion.equals("CN") || opcion.equals("CNC")) {
 
                     Map<String, Object> listFilas = (Map<String, Object>) data.getData();
@@ -192,7 +197,10 @@ public class Usuarios extends Fragment
                 }
 
                 Toast.makeText(getActivity(), "TRANSACCIÓN OK", Toast.LENGTH_SHORT).show();
+            } else if (data.getCodResponse().equals("02")) {
+                Toast.makeText(getActivity(), data.getMsjResponse(), Toast.LENGTH_SHORT).show();
             } else {
+
                 Toast.makeText(getActivity(), "NO SE PROCESARON LOS DATOS", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
@@ -213,12 +221,18 @@ public class Usuarios extends Fragment
             btnBuscarCedula.setVisibility(View.VISIBLE);
             txtMensaje.setVisibility(View.VISIBLE);
             spTiposUsuarios.setVisibility(View.VISIBLE);
+            txtUsuario.setVisibility(View.VISIBLE);
+            txtPassword.setVisibility(View.VISIBLE);
             btnGuardar.setText("GUARDAR");
+            btnLimpiar.setVisibility(View.VISIBLE);
         } else { // otra
             chSolicitarPass.setVisibility(View.GONE);
             btnBuscarCedula.setVisibility(View.GONE);
             txtMensaje.setVisibility(View.GONE);
             spTiposUsuarios.setVisibility(View.GONE);
+            txtUsuario.setVisibility(View.GONE);
+            txtPassword.setVisibility(View.GONE);
+            btnLimpiar.setVisibility(View.GONE);
             btnGuardar.setText("ACTUALIZAR");
             Log.d(" llega passss ==========>  ", String.valueOf(GlobalAplicacion.getGlobalPassword()));
             txtPassword.setText(String.valueOf(GlobalAplicacion.getGlobalPassword()));
@@ -250,5 +264,17 @@ public class Usuarios extends Fragment
 
     }
 
+
+    private void clearButtons() {
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtEdad.setText("");
+        txtUsuario.setText("");
+        txtCedula.setText("");
+        txtPassword.setText("");
+        spTiposUsuarios.setSelection(0);
+        chSolicitarPass.setChecked(true);
+        rbMasculino.setChecked(true);
+    }
 
 }

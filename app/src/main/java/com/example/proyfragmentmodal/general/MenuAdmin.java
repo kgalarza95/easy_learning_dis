@@ -80,15 +80,23 @@ public class MenuAdmin extends Fragment {
                         .setItems(R.array.li_opciones_admin, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                switch (which){
-                                    case  0:
+                                switch (which) {
+                                    case 0:
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios(0));
                                         miTrnsaccion.commit();
                                         break;
+
                                     case 1:
+                                        FragmentManager miManej = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsacc = miManej.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsacc.replace(R.id.contenedor_fragment, new Usuarios(2));
+                                        miTrnsacc.commit();
+                                        break;
+                                    case 2:
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:

@@ -63,6 +63,7 @@
 
     <string-array name="li_opciones_admin">
         <item name="it_1">CREAR USUARIOS</item>
+        <item name="it_3">ACTUALIZAR USUARIOS</item>
         <item name="it_2">SALIR</item>
     </string-array>
 

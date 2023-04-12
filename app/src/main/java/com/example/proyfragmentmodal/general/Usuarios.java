@@ -112,7 +112,13 @@ public class Usuarios extends Fragment
                     params.put("opcion", "IN");
                     params.put("solicitarPass", chSolicitarPass.isChecked() ? "S" : "N");
                     params.put("id_usuario", "0");
-                } else { // otra
+                } else if (origeenLlamadaPagina == 2) {//admin actualizar
+                    chSolicitarPass.setVisibility(View.VISIBLE);
+                    opcion = "AC";
+                    params.put("opcion", "AC");
+                    params.put("solicitarPass", chSolicitarPass.isChecked() ? "S" : "N");
+                    params.put("id_usuario", String.valueOf(idUsuarioBusq));
+                } else if (origeenLlamadaPagina == 1) { // otra estudiante o profesor de solo ver inf.
                     opcion = "AC";
                     params.put("opcion", "AC");
                     params.put("solicitarPass", "N");
@@ -127,6 +133,7 @@ public class Usuarios extends Fragment
                 params.put("cedula", txtCedula.getText().toString());
                 params.put("rol", String.valueOf(spTiposUsuarios.getSelectedItemPosition() + 1));
 
+                Log.i("parametros request==>",params.toString());
                 IDaoService dao = new IDaoService(getActivity());
                 dao.crudUsuario(params, Usuarios.this);
             }
@@ -166,7 +173,7 @@ public class Usuarios extends Fragment
 
     Gson gson = new Gson();
     GlobalAplicacion global = new GlobalAplicacion();
-
+    String idUsuarioBusq;
 
     @Override
     public void onSuccess(String response) {
@@ -180,7 +187,7 @@ public class Usuarios extends Fragment
                 } else if (opcion.equals("CN") || opcion.equals("CNC")) {
 
                     Map<String, Object> listFilas = (Map<String, Object>) data.getData();
-
+                    idUsuarioBusq =  listFilas.get("ID").toString();
                     txtNombres.setText((String) listFilas.get("NOMBRES"));
                     txtApellidos.setText((String) listFilas.get("APELLIDOS"));
                     txtEdad.setText(String.valueOf((String) listFilas.get("EDAD")));
@@ -188,6 +195,10 @@ public class Usuarios extends Fragment
                     txtCedula.setText((String) listFilas.get("CEDULA"));
                     //txtPassword.setText((String) "");
                     spTiposUsuarios.setSelection(Integer.parseInt((String) listFilas.get("ID_ROL")) - 1);
+
+                    if (opcion.equals("CNC")){
+                       // txtPassword.setText((String) listFilas.get("CEDULA"));
+                    }
 
                     if (listFilas.get("SEXO").equals("M")) {
                         rbMasculino.setChecked(true);
@@ -218,12 +229,21 @@ public class Usuarios extends Fragment
     public void origenPantallaConfig() {
         if (this.origeenLlamadaPagina == 0) {//admin
             chSolicitarPass.setVisibility(View.VISIBLE);
-            btnBuscarCedula.setVisibility(View.VISIBLE);
-            txtMensaje.setVisibility(View.VISIBLE);
+            btnBuscarCedula.setVisibility(View.GONE);
+            txtMensaje.setVisibility(View.GONE);
             spTiposUsuarios.setVisibility(View.VISIBLE);
             txtUsuario.setVisibility(View.VISIBLE);
             txtPassword.setVisibility(View.VISIBLE);
             btnGuardar.setText("GUARDAR");
+            btnLimpiar.setVisibility(View.GONE);
+        } else if (this.origeenLlamadaPagina == 2) {//admin actualizar
+            btnGuardar.setText("ACTUALIZAR");
+            chSolicitarPass.setVisibility(View.VISIBLE);
+            btnBuscarCedula.setVisibility(View.VISIBLE);
+            txtMensaje.setVisibility(View.GONE);
+            spTiposUsuarios.setVisibility(View.VISIBLE);
+            txtUsuario.setVisibility(View.VISIBLE);
+            txtPassword.setVisibility(View.VISIBLE);
             btnLimpiar.setVisibility(View.VISIBLE);
         } else { // otra
             chSolicitarPass.setVisibility(View.GONE);

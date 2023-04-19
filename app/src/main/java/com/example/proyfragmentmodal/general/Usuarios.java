@@ -197,7 +197,7 @@ public class Usuarios extends Fragment
                     spTiposUsuarios.setSelection(Integer.parseInt((String) listFilas.get("ID_ROL")) - 1);
 
                     if (opcion.equals("CNC")){
-                       // txtPassword.setText((String) listFilas.get("CEDULA"));
+                        txtPassword.setText((String) listFilas.get("CONTRASENIA"));
                     }
 
                     if (listFilas.get("SEXO").equals("M")) {
@@ -283,7 +283,6 @@ public class Usuarios extends Fragment
         }
 
     }
-
 
     private void clearButtons() {
         txtNombres.setText("");

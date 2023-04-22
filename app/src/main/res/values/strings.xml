@@ -83,6 +83,11 @@
         <item name="it_chat">Cuentos palabras mal escritas</item>
     </string-array>
 
+    <string-array name="li_optiones_crud">
+        <item name="it_chat">Descargar Archivo</item>
+        <item name="it_chat">Eliminar Archivo</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Nombre de la Escuela</string>

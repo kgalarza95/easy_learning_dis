@@ -11,12 +11,22 @@
     app:cardCornerRadius="20dp"
     app:cardElevation="5dp"
 
+    android:longClickable="true"
+
     app:cardUseCompatPadding="true">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="389dp"
         android:layout_height="157dp">
+
+        <EditText
+            android:id="@+id/txt_gone_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_titulo_cr"

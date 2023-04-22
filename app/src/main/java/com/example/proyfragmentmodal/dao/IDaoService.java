@@ -22,8 +22,8 @@ import java.util.Map;
 public class IDaoService {
 
     //static String URL = "http://servidor.local//php_api_dislexia/";
-    static String URL = "http://192.168.1.48/php_api_dislexia/";
-    //static String URL = "http://192.168.100.75/php_api_dislexia/";
+    //static String URL = "http://192.168.1.48/php_api_dislexia/";//house 1
+    static String URL = "http://192.168.100.75/php_api_dislexia/";//house 2
     private Context context;
 
     public IDaoService(Context context) {
@@ -101,48 +101,53 @@ public class IDaoService {
     private void clienteRestUTF8(String URL,
                                  final Map<String, String> params,
                                  final DAOCallbackServicio callback) {
-        Log.i("URL:        ", URL);
-        RequestQueue queue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Procesar la respuesta aquí
-                        callback.onSuccess(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Procesar el error aquí
-                        callback.onError(error);
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                return params;
-            }
-
-            @Override
-            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                try {
-                    //Log.i("conversión-original", new String(response.data));
-                    // Obtiene la cadena de bytes de la respuesta HTTP
-                    String charset = HttpHeaderParser.parseCharset(response.headers, "UTF-8");
-                    String jsonString = new String(response.data, charset);
-                    //Log.i("conversión-convert", jsonString);
-                    // Devuelve la cadena de caracteres utilizando la codificación adecuada
-                    return Response.success(jsonString, HttpHeaderParser.parseCacheHeaders(response));
-                } catch (UnsupportedEncodingException e) {
-                    // Manejo de errores
-                    Log.e(TAG, "Error de codificación de caracteres", e);
-                    return Response.error(new ParseError(e));
+        try {
+            Log.i("URL:        ", URL);
+            RequestQueue queue = Volley.newRequestQueue(context);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            // Procesar la respuesta aquí
+                            callback.onSuccess(response);
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // Procesar el error aquí
+                            callback.onError(error);
+                        }
+                    }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    return params;
                 }
-            }
 
-        };
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    try {
+                        //Log.i("conversión-original", new String(response.data));
+                        // Obtiene la cadena de bytes de la respuesta HTTP
+                        String charset = HttpHeaderParser.parseCharset(response.headers, "UTF-8");
+                        String jsonString = new String(response.data, charset);
+                        //Log.i("conversión-convert", jsonString);
+                        // Devuelve la cadena de caracteres utilizando la codificación adecuada
+                        return Response.success(jsonString, HttpHeaderParser.parseCacheHeaders(response));
+                    } catch (UnsupportedEncodingException e) {
+                        // Manejo de errores
+                        Log.e(TAG, "Error de codificación de caracteres", e);
+                        return Response.error(new ParseError(e));
+                    }
+                }
 
-        queue.add(stringRequest);
+            };
+
+            queue.add(stringRequest);
+        } catch (Exception e) {
+            Log.e("Error en cliente rest ", e.toString());
+        }
+
     }
 
     //interfaz interna para utilizar los métodos con la data.

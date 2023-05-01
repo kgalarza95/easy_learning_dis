@@ -71,14 +71,17 @@ public class ListAdapterIconTextObject
     public Context context;
     private Gson gson = new Gson();
     ProgressDialog progressDialog;
+    RecyclerView recyclerView;
+    private int origenLlamada = 0;
 
     public ListAdapterIconTextObject() {
     }
 
-    public ListAdapterIconTextObject(List<EntityMap> listUsuarios, Context context) {
+    public ListAdapterIconTextObject(List<EntityMap> listUsuarios, Context context,int origenLlamada) {
         this.listUsuarios = listUsuarios;
         this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
+        this.origenLlamada = origenLlamada;
     }
 
     @Override
@@ -114,7 +117,10 @@ public class ListAdapterIconTextObject
 
             if (data.getCodResponse().equals("00")) {
                 if (opcion.equalsIgnoreCase("EL")) {
-                    consultarPdfsPorCurso();
+                    //consultarPdfsPorCurso();
+                    listUsuarios.remove(objeElim);
+                    // Notifica al Adapter que el conjunto de datos ha cambiado
+                    notifyDataSetChanged();
                 } else if (opcion.equals("CN")) {
                     //  List<String> listFilas = (List<String>) data.getData();
                     String json = gson.toJson(data.getData());
@@ -125,8 +131,6 @@ public class ListAdapterIconTextObject
                     Log.d("Respuesta:  ", listaCursos.get(0).getRUTA());
                     Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
                     // init(listaCursos);
-
-                    initConsulta(listaCursos);
 
                 } else {
                     try {
@@ -278,20 +282,24 @@ public class ListAdapterIconTextObject
             manejoVista.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mostrarDialogOption(itemCv);
+                    if (origenLlamada != 0) {
+                        opcionDescarga(itemCv);
+                    }else{
+                        mostrarDialogOption(itemCv);
+                    }
                 }
             });
 
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 
-            manejoVista.setOnLongClickListener(new View.OnLongClickListener() {
+          /*  manejoVista.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     vibrator.vibrate(500);
                     mostrarDialogOption(itemCv);
                     return false;
                 }
-            });
+            });*/
         }
     }
 
@@ -420,7 +428,9 @@ public class ListAdapterIconTextObject
         dao.manejoPDF(params, ListAdapterIconTextObject.this);
     }
 
+    EntityMap objeElim;
     private void opcionEliminar(EntityMap itemCv) {
+        objeElim = itemCv;
         IDaoService dao = new IDaoService(context);
         opcion = "EL";
         params.put("opcion", opcion);
@@ -440,29 +450,5 @@ public class ListAdapterIconTextObject
 
     }
 
-    public void consultarPdfsPorCurso() {
-        try {
-            opcion = "CN";
-            params.put("opcion", opcion);
-            params.put("pdf", "");
-            params.put("nombre_pdf", "");
-            IDaoService dao = new IDaoService(context);
-            Log.i("send params:   ", params.toString());
-            dao.manejoPDF(params, ListAdapterIconTextObject.this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-    }
-
-    RecyclerView recyclerView;
-    public void initConsulta(List<EntityMap> litUsuarios) {
-        try {
-            ListAdapterIconTextObject listAdapter = new ListAdapterIconTextObject(litUsuarios, context);
-            recyclerView.setAdapter(listAdapter);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 }

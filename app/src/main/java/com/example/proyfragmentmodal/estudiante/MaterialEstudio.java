@@ -166,7 +166,7 @@ public class MaterialEstudio extends Fragment
 
     public void initConsulta(List<EntityMap> litUsuarios) {
         try {
-            ListAdapterIconTextObject listAdapter = new ListAdapterIconTextObject(litUsuarios, getActivity());
+            ListAdapterIconTextObject listAdapter = new ListAdapterIconTextObject(litUsuarios, getActivity(),origenLlamada);
             recyclerView.setAdapter(listAdapter);
         } catch (Exception e) {
             e.printStackTrace();

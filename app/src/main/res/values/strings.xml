@@ -40,7 +40,8 @@
     <string-array name="li_opciones_aprendizaje_prof">
         <item name="it_2">MATERIAL ESTUDIO</item>
         <item name="it_0">CREAR ASIGNACIONES</item>
-        <item name="it_0">VER ASIGNACIONES</item>
+        <item name="it_0">VER TODAS LAS ASIGNACIONES</item>
+        <item name="it_0">VER ASIGNACIONES ENTREGADAS</item>
         <item name="it_0">VER DIBUJOS</item>
     </string-array>
 

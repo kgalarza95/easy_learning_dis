@@ -16,9 +16,7 @@ import android.widget.Toast;
 
 import com.example.proyfragmentmodal.ParticipantesDibujo;
 import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.VerAsignaciones;
 import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
-import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 
@@ -101,14 +99,21 @@ public class MenuProfesor extends Fragment {
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new CrearAsignacion());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 2:
+                                    case 2://asiganciones NO ENTREGADAS
                                         FragmentManager miManejadorX = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccionX = miManejadorX.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccionX.replace(R.id.contenedor_fragment, new VerAsignaciones());
+                                        miTrnsaccionX.replace(R.id.contenedor_fragment, new VerAsignacionesNoEntregadas());
                                         miTrnsaccionX.commit();
                                         break;
-                                    case 3:
+                                    case 3://asiganciones  ENTREGADAS
+                                        FragmentManager miManejadorXx = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccionXx = miManejadorXx.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsaccionXx.replace(R.id.contenedor_fragment, new VerAsignacionesEntregadas());
+                                        miTrnsaccionXx.commit();
+                                        break;
+                                    case 4:
                                         FragmentManager verDi = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction myDib = verDi.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor

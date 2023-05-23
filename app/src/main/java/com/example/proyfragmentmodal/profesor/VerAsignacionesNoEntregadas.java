@@ -1,27 +1,24 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.profesor;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.VolleyError;
+import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
-import com.example.proyfragmentmodal.util.ListAdapterAsiganciones;
+import com.example.proyfragmentmodal.util.ListAdapterAsigancionesNoEntregada;
 import com.example.proyfragmentmodal.util.ListAdapterIconText;
-import com.example.proyfragmentmodal.util.ListAdapterIconTextObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -32,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class VerAsignaciones extends Fragment
+public class VerAsignacionesNoEntregadas extends Fragment
         implements IDaoService.DAOCallbackServicio {
 
     private String opcion = "";
@@ -42,11 +39,11 @@ public class VerAsignaciones extends Fragment
     private RecyclerView recyclerView;
     private View vista;
 
-    public VerAsignaciones() {
+    public VerAsignacionesNoEntregadas() {
     }
 
-    public static VerAsignaciones newInstance(String param1, String param2) {
-        VerAsignaciones fragment = new VerAsignaciones();
+    public static VerAsignacionesNoEntregadas newInstance(String param1, String param2) {
+        VerAsignacionesNoEntregadas fragment = new VerAsignacionesNoEntregadas();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -71,7 +68,7 @@ public class VerAsignaciones extends Fragment
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            consultarTareasPorEstudiante();
+            consultarAsignaciones();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,51 +78,23 @@ public class VerAsignaciones extends Fragment
     }
 
 
-    public void init(View vista) {
-        try {
-            List<String> litUsuarios = new ArrayList<>();
-            int i = 1;
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-            litUsuarios.add("nobre pdf_" + (i++) + ".pdf");
-
-
-            ListAdapterIconText listAdapter = new ListAdapterIconText(litUsuarios, getActivity());
-            RecyclerView recyclerView = (RecyclerView) vista.findViewById(R.id.rv_list_material_estudio);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(listAdapter);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-    public void consultarTareasPorEstudiante() {
+    public void consultarAsignaciones() {
         try {
             Map<String, String> params = new HashMap<>();
-            opcion = "CNA";
+            opcion = "CN_ASIGNACIONES";
             params.put("opcion", opcion);
-            params.put("xxx", "");
+            Log.i("Parametros envío:", String.valueOf(params));
             IDaoService dao = new IDaoService(getActivity());
-            dao.crudAsignacion(params, VerAsignaciones.this);
+            dao.crudAsignacionTodas(params, VerAsignacionesNoEntregadas.this);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    public void initConsulta(List<EntityMap> litUsuarios) {
+    public void llenarAdaptadorView(List<EntityMap> litUsuarios) {
         try {
-            ListAdapterAsiganciones listAdapter = new ListAdapterAsiganciones(litUsuarios, getActivity());
+            ListAdapterAsigancionesNoEntregada listAdapter = new ListAdapterAsigancionesNoEntregada(litUsuarios, getActivity());
             recyclerView.setAdapter(listAdapter);
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,7 +114,7 @@ public class VerAsignaciones extends Fragment
             Respuesta data = gson.fromJson(response, Respuesta.class);
 
             if (data.getCodResponse().equals("00")) {
-                if (opcion.equals("CNA")) {
+                if (opcion.equals("CN_ASIGNACIONES")) {
                     //  List<String> listFilas = (List<String>) data.getData();
                     String json = gson.toJson(data.getData());
                     Type listType = new TypeToken<List<EntityMap>>() {
@@ -153,10 +122,10 @@ public class VerAsignaciones extends Fragment
                     List<EntityMap> listaCursos = gson.fromJson(json, listType);
                     Log.d("Respuesta:  ", String.valueOf(listaCursos));
 
-                    initConsulta(listaCursos);
+                    llenarAdaptadorView(listaCursos);
 
                 } else if (opcion.equals("IN")) {
-                    consultarTareasPorEstudiante();
+                    consultarAsignaciones();
                 }
             } else {
                 Toast.makeText(getActivity(), data.getMsjResponse(), Toast.LENGTH_SHORT).show();

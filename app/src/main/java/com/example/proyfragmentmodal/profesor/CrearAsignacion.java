@@ -41,8 +41,7 @@ import java.util.Map;
  * Use the {@link CrearAsignacion#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CrearAsignacion extends Fragment
-        implements IDaoService.DAOCallbackServicio {
+public class CrearAsignacion extends Fragment implements IDaoService.DAOCallbackServicio {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -90,8 +89,7 @@ public class CrearAsignacion extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         vista = inflater.inflate(R.layout.fragment_crear_asignacion, container, false);
 
         spinnerCursos = vista.findViewById(R.id.spinner_cursos);
@@ -149,12 +147,14 @@ public class CrearAsignacion extends Fragment
         Respuesta data = gson.fromJson(response, Respuesta.class);
         if (data.getCodResponse().equals("00")) {
             if (opcion.equals("IN")) {
+                Toast.makeText(getActivity(), "TRANSACCIÓN OK", Toast.LENGTH_SHORT).show();
+
                 spinnerCursos.setSelection(0);
                 tituloAsignacion.setText("");
                 instrucciones.setText("");
                 fechaVencimiento.updateDate(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
             } else if (opcion.equals("CN")) {
-
+                // consulta de cursos
                 Map<String, Object> listFilas = (Map<String, Object>) data.getData();
 
                 spinnerCursos.setSelection(Integer.parseInt((String) listFilas.get("ID_CURSO")) - 1);
@@ -167,7 +167,7 @@ public class CrearAsignacion extends Fragment
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
                 fechaVencimiento.updateDate(year, month, day);
-            }else if (opcion.equals("CC")) {
+            } else if (opcion.equals("CC")) {
                 //  List<String> listFilas = (List<String>) data.getData();
                 String json = gson.toJson(data.getData());
                 Type listType = new TypeToken<List<EntityMap>>() {
@@ -180,7 +180,6 @@ public class CrearAsignacion extends Fragment
 
             }
 
-            Toast.makeText(getActivity(), "TRANSACCIÓN OK", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getActivity(), "NO SE PROCESARON LOS DATOS", Toast.LENGTH_SHORT).show();
         }

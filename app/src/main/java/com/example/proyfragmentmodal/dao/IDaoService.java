@@ -62,14 +62,17 @@ public class IDaoService {
         clienteRestUTF8(URL + "api_juegos.php", params, callback);
     }
 
-    public void crudAsignacion(final Map<String, String> params, final DAOCallbackServicio callback) {
-        clienteRestUTF8(URL + "crud_asignaciones.php", params, callback);
-    }
-
     public void manejoImagenes(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRestUTF8(URL + "manejo_imagen.php", params, callback);
     }
 
+    public void crudAsignacion(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRestUTF8(URL + "crud_asignaciones.php", params, callback);
+    }
+
+    public void crudAsignacionTodas(final Map<String, String> params, final DAOCallbackServicio callback) {
+        clienteRestUTF8(URL + "asignaciones_no_entregadas.php", params, callback);
+    }
     private void clienteRest(String URL,
                              final Map<String, String> params, final DAOCallbackServicio callback) {
         Log.i("URL:        ", URL);

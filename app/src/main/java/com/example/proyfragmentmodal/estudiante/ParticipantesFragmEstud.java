@@ -21,7 +21,7 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.util.ListAdapterParticipantes;
+import com.example.proyfragmentmodal.adapter.ListAdapterParticipantes;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

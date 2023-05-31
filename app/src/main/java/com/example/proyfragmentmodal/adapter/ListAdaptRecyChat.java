@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.util;
+package com.example.proyfragmentmodal.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

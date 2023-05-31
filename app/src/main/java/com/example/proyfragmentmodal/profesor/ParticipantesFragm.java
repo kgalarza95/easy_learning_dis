@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,9 +22,7 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.util.Filtro;
-import com.example.proyfragmentmodal.util.ListAdapterMisCursos;
-import com.example.proyfragmentmodal.util.ListAdapterParticipantes;
+import com.example.proyfragmentmodal.adapter.ListAdapterParticipantes;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

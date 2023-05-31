@@ -23,7 +23,7 @@ import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.Cuento;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
-import com.example.proyfragmentmodal.util.GridViewAdapter;
+import com.example.proyfragmentmodal.adapter.GridViewAdapter;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

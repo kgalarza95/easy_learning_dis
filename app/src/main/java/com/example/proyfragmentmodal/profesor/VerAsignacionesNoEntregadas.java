@@ -17,13 +17,11 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.util.ListAdapterAsigancionesNoEntregada;
-import com.example.proyfragmentmodal.util.ListAdapterIconText;
+import com.example.proyfragmentmodal.adapter.ListAdapterAsigancionesNoEntregada;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

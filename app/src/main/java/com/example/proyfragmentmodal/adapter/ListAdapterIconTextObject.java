@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.util;
+package com.example.proyfragmentmodal.adapter;
 
 
 import android.app.NotificationChannel;
@@ -28,8 +28,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.FileProvider;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -41,9 +39,7 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
-import com.example.proyfragmentmodal.estudiante.Foro;
-import com.example.proyfragmentmodal.estudiante.MaterialEstudio;
-import com.example.proyfragmentmodal.estudiante.ParticipantesFragmEstud;
+import com.example.proyfragmentmodal.util.InputStreamRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -53,8 +49,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,9 +64,14 @@ public class ListAdapterIconTextObject
     public LayoutInflater layoutInflater;
     public Context context;
     private Gson gson = new Gson();
-    ProgressDialog progressDialog;
-    RecyclerView recyclerView;
+    private ProgressDialog progressDialog;
+    private RecyclerView recyclerView;
     private int origenLlamada = 0;
+    private FileOutputStream fos = null;
+    private String filename;
+    private Map<String, String> params = new HashMap<>();
+    private String opcion;
+    private EntityMap objeElim;
 
     public ListAdapterIconTextObject() {
     }
@@ -105,8 +104,6 @@ public class ListAdapterIconTextObject
         this.listUsuarios = listUsuarios;
     }
 
-    FileOutputStream fos = null;
-    String filename;
 
     @Override
     public void onSuccess(String response) {
@@ -407,9 +404,7 @@ public class ListAdapterIconTextObject
         dialog.show();
     }
 
-    Map<String, String> params = new HashMap<>();
 
-    private String opcion;
 
     private void opcionDescarga(EntityMap itemCv) {
         //descargarPDF();
@@ -428,7 +423,6 @@ public class ListAdapterIconTextObject
         dao.manejoPDF(params, ListAdapterIconTextObject.this);
     }
 
-    EntityMap objeElim;
     private void opcionEliminar(EntityMap itemCv) {
         objeElim = itemCv;
         IDaoService dao = new IDaoService(context);

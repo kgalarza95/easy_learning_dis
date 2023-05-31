@@ -89,6 +89,12 @@
         <item name="it_chat">Eliminar Archivo</item>
     </string-array>
 
+    <string-array name="li_opciones_cursos">
+        <item name="it_chat">Ver Estudiantes</item>
+        <item name="it_chat">Editar Curso</item>
+        <item name="it_chat">Eliminar Curso</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Nombre de la Escuela</string>

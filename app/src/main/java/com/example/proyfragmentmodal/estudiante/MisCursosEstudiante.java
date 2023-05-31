@@ -18,7 +18,7 @@ import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
-import com.example.proyfragmentmodal.util.ListAdapterMisCursos;
+import com.example.proyfragmentmodal.adapter.ListAdapterMisCursos;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -60,7 +60,7 @@ public class MisCursosEstudiante extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         vista =  inflater.inflate(R.layout.fragment_mis_cursos_estudiante, container, false);
+        vista = inflater.inflate(R.layout.fragment_mis_cursos_estudiante, container, false);
 
         requestCursos();
 
@@ -88,7 +88,9 @@ public class MisCursosEstudiante extends Fragment
     }
 
     public void init(List<EntityMap> listaCursos) {
-        ListAdapterMisCursos listAdapter = new ListAdapterMisCursos(listaCursos, getActivity());
+        ListAdapterMisCursos listAdapter = null;
+       // listAdapter = new ListAdapterMisCursos(listaCursos, getActivity(), listAdapter);
+        listAdapter = new ListAdapterMisCursos(listaCursos, getActivity());
         RecyclerView recyclerView = (RecyclerView) vista.findViewById(R.id.rv_list_cursos);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -112,14 +114,14 @@ public class MisCursosEstudiante extends Fragment
                     List<EntityMap> listaCursos = gson.fromJson(json, listType);
                     Log.d("Respuesta:  ", String.valueOf(listaCursos));
                     Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
-                  /*  Log.d("Respuesta:  ", listaCursos.get(1).getNOMBRE());*/
+                    /*  Log.d("Respuesta:  ", listaCursos.get(1).getNOMBRE());*/
                     init(listaCursos);
 
                 }
             } else {
                 Toast.makeText(getActivity(), data.getMsjResponse(), Toast.LENGTH_SHORT).show();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.util;
+package com.example.proyfragmentmodal.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,14 +11,16 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import com.example.proyfragmentmodal.ImagenesBase;
-import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.general.ChatGeneral;
+import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.util.Filtro;
 
 import java.util.ArrayList;
 
-public class ListAdapterParticipantesDibujo extends
-        BaseAdapter {
+public class ListAdapterParticipantes extends
+        //BaseAdapter //CursorAdapter
+        // ArrayAdapter
+        BaseAdapter implements Filterable {
 
     private Context context;
     //private ArrayList<ListItem> items;
@@ -27,10 +29,10 @@ public class ListAdapterParticipantesDibujo extends
     private ArrayList<String> filteredData;
     private int idListItemVista;
 
-    public ListAdapterParticipantesDibujo() {
+    public ListAdapterParticipantes() {
     }
 
-    public ListAdapterParticipantesDibujo(Context context, ArrayList<String> items) {
+    public ListAdapterParticipantes(Context context, ArrayList<String> items) {
         this.context = context;
         this.listaElementos = items;
     }
@@ -56,16 +58,20 @@ public class ListAdapterParticipantesDibujo extends
             convertView = LayoutInflater.from(context).inflate(R.layout.list_item_participante, parent, false);
         }
 
+        // ListItem item = items.get(position);
         String item = listaElementos.get(position);
 
         TextView textView = convertView.findViewById(R.id.txt_titulo_asig);
         textView.setText(item);
+        //textView.setText(item.getText());
 
+        //ImageView imageView = convertView.findViewById(R.id.image_view);
+        //imageView.setImageResource(item.getImage());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ImagenesBase.class);
+                Intent intent = new Intent(context, ChatGeneral.class);
                 String[] split = item.split(" ");
                 intent.putExtra("idCurso", item);
                 intent.putExtra("idEstudiante", split[0]);
@@ -78,13 +84,27 @@ public class ListAdapterParticipantesDibujo extends
     // método clear para borrar todos los elementos de la lista
     public void clear() {
         listaElementos.clear(); // llama al método clear de la clase base ArrayAdapter
+        //notifyDataSetChanged(); // notifica a la vista que se han realizado cambios
     }
 
     // método addAll para agregar varios elementos a la lista al mismo tiempo
     public void addAll(ArrayList<String> items) {
         listaElementos.addAll(items); // llama al método addAll de la clase base ArrayAdapter
+        //notifyDataSetChanged(); // notifica a la vista que se han realizado cambios
     }
 
+    @Override
+    public Filter getFilter() {
+        return new Filtro(listaElementos, this);
+    }
 
+    public void resetData(ArrayList<String> listOriginal) {
+        Log.i("llega data:  ", String.valueOf(listOriginal));
+        Log.i("init data:  ", String.valueOf(listaElementos));
+        listaElementos.clear();
+        listaElementos.addAll(listOriginal);
+        notifyDataSetChanged();
+        Log.i("final data:  ", String.valueOf(listaElementos));
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.util;
+package com.example.proyfragmentmodal.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +11,13 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import com.example.proyfragmentmodal.ImagenesBase;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.general.ChatGeneral;
 
 import java.util.ArrayList;
 
-public class ListAdapterScore extends
+public class ListAdapterParticipantesDibujo extends
         BaseAdapter {
 
     private Context context;
@@ -26,10 +27,10 @@ public class ListAdapterScore extends
     private ArrayList<String> filteredData;
     private int idListItemVista;
 
-    public ListAdapterScore() {
+    public ListAdapterParticipantesDibujo() {
     }
 
-    public ListAdapterScore(Context context, ArrayList<String> items) {
+    public ListAdapterParticipantesDibujo(Context context, ArrayList<String> items) {
         this.context = context;
         this.listaElementos = items;
     }
@@ -52,28 +53,37 @@ public class ListAdapterScore extends
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_gen, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_participante, parent, false);
         }
 
-        // ListItem item = items.get(position);
         String item = listaElementos.get(position);
 
         TextView textView = convertView.findViewById(R.id.txt_titulo_asig);
         textView.setText(item);
-        //textView.setText(item.getText());
 
-        //ImageView imageView = convertView.findViewById(R.id.image_view);
-        //imageView.setImageResource(item.getImage());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, ImagenesBase.class);
+                String[] split = item.split(" ");
+                intent.putExtra("idCurso", item);
+                intent.putExtra("idEstudiante", split[0]);
+                context.startActivity(intent);
             }
         });
         return convertView;
     }
 
+    // método clear para borrar todos los elementos de la lista
+    public void clear() {
+        listaElementos.clear(); // llama al método clear de la clase base ArrayAdapter
+    }
+
+    // método addAll para agregar varios elementos a la lista al mismo tiempo
+    public void addAll(ArrayList<String> items) {
+        listaElementos.addAll(items); // llama al método addAll de la clase base ArrayAdapter
+    }
 
 
 

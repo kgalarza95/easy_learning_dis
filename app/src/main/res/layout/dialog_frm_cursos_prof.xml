@@ -14,12 +14,15 @@
     <EditText
         android:id="@+id/txt_descripcion_curso"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:maxLength="100"
+        android:inputType="textMultiLine"
         android:hint="Descripción del curso" />
 
     <EditText
         android:id="@+id/txt_anio_lectivo"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:hint="Año de vigencia del curso" />
 </LinearLayout>

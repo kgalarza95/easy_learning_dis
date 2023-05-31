@@ -19,8 +19,8 @@ import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
-import com.example.proyfragmentmodal.util.ListAdapterIconText;
-import com.example.proyfragmentmodal.util.ListAdapterMisCursos;
+import com.example.proyfragmentmodal.adapter.ListAdapterIconText;
+import com.example.proyfragmentmodal.adapter.ListAdapterMisCursos;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -58,11 +58,12 @@ public class MisCursosProfesor extends AppCompatActivity
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                // para ocultar o mostrar boton flotante por scroll de pantalla.
+               /* if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
                     fab.hide();
                 } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
                     fab.show();
-                }
+                }*/
             }
         });
 
@@ -186,28 +187,31 @@ public class MisCursosProfesor extends AppCompatActivity
 
     @Override
     public void onSuccess(String response) {
-        Log.d("===========================================================  ", "");
-        Log.d("Respuesta:  ", response);
-        Respuesta data = gson.fromJson(response, Respuesta.class);
-        if (data.getCodResponse().equals("00")) {
-            if (opcion.equals("IN")) {
-                requestCursos();
-            } else if (opcion.equals("CN")) {
-                //  List<String> listFilas = (List<String>) data.getData();
-                String json = gson.toJson(data.getData());
-                Type listType = new TypeToken<List<EntityMap>>() {
-                }.getType();
-                List<EntityMap> listaCursos = gson.fromJson(json, listType);
-                Log.d("Respuesta:  ", String.valueOf(listaCursos));
-                Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
-                Log.d("Respuesta:  ", listaCursos.get(1).getNOMBRE());
-                init(listaCursos);
+        try {
+            Log.d("===========================================================  ", "");
+            Log.d("Respuesta:  ", response);
+            Respuesta data = gson.fromJson(response, Respuesta.class);
+            if (data.getCodResponse().equals("00")) {
+                if (opcion.equals("IN")) {
+                    requestCursos();
+                } else if (opcion.equals("CN")) {
+                    //  List<String> listFilas = (List<String>) data.getData();
+                    String json = gson.toJson(data.getData());
+                    Type listType = new TypeToken<List<EntityMap>>() {
+                    }.getType();
+                    List<EntityMap> listaCursos = gson.fromJson(json, listType);
+                    Log.d("Respuesta:  ", String.valueOf(listaCursos));
+                    Log.d("Respuesta:  ", listaCursos.get(0).getNOMBRE());
+                    Log.d("Respuesta:  ", listaCursos.get(1).getNOMBRE());
+                    init(listaCursos);
 
+                }
+            } else {
+                Toast.makeText(this, data.getMsjResponse(), Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(this, data.getMsjResponse(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("Error controlado", String.valueOf(e));
         }
-
     }
 
     @Override
@@ -235,12 +239,14 @@ public class MisCursosProfesor extends AppCompatActivity
 
     public void init(List<EntityMap> listaCursos) {
 
-
-        ListAdapterMisCursos listAdapter = new ListAdapterMisCursos(listaCursos, this);
+        ListAdapterMisCursos listAdapter = null;
+        // listAdapter = new ListAdapterMisCursos(listaCursos, this, listAdapter);
+         listAdapter = new ListAdapterMisCursos(listaCursos, this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_list_cursos);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
+        listAdapter.setListAdapter(listAdapter);
     }
 
     //other code de prueba

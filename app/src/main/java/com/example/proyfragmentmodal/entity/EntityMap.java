@@ -334,4 +334,9 @@ public class EntityMap {
     public void setCALIFICACION(String CALIFICACION) {
         this.CALIFICACION = CALIFICACION;
     }
+
+    @Override
+    public String toString() {
+        return "EntityMap=================> "+this.getNOMBRES()+"-"+this.getNOMBRE();
+    }
 }

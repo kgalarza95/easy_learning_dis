@@ -2,6 +2,8 @@ package com.example.proyfragmentmodal.util;
 
 import android.widget.Filter;
 
+import com.example.proyfragmentmodal.adapter.ListAdapterParticipantes;
+
 import java.util.ArrayList;
 import java.util.List;
 

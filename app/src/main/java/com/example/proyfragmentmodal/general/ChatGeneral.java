@@ -17,7 +17,7 @@ import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
-import com.example.proyfragmentmodal.util.ListAdaptRecyChat;
+import com.example.proyfragmentmodal.adapter.ListAdaptRecyChat;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

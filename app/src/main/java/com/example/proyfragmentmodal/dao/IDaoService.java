@@ -30,7 +30,7 @@ public class IDaoService {
         this.context = context;
     }
 
-    public void postData(final Map<String, String> params, final DAOCallbackServicio callback) {
+    public void validarUsuario(final Map<String, String> params, final DAOCallbackServicio callback) {
         String uri = URL + "validar_usuario.php";
         clienteRestUTF8(URL + "validar_usuario.php", params, callback);
     }
@@ -73,6 +73,11 @@ public class IDaoService {
     public void crudAsignacionTodas(final Map<String, String> params, final DAOCallbackServicio callback) {
         clienteRestUTF8(URL + "asignaciones_no_entregadas.php", params, callback);
     }
+
+
+
+
+
     private void clienteRest(String URL,
                              final Map<String, String> params, final DAOCallbackServicio callback) {
         Log.i("URL:        ", URL);

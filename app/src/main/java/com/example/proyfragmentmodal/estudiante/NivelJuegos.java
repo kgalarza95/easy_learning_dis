@@ -9,8 +9,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.estudiante.comun.PantallaJuego;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
+/*
+  Esta clase queda obsoleta:  manejaba los niveles de los juegos.
+
+ */
+@Deprecated
 public class NivelJuegos extends AppCompatActivity {
 
     Button btnFacil;

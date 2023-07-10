@@ -21,11 +21,7 @@ import com.example.proyfragmentmodal.juego.JuegoDos;
 import com.example.proyfragmentmodal.juego.JuegoUno;
 import com.example.proyfragmentmodal.juego.UsoDeLaH;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MenuJuegoPrueba#newInstance} factory method to
- * create an instance of this fragment.
- */
+@Deprecated
 public class MenuJuegoPrueba extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match

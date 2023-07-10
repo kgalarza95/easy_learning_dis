@@ -72,7 +72,7 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
                 params.put("password", txtPass.getText().toString());
 
                 IDaoService dao = new IDaoService(LoginEstudiante.this);
-                dao.postData(params, LoginEstudiante.this);
+                dao.validarUsuario(params, LoginEstudiante.this);
 
 
                 //solo desarrollo sin conexión.
@@ -104,6 +104,7 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
                     global.setGlobalUsuario((String) listFilas.get("USUARIO"));
                     global.setGlobalPassword(txtPass.getText().toString());
                     intent.putExtra("itOrigin", "loginEstudiante");
+                    GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("CURSO")));
                 } else {
                     intent = new Intent(vista.getContext(), CambiarContrasenia.class);
                     intent.putExtra("usuario", txtUsuario.getText().toString());

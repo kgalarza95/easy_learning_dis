@@ -46,6 +46,7 @@ public class Usuarios extends Fragment
     Button btnBuscarCedula;
     View vista;
     Spinner spTiposUsuarios;
+    Spinner spCursos;
     TextView txtMensaje;
     Button btnLimpiar;
     private String opcion;
@@ -89,6 +90,7 @@ public class Usuarios extends Fragment
         btnLimpiar = vista.findViewById(R.id.btn_limpiar_full);
         //Declrar componentes
         spTiposUsuarios = vista.findViewById(R.id.sp_usuarios);
+        spCursos = vista.findViewById(R.id.sp_cursos);
         //Adaptador con layout por defecto
         ArrayAdapter<CharSequence> adaptador = ArrayAdapter.createFromResource(getActivity(), R.array.strs_tip_users,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
@@ -96,6 +98,13 @@ public class Usuarios extends Fragment
         adaptador.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spTiposUsuarios.setAdapter(adaptador);
 
+        //config spinner cursos
+        ArrayAdapter<CharSequence> adaptadorCursos = ArrayAdapter.createFromResource(getActivity(),
+                R.array.strs_tip_cursos,
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        //Diseño cuando aparezcan las opciones
+        adaptadorCursos.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        spCursos.setAdapter(adaptadorCursos);
 
         origenPantallaConfig();
         initConsDtos();
@@ -133,6 +142,20 @@ public class Usuarios extends Fragment
                 params.put("cedula", txtCedula.getText().toString());
                 params.put("rol", String.valueOf(spTiposUsuarios.getSelectedItemPosition() + 1));
 
+                switch (spCursos.getSelectedItemPosition() ){
+                    case 0:
+                        params.put("numCurso", String.valueOf(5));
+                        break;
+                    case 1:
+                        params.put("numCurso", String.valueOf(6));
+                        break;
+                    case 2:
+                        params.put("numCurso", String.valueOf(7));
+                        break;
+                    default:
+                        Log.i("default","opción incorrecta");
+
+                }
                 Log.i("parametros request==>",params.toString());
                 IDaoService dao = new IDaoService(getActivity());
                 dao.crudUsuario(params, Usuarios.this);
@@ -156,6 +179,7 @@ public class Usuarios extends Fragment
                 params.put("esMasculino", rbMasculino.isChecked() ? "M" : "F");
                 params.put("cedula", txtCedula.getText().toString());
                 params.put("rol", String.valueOf(spTiposUsuarios.getSelectedItemPosition() + 1));
+                params.put("numCurso", "");
 
                 IDaoService dao = new IDaoService(getActivity());
                 dao.crudUsuario(params, Usuarios.this);
@@ -195,6 +219,7 @@ public class Usuarios extends Fragment
                     txtCedula.setText((String) listFilas.get("CEDULA"));
                     //txtPassword.setText((String) "");
                     spTiposUsuarios.setSelection(Integer.parseInt((String) listFilas.get("ID_ROL")) - 1);
+                    spCursos.setSelection(Integer.parseInt((String) listFilas.get("CURSO")) - 5);
 
                     if (opcion.equals("CNC")){
                         txtPassword.setText((String) listFilas.get("CONTRASENIA"));
@@ -236,6 +261,7 @@ public class Usuarios extends Fragment
             txtPassword.setVisibility(View.VISIBLE);
             btnGuardar.setText("GUARDAR");
             btnLimpiar.setVisibility(View.GONE);
+            spCursos.setVisibility(View.VISIBLE);
         } else if (this.origeenLlamadaPagina == 2) {//admin actualizar
             btnGuardar.setText("ACTUALIZAR");
             chSolicitarPass.setVisibility(View.VISIBLE);
@@ -245,6 +271,7 @@ public class Usuarios extends Fragment
             txtUsuario.setVisibility(View.VISIBLE);
             txtPassword.setVisibility(View.VISIBLE);
             btnLimpiar.setVisibility(View.VISIBLE);
+            spCursos.setVisibility(View.VISIBLE);
         } else { // otra
             chSolicitarPass.setVisibility(View.GONE);
             btnBuscarCedula.setVisibility(View.GONE);
@@ -256,6 +283,7 @@ public class Usuarios extends Fragment
             btnGuardar.setText("ACTUALIZAR");
             Log.d(" llega passss ==========>  ", String.valueOf(GlobalAplicacion.getGlobalPassword()));
             txtPassword.setText(String.valueOf(GlobalAplicacion.getGlobalPassword()));
+            spCursos.setVisibility(View.GONE);
         }
     }
 
@@ -277,6 +305,7 @@ public class Usuarios extends Fragment
             params.put("esMasculino", "");
             params.put("cedula", "");
             params.put("rol", "");
+            params.put("numCurso", "");
 
             IDaoService dao = new IDaoService(getActivity());
             dao.crudUsuario(params, Usuarios.this);
@@ -292,6 +321,7 @@ public class Usuarios extends Fragment
         txtCedula.setText("");
         txtPassword.setText("");
         spTiposUsuarios.setSelection(0);
+        spCursos.setSelection(0);
         chSolicitarPass.setChecked(true);
         rbMasculino.setChecked(true);
     }

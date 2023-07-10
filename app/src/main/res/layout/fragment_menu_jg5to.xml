@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".estudiante.quinto.MenuJg5to">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_game1"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:contentDescription="Linterna"
+                android:src="@drawable/game2"
+                android:tooltipText="linterna"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UNIDAD 1">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_game2"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:contentDescription="Musica"
+                android:src="@drawable/game1"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UNIDAD 2">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_game3"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:contentDescription="Musica"
+                android:src="@drawable/dibujo_j"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UNIDAD 3">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_game4"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+                android:contentDescription="Musica"
+                android:src="@drawable/lib"></ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UNIDAD 4">
+
+            </TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_perfil_"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+
+                android:src="@drawable/perfil_48">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfil"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

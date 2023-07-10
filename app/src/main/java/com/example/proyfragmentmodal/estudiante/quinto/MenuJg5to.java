@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.estudiante;
+package com.example.proyfragmentmodal.estudiante.quinto;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,30 +14,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.proyfragmentmodal.juego.PalabraCorrecta;
-import com.example.proyfragmentmodal.juego.PalabrasConBD;
+import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
+import com.example.proyfragmentmodal.general.MenuProfEstud;
+import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.juego.CuentosDos;
 import com.example.proyfragmentmodal.juego.DibujoGame;
 import com.example.proyfragmentmodal.juego.FragmentCuentos;
 import com.example.proyfragmentmodal.juego.FragmentDibujoLetras;
-import com.example.proyfragmentmodal.R;
-import com.example.proyfragmentmodal.general.MenuProfEstud;
-import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.juego.JuegoDos;
 import com.example.proyfragmentmodal.juego.JuegoUno;
+import com.example.proyfragmentmodal.juego.PalabraCorrecta;
+import com.example.proyfragmentmodal.juego.PalabrasConBD;
 import com.example.proyfragmentmodal.juego.UsoDeLaH;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 
-@Deprecated
-public class MenuJuego extends Fragment {
 
-    public MenuJuego() {
-        // Required empty public constructor
+public class MenuJg5to extends Fragment {
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+
+    private String mParam1;
+    private String mParam2;
+
+    View vista;
+
+    public MenuJg5to() {
     }
 
-    public static MenuJuego newInstance(String param1, String param2) {
-        MenuJuego fragment = new MenuJuego();
+
+    public static MenuJg5to newInstance(String param1, String param2) {
+        MenuJg5to fragment = new MenuJg5to();
         Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -45,16 +57,17 @@ public class MenuJuego extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
-
-    View vista;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista = inflater.inflate(R.layout.fragment_menu_juego, container, false);
-
-        // juego de letras.
+        vista =  inflater.inflate(R.layout.fragment_menu_jg5to, container, false);
+        // UNIDAD 1.
         vista.findViewById(R.id.btn_game1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +111,7 @@ public class MenuJuego extends Fragment {
             }
         });
 
-        // juego de  frases y encontrar la palabra
+        // UNIDAD 2.
         vista.findViewById(R.id.btn_game2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +149,7 @@ public class MenuJuego extends Fragment {
             }
         });
 
-        //juego de dibujos
+        // UNIDAD 3.
         vista.findViewById(R.id.btn_game3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,7 +186,7 @@ public class MenuJuego extends Fragment {
             }
         });
 
-        //juego cuentos
+        // UNIDAD 4.
         vista.findViewById(R.id.btn_game4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

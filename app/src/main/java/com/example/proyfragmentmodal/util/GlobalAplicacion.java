@@ -8,6 +8,7 @@ public class GlobalAplicacion {
     private static String globalPassword;
     private static String globalNomUsuario;
     private static int globalIdUsuario;
+    private static int globalNumCurso;
 
     //pantalla de juegos
     public static long miliSegundos;
@@ -49,5 +50,11 @@ public class GlobalAplicacion {
         GlobalAplicacion.globalNomUsuario = globalNomUsuario;
     }
 
+    public static int getGlobalNumCurso() {
+        return globalNumCurso;
+    }
 
+    public static void setGlobalNumCurso(int globalNumCurso) {
+        GlobalAplicacion.globalNumCurso = globalNumCurso;
+    }
 }

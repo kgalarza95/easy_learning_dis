@@ -46,7 +46,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".estudiante.PantallaJuego"
+            android:name=".estudiante.comun.PantallaJuego"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

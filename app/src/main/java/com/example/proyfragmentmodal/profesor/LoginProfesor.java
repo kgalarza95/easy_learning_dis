@@ -74,7 +74,7 @@ public class LoginProfesor extends AppCompatActivity
                 params.put("password", txtPass.getText().toString());
 
                 IDaoService dao = new IDaoService(LoginProfesor.this);
-                dao.postData(params, LoginProfesor.this);
+                dao.validarUsuario(params, LoginProfesor.this);
 
 
                 //solo desarrollo sin conexión.

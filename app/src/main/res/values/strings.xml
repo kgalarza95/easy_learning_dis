@@ -31,6 +31,11 @@
         <item>Alumno</item>
     </string-array>
 
+    <string-array name="strs_tip_cursos">
+        <item>5to</item>
+        <item>6to</item>
+        <item>7mo</item>
+    </string-array>
 
     <!--menu de opciones de profesor-->
     <string-array name="li_opciones_comunicacion_prof">

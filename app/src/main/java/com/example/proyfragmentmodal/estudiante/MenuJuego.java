@@ -25,7 +25,7 @@ import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.juego.JuegoDos;
 import com.example.proyfragmentmodal.juego.JuegoUno;
-import com.example.proyfragmentmodal.juego.UsoDeLaH;
+import com.example.proyfragmentmodal.estudiante.quinto.UsoDeLaH;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 
 @Deprecated

@@ -90,35 +90,43 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
 
     @Override
     public void onSuccess(String response) {
-        progressDialog.dismiss();
-        Log.d("Response==========>  ", response);
+        try {
 
-        Respuesta data = gson.fromJson(response, Respuesta.class);
-        if (data.getCodResponse().equals("00")) {
 
-            Map<String, Object> listFilas = (Map<String, Object>) data.getData();
-            Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+            progressDialog.dismiss();
+            Log.d("Response==========>  ", response);
 
-            if (listFilas.get("ROL").equals("ESTUDIANTE")) {
-                if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
-                    GlobalAplicacion global = new GlobalAplicacion();
-                    GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
-                    global.setGlobalUsuario((String) listFilas.get("USUARIO"));
-                    global.setGlobalPassword(txtPass.getText().toString());
-                    intent.putExtra("itOrigin", "loginEstudiante");
-                    GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("CURSO")));
+            Respuesta data = gson.fromJson(response, Respuesta.class);
+            if (data.getCodResponse().equals("00")) {
+
+                Map<String, Object> listFilas = (Map<String, Object>) data.getData();
+                Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+
+                if (listFilas.get("ROL").equals("ESTUDIANTE")) {
+                    if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
+                        Log.i("llega login", String.valueOf(listFilas));
+                        GlobalAplicacion global = new GlobalAplicacion();
+                        GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
+                        global.setGlobalUsuario((String) listFilas.get("USUARIO"));
+                        global.setGlobalPassword(txtPass.getText().toString());
+                        intent.putExtra("itOrigin", "loginEstudiante");
+                        Log.i("número de curso - login", String.valueOf(listFilas.get("CURSO")));
+                        GlobalAplicacion.setGlobalNumCurso(Integer.parseInt((String) listFilas.get("CURSO")));
+                        Log.i("número de curso - login", String.valueOf(GlobalAplicacion.getGlobalNumCurso()));
+                    } else {
+                        intent = new Intent(vista.getContext(), CambiarContrasenia.class);
+                        intent.putExtra("usuario", txtUsuario.getText().toString());
+                    }
+                    startActivity(intent);
                 } else {
-                    intent = new Intent(vista.getContext(), CambiarContrasenia.class);
-                    intent.putExtra("usuario", txtUsuario.getText().toString());
+                    Toast.makeText(this, "Usuario sin privilegios de estudiante", Toast.LENGTH_SHORT).show();
                 }
-                startActivity(intent);
             } else {
-                Toast.makeText(this, "Usuario sin privilegios de estudiante", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "DATOS INGRESADOS SON INCORRECTOS", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(this, "DATOS INGRESADOS SON INCORRECTOS", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Lo sentimos, ocurrió un error: " + e, Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -128,7 +136,7 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
         Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }
 
-    public void preubaSinConexion(){
+    public void preubaSinConexion() {
         Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
         intent.putExtra("itOrigin", "loginEstudiante");
         startActivity(intent);

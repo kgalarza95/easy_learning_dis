@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal.juego;
+package com.example.proyfragmentmodal.estudiante.quinto;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

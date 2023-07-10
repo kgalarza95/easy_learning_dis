@@ -36,6 +36,12 @@ public class PantallaJuego extends AppCompatActivity {
         //para el mnú
         FragmentManager miManejador = getSupportFragmentManager();
         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+
+        //poner fragment de juego uno en el centro (central o fragment de juegos)
+        FragmentManager fgManejadorContenedorJuego = getSupportFragmentManager();
+        FragmentTransaction miTrnContenedor = fgManejadorContenedorJuego.beginTransaction();
+
+
         //remplazar fragmento actual con el nuevo indicado en el contenedor
         if(GlobalAplicacion.esEstudiante.equalsIgnoreCase("N")){
             miTrnsaccion.remove(new MenuJuego());
@@ -48,27 +54,31 @@ public class PantallaJuego extends AppCompatActivity {
             switch (GlobalAplicacion.getGlobalNumCurso()){
                 case 5:
                     miTrnsaccion.replace(R.id.menu, new MenuJg5to());
+                    //Inicializar el juego uno de cada unidad
+                    JuegoUno juegoUno = new JuegoUno();
+                    miTrnContenedor.replace(R.id.contenedor_fragment, juegoUno);
                     break;
                 case 6:
                     miTrnsaccion.replace(R.id.menu, new MenuJg6to());
+                    //Inicializar el juego uno de cada unidad
+                    JuegoUno juegoUnoxx = new JuegoUno();
+                    miTrnContenedor.replace(R.id.contenedor_fragment, juegoUnoxx);
                     break;
                 case 7:
                     miTrnsaccion.replace(R.id.menu, new MenuJg7mo());
+                    //Inicializar el juego uno de cada unidad
+                    JuegoUno juegoUnoxxx = new JuegoUno();
+                    miTrnContenedor.replace(R.id.contenedor_fragment, juegoUnoxxx);
                     break;
                 default:
             }
 
         }
-
+        miTrnsaccion.replace(R.id.menu, new MenuJuego());
         miTrnsaccion.commit();
+        miTrnContenedor.commit();
 
-        //poner fragment de juego uno en el centro
-        FragmentManager miManejador_ = getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-        FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
-        //remplazar fragmento actual con el nuevo indicado en el contenedor
-        JuegoUno juegoUno = new JuegoUno();
-        //juegoUno.setArguments(args);
-        miTrnsaccion_.replace(R.id.contenedor_fragment, juegoUno);
-        miTrnsaccion_.commit();
+
+
     }
 }

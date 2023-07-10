@@ -19,7 +19,7 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.juego.DibujoGame;
 import com.example.proyfragmentmodal.juego.JuegoDos;
 import com.example.proyfragmentmodal.juego.JuegoUno;
-import com.example.proyfragmentmodal.juego.UsoDeLaH;
+import com.example.proyfragmentmodal.estudiante.quinto.UsoDeLaH;
 
 @Deprecated
 public class MenuJuegoPrueba extends Fragment {

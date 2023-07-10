@@ -20,12 +20,10 @@ import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.juego.CuentosDos;
 import com.example.proyfragmentmodal.juego.DibujoGame;
-import com.example.proyfragmentmodal.juego.FragmentCuentos;
 import com.example.proyfragmentmodal.juego.FragmentDibujoLetras;
 import com.example.proyfragmentmodal.juego.JuegoDos;
 import com.example.proyfragmentmodal.juego.PalabraCorrecta;
 import com.example.proyfragmentmodal.juego.PalabrasConBD;
-import com.example.proyfragmentmodal.juego.UsoDeLaH;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 
 
@@ -198,7 +196,7 @@ public class MenuJg5to extends Fragment {
                                     case 0: // Dibujo Game
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new FragmentCuentos());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new UsoDeLaH());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://Dibujo letras

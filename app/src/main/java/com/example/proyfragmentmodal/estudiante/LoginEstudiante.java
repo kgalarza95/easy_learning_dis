@@ -67,6 +67,8 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
                 progressDialog.setCancelable(false);
                 progressDialog.show();
                 vista = view;
+
+
                 Map<String, String> params = new HashMap<>();
                 params.put("usuario", txtUsuario.getText().toString());
                 params.put("password", txtPass.getText().toString());

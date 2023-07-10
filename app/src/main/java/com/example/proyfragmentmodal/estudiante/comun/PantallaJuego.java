@@ -26,12 +26,12 @@ public class PantallaJuego extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        long tiempoDifi = intent.getLongExtra("nivel",0);
+      /*  long tiempoDifi = intent.getLongExtra("nivel",0);
         String tipoNivel = intent.getStringExtra("tipoNivel");
-
-        Bundle args = new Bundle();
+*/
+      /*  Bundle args = new Bundle();
         args.putInt("nivelFrg", (int) tiempoDifi);
-        args.putString("tipoNivel", tipoNivel);
+        args.putString("tipoNivel", tipoNivel);*/
 
         //para el mnú
         FragmentManager miManejador = getSupportFragmentManager();
@@ -67,7 +67,7 @@ public class PantallaJuego extends AppCompatActivity {
         FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
         //remplazar fragmento actual con el nuevo indicado en el contenedor
         JuegoUno juegoUno = new JuegoUno();
-        juegoUno.setArguments(args);
+        //juegoUno.setArguments(args);
         miTrnsaccion_.replace(R.id.contenedor_fragment, juegoUno);
         miTrnsaccion_.commit();
     }

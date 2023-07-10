@@ -144,4 +144,83 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--las opciones de la sunidades por curso-->
+    <!--XXXXXXXXXXXXXXX curso 5to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <string-array name="li_op_5to_unidad1">
+        <item name="xxx">JUEGO 1 - ARRASTRAR Y SOLTAR</item>
+        <item name="xxx">JUEGO 2 - PUNTO O COMA</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_5to_unidad2">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_5to_unidad3">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_5to_unidad4">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+
+    <!--XXXXXXXXXXXXXXX curso 6to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <string-array name="li_op_6to_unidad1">
+        <item name="xxx">JUEGO 1 - </item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_6to_unidad2">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_6to_unidad3">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_6to_unidad4">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <!--XXXXXXXXXXXXXXX curso 7to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <string-array name="li_op_7to_unidad1">
+        <item name="xxx">JUEGO 1 - ARRASTRAR Y SOLTAR</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_7to_unidad2">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_7to_unidad3">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
+    <string-array name="li_op_7to_unidad4">
+        <item name="xxx">JUEGO 1</item>
+        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 3</item>
+    </string-array>
+
 </resources>

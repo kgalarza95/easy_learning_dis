@@ -23,7 +23,6 @@ import com.example.proyfragmentmodal.juego.DibujoGame;
 import com.example.proyfragmentmodal.juego.FragmentCuentos;
 import com.example.proyfragmentmodal.juego.FragmentDibujoLetras;
 import com.example.proyfragmentmodal.juego.JuegoDos;
-import com.example.proyfragmentmodal.juego.JuegoUno;
 import com.example.proyfragmentmodal.juego.PalabraCorrecta;
 import com.example.proyfragmentmodal.juego.PalabrasConBD;
 import com.example.proyfragmentmodal.juego.UsoDeLaH;
@@ -74,7 +73,7 @@ public class MenuJg5to extends Fragment {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Lista de Opciones")
-                        .setItems(R.array.li_op_juego1, new DialogInterface.OnClickListener() {
+                        .setItems(R.array.li_op_5to_unidad1, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
@@ -82,17 +81,17 @@ public class MenuJg5to extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoUno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new JuArrastrarSoltar());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1://uso de la ha
+                                    case 1://juego dos
                                         FragmentManager useH = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction frmH = useH.beginTransaction();
                                         //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
                                         frmH.replace(R.id.contenedor_fragment, new UsoDeLaH());
                                         frmH.commit();
                                         break;
-                                    case 2://uso de la bd
+                                    case 2://juegoo 3
                                         FragmentManager useBD = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction frmBD = useBD.beginTransaction();
                                         //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
@@ -118,7 +117,7 @@ public class MenuJg5to extends Fragment {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Lista de Opciones")
-                        .setItems(R.array.li_op_juego2, new DialogInterface.OnClickListener() {
+                        .setItems(R.array.li_op_5to_unidad2, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
@@ -155,7 +154,7 @@ public class MenuJg5to extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Lista de Opciones")
-                        .setItems(R.array.li_op_juego1, new DialogInterface.OnClickListener() {
+                        .setItems(R.array.li_op_5to_unidad3, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
@@ -192,7 +191,7 @@ public class MenuJg5to extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Lista de Opciones")
-                        .setItems(R.array.li_op_juego4, new DialogInterface.OnClickListener() {
+                        .setItems(R.array.li_op_5to_unidad4, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {

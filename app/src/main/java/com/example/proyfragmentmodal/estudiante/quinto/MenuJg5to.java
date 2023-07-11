@@ -86,7 +86,7 @@ public class MenuJg5to extends Fragment {
                                         FragmentManager useH = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction frmH = useH.beginTransaction();
                                         //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
-                                        frmH.replace(R.id.contenedor_fragment, new UsoDeLaH());
+                                        frmH.replace(R.id.contenedor_fragment, new PuntoComa());
                                         frmH.commit();
                                         break;
                                     case 2://juegoo 3

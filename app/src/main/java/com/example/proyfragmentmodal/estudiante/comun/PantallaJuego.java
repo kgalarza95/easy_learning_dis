@@ -74,7 +74,7 @@ public class PantallaJuego extends AppCompatActivity {
             }
 
         }
-        miTrnsaccion.replace(R.id.menu, new MenuJuego());
+        //miTrnsaccion.replace(R.id.menu, new MenuJuego());
         miTrnsaccion.commit();
         miTrnContenedor.commit();
 

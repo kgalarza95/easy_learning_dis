@@ -145,81 +145,62 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
     <!--las opciones de la sunidades por curso-->
     <!--XXXXXXXXXXXXXXX curso 5to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
     <string-array name="li_op_5to_unidad1">
         <item name="xxx">JUEGO 1 - ARRASTRAR Y SOLTAR</item>
         <item name="xxx">JUEGO 2 - PUNTO O COMA</item>
-        <item name="xxx">JUEGO 3</item>
+        <item name="xxx">JUEGO 3 - TILDES</item>
     </string-array>
 
     <string-array name="li_op_5to_unidad2">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
+        <item name="xxx">JUEGO 1 - COMPLETA LA ORACIÓN</item>
+        <item name="xxx">JUEGO 2 - SELECCIONE LA PALABRA CORRECTA</item>
+        <item name="xxx">JUEGO 3 - REVISIÓN DE ESCRITURA</item>
     </string-array>
 
     <string-array name="li_op_5to_unidad3">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
+        <item name="xxx">JUEGO 1 - ASOCIA LAS IMAGENES CORRESPONDIENTE</item>
+        <item name="xxx">JUEGO 2 - USO DE LA B Y v</item>
+        <item name="xxx">JUEGO 3 - seleccione la rima escrita correctamente</item>
     </string-array>
 
     <string-array name="li_op_5to_unidad4">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
+        <item name="xxx">JUEGO 1 - USO DE LA H</item>
+        <item name="xxx">JUEGO 2 - PALABRAS HOMOFONAS</item>
+        <item name="xxx">JUEGO 3 - SELECCIÓNE EL FRAGMENTO ESCRITO CORRECTAMENTE</item>
     </string-array>
 
 
     <!--XXXXXXXXXXXXXXX curso 6to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
     <string-array name="li_op_6to_unidad1">
-        <item name="xxx">JUEGO 1 - </item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
+        <item name="xxx">JUEGO 1 - ORDENAR LA ESTRUCTURA DE UN ARTICULO INFOMATIVO</item>
+        <item name="xxx">JUEGO 2 - INDIQUE EL NUCLEO DEL SUJETO</item>
+        <item name="xxx">JUEGO 3 - USO DEL PUNTO SUSPENSIVO</item>
     </string-array>
 
     <string-array name="li_op_6to_unidad2">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
+        <item name="xxx">JUEGO 1 -ORDENAR LOS RELATOS</item>
+        <item name="xxx">JUEGO 2 - VERBO IMPERSONAL</item>
+        <item name="xxx">JUEGO 3 - SELECCIONE EL REFRAN</item>
     </string-array>
 
     <string-array name="li_op_6to_unidad3">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 1 - COLOQUE LA LETRA EN EL RECUADRO</item>
+        <item name="xxx">JUEGO 2 - ASOCIE LA IMAGEN CON LA ORACIÓN</item>
         <item name="xxx">JUEGO 3</item>
     </string-array>
 
     <string-array name="li_op_6to_unidad4">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
+        <item name="xxx">JUEGO 1 - IDENTIFICA LA PALABRA MAL ESCRITA</item>
+        <item name="xxx">JUEGO 2 - SELECCIONE LA PALABRA CORRETA</item>
+        <item name="xxx">JUEGO 3 - SELECCIONE LA PALABRA BIEN ESCRITA</item>
     </string-array>
 
     <!--XXXXXXXXXXXXXXX curso 7to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
     <string-array name="li_op_7to_unidad1">
         <item name="xxx">JUEGO 1 - ARRASTRAR Y SOLTAR</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
-    </string-array>
-
-    <string-array name="li_op_7to_unidad2">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
-    </string-array>
-
-    <string-array name="li_op_7to_unidad3">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
-        <item name="xxx">JUEGO 3</item>
-    </string-array>
-
-    <string-array name="li_op_7to_unidad4">
-        <item name="xxx">JUEGO 1</item>
-        <item name="xxx">JUEGO 2</item>
+        <item name="xxx">JUEGO 2 - CLOQUE LA LETRA EN EL RECUADRO</item>
         <item name="xxx">JUEGO 3</item>
     </string-array>
 

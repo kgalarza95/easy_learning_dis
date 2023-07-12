@@ -29,6 +29,12 @@ import com.example.proyfragmentmodal.estudiante.sexto.DPalabraCorrecta;
 import com.example.proyfragmentmodal.estudiante.sexto.DPalabraMalEscrita;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
+import com.example.proyfragmentmodal.juego.CuentosDos;
+import com.example.proyfragmentmodal.juego.FragmentCuentos;
+import com.example.proyfragmentmodal.juego.JuegoDos;
+import com.example.proyfragmentmodal.juego.JuegoUno;
+import com.example.proyfragmentmodal.juego.PalabraCorrecta;
+import com.example.proyfragmentmodal.juego.PalabrasConBD;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 
 
@@ -117,21 +123,21 @@ public class MenuJg7mo extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new BOrdenarRelatos());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoUno());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://juego dos
                                         FragmentManager miManejadorP = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsac = miManejadorP.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsac.replace(R.id.contenedor_fragment, new BVerboImpersonal());
+                                        miTrnsac.replace(R.id.contenedor_fragment, new PalabrasConBD());
                                         miTrnsac.commit();
                                         break;
                                     case 2://juego tres
                                         FragmentManager miManejador3 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsa3 = miManejador3.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsa3.replace(R.id.contenedor_fragment, new BSeleccioneRefran());
+                                        miTrnsa3.replace(R.id.contenedor_fragment, new JuegoDos());
                                         miTrnsa3.commit();
                                         break;
                                     default:
@@ -160,13 +166,13 @@ public class MenuJg7mo extends Fragment {
                                     case 0: //
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new CLetraRecuadro());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new PalabraCorrecta());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://
                                         FragmentManager miManejadorL = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miManejadorX = miManejadorL.beginTransaction();
-                                        miManejadorX.replace(R.id.contenedor_fragment, new CImagenConLaOracion());
+                                        miManejadorX.replace(R.id.contenedor_fragment, new FragmentCuentos());
                                         miManejadorX.commit();
                                         break;
                                     default:
@@ -195,20 +201,20 @@ public class MenuJg7mo extends Fragment {
                                     case 0: // Dibujo Game
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new DPalabraMalEscrita());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new CuentosDos());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://Dibujo letras
                                         FragmentManager miManejador2 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion2 = miManejador2.beginTransaction();
-                                        miTrnsaccion2.replace(R.id.contenedor_fragment, new DPalabraCorrecta());
+                                        miTrnsaccion2.replace(R.id.contenedor_fragment, new FragmentCuentos());
                                         miTrnsaccion2.commit();
                                         break;
                                     case 2://juego tres
                                         FragmentManager miManejador3 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsa3 = miManejador3.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsa3.replace(R.id.contenedor_fragment, new DPalabraBienEscrita());
+                                        miTrnsa3.replace(R.id.contenedor_fragment, new PalabraCorrecta());
                                         miTrnsa3.commit();
                                         break;
                                     default:

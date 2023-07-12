@@ -221,4 +221,16 @@
         <item name="xxx">JUEGO 2 - </item>
         <item name="xxx">JUEGO 3 - </item>
     </string-array>
+
+    <string-array name="punctuation_options">
+        <item>.</item>
+        <item>,</item>
+    </string-array>
+
+
+    <string-array name="ejemplo">
+        <item>Leyenda</item>
+        <item>Leyenba</item>
+        <item>leyEndA</item>
+    </string-array>
 </resources>

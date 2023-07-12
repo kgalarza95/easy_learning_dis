@@ -4,46 +4,28 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.example.proyfragmentmodal.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PuntoComa5to#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class PuntoComa5to extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    View vista;
 
     public PuntoComa5to() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PuntoComa5to.
-     */
-    // TODO: Rename and change types and number of parameters
     public static PuntoComa5to newInstance(String param1, String param2) {
         PuntoComa5to fragment = new PuntoComa5to();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,16 +33,35 @@ public class PuntoComa5to extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_punto_coma5to, container, false);
+
+        try {
+            vista = inflater.inflate(R.layout.fragment_punto_coma5to, container, false);
+
+           /* vista = inflater.inflate(R.layout.fragment_punto_coma5to, container, false);
+            WebView webView = vista.findViewById(R.id.webview);*/
+        /*WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.setScrollbarFadingEnabled(false);
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setHorizontalScrollBarEnabled(false);*/
+
+       /* webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                Log.d("MiApp", consoleMessage.message() + " -- Desde JavaScript en WebView");
+                return true;
+            }
+        });*/
+            //webView.loadUrl("file:///android_asset/punto_coma.html");
+        } catch (Exception e) {
+            Log.e("====================>", String.valueOf(e));
+        }
+        return vista;
     }
 }

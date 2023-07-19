@@ -18,23 +18,10 @@ import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
-import com.example.proyfragmentmodal.juego.CuentosDos;
-import com.example.proyfragmentmodal.juego.DibujoGame;
-import com.example.proyfragmentmodal.juego.FragmentDibujoLetras;
-import com.example.proyfragmentmodal.juego.JuegoDos;
-import com.example.proyfragmentmodal.juego.PalabraCorrecta;
-import com.example.proyfragmentmodal.juego.PalabrasConBD;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 
 
 public class MenuJg5to extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    private String mParam1;
-    private String mParam2;
 
     View vista;
 
@@ -45,8 +32,6 @@ public class MenuJg5to extends Fragment {
     public static MenuJg5to newInstance(String param1, String param2) {
         MenuJg5to fragment = new MenuJg5to();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,10 +39,6 @@ public class MenuJg5to extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -75,21 +56,21 @@ public class MenuJg5to extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0: // juego uno
+                                    case 0: //
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new ArrastrarSaltar5to());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1://juego dos
+                                    case 1://
                                         FragmentManager useH = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction frmH = useH.beginTransaction();
                                         //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
                                         frmH.replace(R.id.contenedor_fragment, new PuntoComa5to());
                                         frmH.commit();
                                         break;
-                                    case 2://juegoo 3
+                                    case 2://
                                         FragmentManager useBD = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction frmBD = useBD.beginTransaction();
                                         //miTrnsaccion.replace(R.id.contenedor_fragment, new DibujoGame());
@@ -119,7 +100,7 @@ public class MenuJg5to extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0: // juego dos palabra mla escrita en frase
+                                    case 0: //
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
@@ -137,7 +118,7 @@ public class MenuJg5to extends Fragment {
                                         FragmentManager miManejadorQ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsacQ = miManejadorQ.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsacQ.replace(R.id.contenedor_fragment, new RevisionEscritura());
+                                        miTrnsacQ.replace(R.id.contenedor_fragment, new Leyenda());
                                         miTrnsacQ.commit();
                                         break;
                                     default:
@@ -163,13 +144,13 @@ public class MenuJg5to extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0: // Dibujo Game
+                                    case 0: //
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new AsociarImagen());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1://Dibujo letras
+                                    case 1://
                                         FragmentManager miManejadorL = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miManejadorX = miManejadorL.beginTransaction();
 
@@ -177,7 +158,7 @@ public class MenuJg5to extends Fragment {
                                         miManejadorX.replace(R.id.contenedor_fragment, new UsoBV());
                                         miManejadorX.commit();
                                         break;
-                                    case 2://Dibujo letras
+                                    case 2://
                                         FragmentManager miManejadorM = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miManejadorMX = miManejadorM.beginTransaction();
 

@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -22,7 +23,7 @@ import java.util.Map;
 public class IDaoService {
 
     //static String URL = "http://servidor.local//php_api_dislexia/";
-    static String URL = "http://192.168.1.48/php_api_dislexia/";//house 1
+    static String URL = "http://"+ GlobalAplicacion.IP+"/php_api_dislexia/";//house 1
     //static String URL = "http://192.168.100.75/php_api_dislexia/";//house 2
     private Context context;
 

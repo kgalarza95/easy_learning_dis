@@ -1,49 +1,34 @@
 package com.example.proyfragmentmodal.estudiante.quinto;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SeleccionePalabraCorrecta#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SeleccionePalabraCorrecta extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    View vista;
+    ProgressDialog progressDialog;
 
     public SeleccionePalabraCorrecta() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SeleccionePalabraCorrecta.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SeleccionePalabraCorrecta newInstance(String param1, String param2) {
         SeleccionePalabraCorrecta fragment = new SeleccionePalabraCorrecta();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,16 +36,55 @@ public class SeleccionePalabraCorrecta extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_seleccione_palabra_correcta, container, false);
+        vista = inflater.inflate(R.layout.fragment_seleccione_palabra_correcta, container, false);
+        try {
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("Cargando...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+            vista = inflater.inflate(R.layout.fragment_punto_coma5to, container, false);
+
+
+            WebView webView = vista.findViewById(R.id.webview);
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
+            //permitir que se carguen las fuentes externas
+            webView.getSettings().setLoadsImagesAutomatically(true);
+            webView.getSettings().setAllowFileAccess(true);
+            webView.getSettings().setAllowFileAccessFromFileURLs(true);
+
+            // Habilita el almacenamiento DOM para eventos de arrastrar y soltar
+            webView.getSettings().setDomStorageEnabled(true);
+
+            webView.setWebChromeClient(new WebChromeClient() {
+                @Override
+                public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                    Log.d("MiApp", consoleMessage.message() + " -- Desde JavaScript en WebView");
+                    return true;
+                }
+            });
+
+            webView.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    progressDialog.dismiss();
+                   // webView.evaluateJavascript("idEstudiante = '89';", null);
+                }
+            });
+
+            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/5to/unidad2/seleccione_palabra_correcta.html");
+
+
+        } catch (Exception e) {
+            Log.e("====================>", String.valueOf(e));
+        }
+
+        return vista;
     }
 }

@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.MenuJuego;
+import com.example.proyfragmentmodal.estudiante.quinto.ArrastrarSaltar5to;
 import com.example.proyfragmentmodal.estudiante.quinto.MenuJg5to;
 import com.example.proyfragmentmodal.estudiante.septimo.MenuJg7mo;
 import com.example.proyfragmentmodal.estudiante.sexto.MenuJg6to;
@@ -55,8 +56,8 @@ public class PantallaJuego extends AppCompatActivity {
                 case 5:
                     miTrnsaccion.replace(R.id.menu, new MenuJg5to());
                     //Inicializar el juego uno de cada unidad
-                    JuegoUno juegoUno = new JuegoUno();
-                    miTrnContenedor.replace(R.id.contenedor_fragment, juegoUno);
+                    ArrastrarSaltar5to arrastrarSaltar5to = new ArrastrarSaltar5to();
+                    miTrnContenedor.replace(R.id.contenedor_fragment, arrastrarSaltar5to);
                     break;
                 case 6:
                     miTrnsaccion.replace(R.id.menu, new MenuJg6to());

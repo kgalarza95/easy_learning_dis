@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.proyfragmentmodal.ActivityEliminarHtml;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.LoginEstudiante;
 import com.example.proyfragmentmodal.estudiante.NivelJuegos;
@@ -38,6 +39,7 @@ public class MenuProfEstud extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 GlobalAplicacion.esEstudiante = "S";
+                //startActivity(new Intent(view.getContext(), ActivityEliminarHtml.class));
                 startActivity(new Intent(view.getContext(), LoginEstudiante.class));
             }
         });

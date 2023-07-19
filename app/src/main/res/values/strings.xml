@@ -205,21 +205,21 @@
     </string-array>
 
     <string-array name="li_op_7to_unidad2">
-        <item name="xxx">JUEGO 1 - </item>
-        <item name="xxx">JUEGO 2 - </item>
-        <item name="xxx">JUEGO 3 - </item>
+        <item name="xxx">JUEGO 1 - SELECCIONE EL CONCEPTO CORRECTO</item>
+        <item name="xxx">JUEGO 2 - ARRASTRAR Y SOLTAR LA ORACIÒN</item>
+        <item name="xxx">JUEGO 3 - ASOCIAR EL GRAFICO</item>
     </string-array>
 
     <string-array name="li_op_7to_unidad3">
-        <item name="xxx">JUEGO 1 - </item>
-        <item name="xxx">JUEGO 2 - </item>
-        <item name="xxx">JUEGO 3 - </item>
+        <item name="xxx">JUEGO 1 - ORDENAR ESTRUCTURA</item>
+        <item name="xxx">JUEGO 2 - TIEMPO DEL VERBO</item>
+        <item name="xxx">JUEGO 3 - SELECCIONE CUAL ES LA POESÌA</item>
     </string-array>
 
     <string-array name="li_op_7to_unidad4">
-        <item name="xxx">JUEGO 1 - </item>
-        <item name="xxx">JUEGO 2 - </item>
-        <item name="xxx">JUEGO 3 - </item>
+        <item name="xxx">JUEGO 1 - SELECCIONE LA ORACIÒN ESCRITA CORRECTAMENTE</item>
+        <item name="xxx">JUEGO 2 - NUMERO DE IMAGEN</item>
+        <item name="xxx">JUEGO 3 - TEXTO TEATRAL</item>
     </string-array>
 
     <string-array name="punctuation_options">

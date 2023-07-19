@@ -56,6 +56,8 @@ public class RimaEscritaCorrectamente extends Fragment {
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
+
+
             //permitir que se carguen las fuentes externas
             webView.getSettings().setLoadsImagesAutomatically(true);
             webView.getSettings().setAllowFileAccess(true);

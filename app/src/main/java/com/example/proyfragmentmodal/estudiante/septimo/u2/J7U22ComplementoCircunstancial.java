@@ -1,32 +1,36 @@
-package com.example.proyfragmentmodal.estudiante.septimo;
+package com.example.proyfragmentmodal.estudiante.septimo.u2;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
+import com.example.proyfragmentmodal.R;
 
-public class ALetraEnElRecuadro7 extends Fragment {
+
+public class J7U22ComplementoCircunstancial extends Fragment {
+
+
 
     View vista;
     ProgressDialog progressDialog;
-    public ALetraEnElRecuadro7() {
+
+    public J7U22ComplementoCircunstancial() {
     }
 
-    public static ALetraEnElRecuadro7 newInstance(String param1, String param2) {
-        ALetraEnElRecuadro7 fragment = new ALetraEnElRecuadro7();
+    public static J7U22ComplementoCircunstancial newInstance(String param1, String param2) {
+        J7U22ComplementoCircunstancial fragment = new J7U22ComplementoCircunstancial();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -35,13 +39,13 @@ public class ALetraEnElRecuadro7 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista = inflater.inflate(R.layout.fragment_a_letra_en_el_recuadro7, container, false);
+        vista= inflater.inflate(R.layout.fragment_j7_u22_complemento_circunstancial, container, false);
+
         try {
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Cargando...");
@@ -78,7 +82,7 @@ public class ALetraEnElRecuadro7 extends Fragment {
                 }
             });
 
-            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/7mo/unidad1/letra_en_el_recuadro.html");
+            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/7mo/unidad2/complemento_circunstancial.html");
 
 
         } catch (Exception e) {

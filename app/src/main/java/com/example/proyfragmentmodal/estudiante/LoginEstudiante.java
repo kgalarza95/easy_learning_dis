@@ -50,6 +50,9 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
         //solo desarrollo;
         txtUsuario.setText("alumno");
         txtPass.setText("1234");
+
+        txtUsuario.setText("septimo");
+        txtPass.setText("septimo");
         progressDialog = new ProgressDialog(this);
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {

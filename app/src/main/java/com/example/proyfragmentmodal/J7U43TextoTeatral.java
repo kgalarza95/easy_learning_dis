@@ -1,32 +1,30 @@
-package com.example.proyfragmentmodal.estudiante.septimo;
+package com.example.proyfragmentmodal;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.app.ProgressDialog;
+import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
-
-public class ALetraEnElRecuadro7 extends Fragment {
+public class J7U43TextoTeatral extends Fragment {
 
     View vista;
     ProgressDialog progressDialog;
-    public ALetraEnElRecuadro7() {
+
+    public J7U43TextoTeatral() {
     }
 
-    public static ALetraEnElRecuadro7 newInstance(String param1, String param2) {
-        ALetraEnElRecuadro7 fragment = new ALetraEnElRecuadro7();
+    public static J7U43TextoTeatral newInstance(String param1, String param2) {
+        J7U43TextoTeatral fragment = new J7U43TextoTeatral();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -35,13 +33,13 @@ public class ALetraEnElRecuadro7 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista = inflater.inflate(R.layout.fragment_a_letra_en_el_recuadro7, container, false);
+        vista= inflater.inflate(R.layout.fragment_j7_u43_texto_teatral, container, false);
+
         try {
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Cargando...");
@@ -78,7 +76,7 @@ public class ALetraEnElRecuadro7 extends Fragment {
                 }
             });
 
-            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/7mo/unidad1/letra_en_el_recuadro.html");
+            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/7mo/unidad4/texto_teatral.html");
 
 
         } catch (Exception e) {

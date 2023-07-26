@@ -14,8 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.proyfragmentmodal.J7U41OracionEscrita;
+import com.example.proyfragmentmodal.J7U42NumeroImagen;
+import com.example.proyfragmentmodal.J7U43TextoTeatral;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
+import com.example.proyfragmentmodal.estudiante.septimo.u2.J7U21ConceptoCorrecto;
+import com.example.proyfragmentmodal.estudiante.septimo.u2.J7U22ComplementoCircunstancial;
+import com.example.proyfragmentmodal.estudiante.septimo.u2.J7U23AsociarGrafico;
+import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U31OrdernarEstructura;
+import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U32TiempoVerbo;
+import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U33PPoesia;
 import com.example.proyfragmentmodal.estudiante.sexto.ANucleoSujeto;
 import com.example.proyfragmentmodal.estudiante.sexto.AOrdernarEstructuraArticulo;
 import com.example.proyfragmentmodal.estudiante.sexto.APuntoSuspensivo;
@@ -123,21 +132,21 @@ public class MenuJg7mo extends Fragment {
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new JuegoUno());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new J7U21ConceptoCorrecto());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://juego dos
                                         FragmentManager miManejadorP = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsac = miManejadorP.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsac.replace(R.id.contenedor_fragment, new PalabrasConBD());
+                                        miTrnsac.replace(R.id.contenedor_fragment, new J7U22ComplementoCircunstancial());
                                         miTrnsac.commit();
                                         break;
                                     case 2://juego tres
                                         FragmentManager miManejador3 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsa3 = miManejador3.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsa3.replace(R.id.contenedor_fragment, new JuegoDos());
+                                        miTrnsa3.replace(R.id.contenedor_fragment, new J7U23AsociarGrafico());
                                         miTrnsa3.commit();
                                         break;
                                     default:
@@ -166,14 +175,20 @@ public class MenuJg7mo extends Fragment {
                                     case 0: //
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new PalabraCorrecta());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new J7U31OrdernarEstructura());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://
                                         FragmentManager miManejadorL = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miManejadorX = miManejadorL.beginTransaction();
-                                        miManejadorX.replace(R.id.contenedor_fragment, new FragmentCuentos());
+                                        miManejadorX.replace(R.id.contenedor_fragment, new J7U32TiempoVerbo());
                                         miManejadorX.commit();
+                                        break;
+                                    case 2:
+                                        FragmentManager miManejadory = getActivity().getSupportFragmentManager();
+                                        FragmentTransaction miManejadorX3 = miManejadory.beginTransaction();
+                                        miManejadorX3.replace(R.id.contenedor_fragment, new J7U33PPoesia());
+                                        miManejadorX3.commit();
                                         break;
                                     default:
                                         break;
@@ -201,20 +216,20 @@ public class MenuJg7mo extends Fragment {
                                     case 0: // Dibujo Game
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new CuentosDos());
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new J7U41OracionEscrita());
                                         miTrnsaccion.commit();
                                         break;
                                     case 1://Dibujo letras
                                         FragmentManager miManejador2 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion2 = miManejador2.beginTransaction();
-                                        miTrnsaccion2.replace(R.id.contenedor_fragment, new FragmentCuentos());
+                                        miTrnsaccion2.replace(R.id.contenedor_fragment, new J7U42NumeroImagen());
                                         miTrnsaccion2.commit();
                                         break;
                                     case 2://juego tres
                                         FragmentManager miManejador3 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsa3 = miManejador3.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsa3.replace(R.id.contenedor_fragment, new PalabraCorrecta());
+                                        miTrnsa3.replace(R.id.contenedor_fragment, new J7U43TextoTeatral());
                                         miTrnsa3.commit();
                                         break;
                                     default:

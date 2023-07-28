@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.estudiante.septimo.u4;
 
 import android.os.Bundle;
 
@@ -13,19 +13,21 @@ import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
-public class J7U42NumeroImagen extends Fragment {
+public class J7U43TextoTeatral extends Fragment {
 
+    View vista;
+    ProgressDialog progressDialog;
 
-
-    public J7U42NumeroImagen() {
+    public J7U43TextoTeatral() {
     }
 
-    public static J7U42NumeroImagen newInstance(String param1, String param2) {
-        J7U42NumeroImagen fragment = new J7U42NumeroImagen();
+    public static J7U43TextoTeatral newInstance(String param1, String param2) {
+        J7U43TextoTeatral fragment = new J7U43TextoTeatral();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -35,13 +37,11 @@ public class J7U42NumeroImagen extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    View vista;
-    ProgressDialog progressDialog;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vista= inflater.inflate(R.layout.fragment_j7_u42_numero_imagen, container, false);
+        vista= inflater.inflate(R.layout.fragment_j7_u43_texto_teatral, container, false);
+
         try {
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Cargando...");
@@ -78,7 +78,7 @@ public class J7U42NumeroImagen extends Fragment {
                 }
             });
 
-            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/7mo/unidad4/numero_a_imagen.html");
+            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/7mo/unidad4/texto_teatral.html");
 
 
         } catch (Exception e) {

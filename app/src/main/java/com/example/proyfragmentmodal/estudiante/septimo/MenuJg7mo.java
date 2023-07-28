@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.proyfragmentmodal.J7U41OracionEscrita;
-import com.example.proyfragmentmodal.J7U42NumeroImagen;
-import com.example.proyfragmentmodal.J7U43TextoTeatral;
+import com.example.proyfragmentmodal.estudiante.septimo.u4.J7U41OracionEscrita;
+import com.example.proyfragmentmodal.estudiante.septimo.u4.J7U42NumeroImagen;
+import com.example.proyfragmentmodal.estudiante.septimo.u4.J7U43TextoTeatral;
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
 import com.example.proyfragmentmodal.estudiante.septimo.u2.J7U21ConceptoCorrecto;
@@ -25,25 +25,8 @@ import com.example.proyfragmentmodal.estudiante.septimo.u2.J7U23AsociarGrafico;
 import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U31OrdernarEstructura;
 import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U32TiempoVerbo;
 import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U33PPoesia;
-import com.example.proyfragmentmodal.estudiante.sexto.ANucleoSujeto;
-import com.example.proyfragmentmodal.estudiante.sexto.AOrdernarEstructuraArticulo;
-import com.example.proyfragmentmodal.estudiante.sexto.APuntoSuspensivo;
-import com.example.proyfragmentmodal.estudiante.sexto.BOrdenarRelatos;
-import com.example.proyfragmentmodal.estudiante.sexto.BSeleccioneRefran;
-import com.example.proyfragmentmodal.estudiante.sexto.BVerboImpersonal;
-import com.example.proyfragmentmodal.estudiante.sexto.CImagenConLaOracion;
-import com.example.proyfragmentmodal.estudiante.sexto.CLetraRecuadro;
-import com.example.proyfragmentmodal.estudiante.sexto.DPalabraBienEscrita;
-import com.example.proyfragmentmodal.estudiante.sexto.DPalabraCorrecta;
-import com.example.proyfragmentmodal.estudiante.sexto.DPalabraMalEscrita;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
-import com.example.proyfragmentmodal.juego.CuentosDos;
-import com.example.proyfragmentmodal.juego.FragmentCuentos;
-import com.example.proyfragmentmodal.juego.JuegoDos;
-import com.example.proyfragmentmodal.juego.JuegoUno;
-import com.example.proyfragmentmodal.juego.PalabraCorrecta;
-import com.example.proyfragmentmodal.juego.PalabrasConBD;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
 
 

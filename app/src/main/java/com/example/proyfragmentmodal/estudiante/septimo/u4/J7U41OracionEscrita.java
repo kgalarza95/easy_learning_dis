@@ -1,4 +1,4 @@
-package com.example.proyfragmentmodal;
+package com.example.proyfragmentmodal.estudiante.septimo.u4;
 
 import android.os.Bundle;
 
@@ -13,6 +13,8 @@ import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 public class J7U41OracionEscrita extends Fragment {

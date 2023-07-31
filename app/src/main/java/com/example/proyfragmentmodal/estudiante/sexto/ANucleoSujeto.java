@@ -48,7 +48,6 @@ public class ANucleoSujeto extends Fragment {
             progressDialog.setMessage("Cargando...");
             progressDialog.setCancelable(false);
             progressDialog.show();
-            vista = inflater.inflate(R.layout.fragment_punto_coma5to, container, false);
 
 
             WebView webView = vista.findViewById(R.id.webview);

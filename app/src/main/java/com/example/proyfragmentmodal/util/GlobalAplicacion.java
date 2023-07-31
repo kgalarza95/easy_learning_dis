@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class GlobalAplicacion {
 
-    public static String IP = "192.168.1.48";
+    public static String IP = "192.168.100.185";
     private static String globalUsuario;
     private static String globalPassword;
     private static String globalNomUsuario;

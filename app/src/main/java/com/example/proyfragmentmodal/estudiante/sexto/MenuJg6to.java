@@ -59,7 +59,7 @@ public class MenuJg6to extends Fragment {
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Lista de Opciones")
+                builder.setTitle("UNIDAD 1")
                         .setItems(R.array.li_op_6to_unidad1, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -103,7 +103,7 @@ public class MenuJg6to extends Fragment {
             public void onClick(View v) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Lista de Opciones")
+                builder.setTitle("UNIDAD 2")
                         .setItems(R.array.li_op_6to_unidad2, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -147,7 +147,7 @@ public class MenuJg6to extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Lista de Opciones")
+                builder.setTitle("UNIDAD 3")
                         .setItems(R.array.li_op_6to_unidad3, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -182,7 +182,7 @@ public class MenuJg6to extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Lista de Opciones")
+                builder.setTitle("UNIDAD 4")
                         .setItems(R.array.li_op_6to_unidad4, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -221,7 +221,7 @@ public class MenuJg6to extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Lista de Opciones")
+                builder.setTitle("OPCIONES")
                         .setItems(R.array.li_opciones_perfil_juego, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 

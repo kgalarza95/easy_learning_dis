@@ -14,6 +14,7 @@ import com.example.proyfragmentmodal.estudiante.quinto.ArrastrarSaltar5to;
 import com.example.proyfragmentmodal.estudiante.quinto.MenuJg5to;
 import com.example.proyfragmentmodal.estudiante.septimo.ALetraEnElRecuadro7;
 import com.example.proyfragmentmodal.estudiante.septimo.MenuJg7mo;
+import com.example.proyfragmentmodal.estudiante.sexto.AOrdernarEstructuraArticulo;
 import com.example.proyfragmentmodal.estudiante.sexto.MenuJg6to;
 import com.example.proyfragmentmodal.general.MenuJuegoPrueba;
 import com.example.proyfragmentmodal.juego.JuegoUno;
@@ -63,7 +64,7 @@ public class PantallaJuego extends AppCompatActivity {
                 case 6:
                     miTrnsaccion.replace(R.id.menu, new MenuJg6to());
                     //Inicializar el juego uno de cada unidad
-                    JuegoUno juegoUnoxx = new JuegoUno();
+                    AOrdernarEstructuraArticulo juegoUnoxx = new AOrdernarEstructuraArticulo();
                     miTrnContenedor.replace(R.id.contenedor_fragment, juegoUnoxx);
                     break;
                 case 7:

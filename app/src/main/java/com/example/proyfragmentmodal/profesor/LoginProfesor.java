@@ -34,6 +34,7 @@ public class LoginProfesor extends AppCompatActivity
     Button btnIngresar;
     Button btnCancelar;
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +79,7 @@ public class LoginProfesor extends AppCompatActivity
 
 
                 //solo desarrollo sin conexión.
-               // preubaSinConexion();
+                // preubaSinConexion();
             }
         });
 
@@ -90,44 +91,50 @@ public class LoginProfesor extends AppCompatActivity
 
     @Override
     public void onSuccess(String response) {
-        progressDialog.dismiss();
-        Log.d("Response==========>  ", response);
+        try {
 
-        Respuesta data = gson.fromJson(response, Respuesta.class);
 
-        if (data.getCodResponse().equals("00")) {
-            //List<EntityMap> listRoles = (List<EntityMap>) data.getData();
-            Map<String, Object> listFilas = (Map<String, Object>) data.getData();
-            //EntityMap obj = listRoles.get(0);
-            Intent intent = new Intent(vista.getContext(), MainActivity.class);
-            //if (obj.getROL().equals("ADMINISTRADOR")) {
-            if (listFilas.get("ROL").equals("ADMINISTRADOR")) {
-                intent.putExtra("itOrigin", "loginAdmin");
-                startActivity(intent);
-            } else if (listFilas.get("ROL").equals("PROFESOR")) {
-                //if (obj.getCAMBIAR_CONTRASENIA().equals("N")){
-                if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
-                    Log.d(" listFilas.get(\"ID\")==========>  ", String.valueOf(listFilas.get("ID")));
-                    GlobalAplicacion global = new GlobalAplicacion();
-                   // global.setGlobalUsuario(String.valueOf((Double) listFilas.get("ID")));
-                    GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
-                    global.setGlobalUsuario((String) listFilas.get("USUARIO"));
-                    Log.d(" guardando passss ==========>  ", txtPass.getText().toString());
-                    global.setGlobalPassword(txtPass.getText().toString());
-                    Log.d(" getGlobalUsuario==========>  ", global.getGlobalUsuario());
-                    intent.putExtra("itOrigin", "loginProfesor");
+            progressDialog.dismiss();
+            Log.d("Response==========>  ", response);
+
+            Respuesta data = gson.fromJson(response, Respuesta.class);
+
+            if (data.getCodResponse().equals("00")) {
+                //List<EntityMap> listRoles = (List<EntityMap>) data.getData();
+                Map<String, Object> listFilas = (Map<String, Object>) data.getData();
+                //EntityMap obj = listRoles.get(0);
+                Intent intent = new Intent(vista.getContext(), MainActivity.class);
+                //if (obj.getROL().equals("ADMINISTRADOR")) {
+                if (listFilas.get("ROL").equals("ADMINISTRADOR")) {
+                    intent.putExtra("itOrigin", "loginAdmin");
+                    startActivity(intent);
+                } else if (listFilas.get("ROL").equals("PROFESOR")) {
+                    //if (obj.getCAMBIAR_CONTRASENIA().equals("N")){
+                    if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
+                        Log.d(" listFilas.get(\"ID\")==========>  ", String.valueOf(listFilas.get("ID")));
+                        GlobalAplicacion global = new GlobalAplicacion();
+                        // global.setGlobalUsuario(String.valueOf((Double) listFilas.get("ID")));
+                        GlobalAplicacion.setGlobalIdUsuario(Integer.parseInt((String) listFilas.get("ID")));
+                        global.setGlobalUsuario((String) listFilas.get("USUARIO"));
+                        Log.d(" guardando passss ==========>  ", txtPass.getText().toString());
+                        global.setGlobalPassword(txtPass.getText().toString());
+                        Log.d(" getGlobalUsuario==========>  ", global.getGlobalUsuario());
+                        intent.putExtra("itOrigin", "loginProfesor");
+                    } else {
+                        intent = new Intent(vista.getContext(), CambiarContrasenia.class);
+                        intent.putExtra("usuario", txtUsuario.getText().toString());
+                    }
+                    startActivity(intent);
                 } else {
-                    intent = new Intent(vista.getContext(), CambiarContrasenia.class);
-                    intent.putExtra("usuario", txtUsuario.getText().toString());
+                    Toast.makeText(this, "Usuario sin privilegios", Toast.LENGTH_SHORT).show();
                 }
-                startActivity(intent);
             } else {
-                Toast.makeText(this, "Usuario sin privilegios", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "DATOS INGRESADOS SON INCORRECTOS", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(this, "DATOS INGRESADOS SON INCORRECTOS", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("Error interno", String.valueOf(e));
+            Toast.makeText(this, "LO SENTIMOS, ESTAMOS PRESENTANDO PROBLEMAS INTENROS.", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -137,7 +144,7 @@ public class LoginProfesor extends AppCompatActivity
         Toast.makeText(this, "Error: " + error, Toast.LENGTH_SHORT).show();
     }
 
-    public void preubaSinConexion(){
+    public void preubaSinConexion() {
         Intent intent = new Intent(vista.getContext(), MainActivity.class);
         intent.putExtra("itOrigin", "loginProfesor");
         startActivity(intent);

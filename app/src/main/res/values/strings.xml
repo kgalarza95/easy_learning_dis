@@ -155,69 +155,69 @@
 
     <string-array name="li_op_5to_unidad2">
         <item name="xxx">ACTIVIDAD 1 - COMPLETA LA ORACIÓN</item>
-        <item name="xxx">ACTIVIDAD 2 - SELECCIONE LA PALABRA CORRECTA</item>
+        <item name="xxx">ACTIVIDAD 2 - SELECCIONA LA PALABRA CORRECTA</item>
         <item name="xxx">ACTIVIDAD 3 - REVISIÓN DE ESCRITURA</item>
     </string-array>
 
     <string-array name="li_op_5to_unidad3">
-        <item name="xxx">ACTIVIDAD 1 - ASOCIA LAS IMAGENES CORRESPONDIENTE</item>
-        <item name="xxx">ACTIVIDAD 2 - USO DE LA B Y v</item>
-        <item name="xxx">ACTIVIDAD 3 - seleccione la rima escrita correctamente</item>
+        <item name="xxx">ACTIVIDAD 1 - ASOCIA LAS IMÁGENES CORRESPONDIENTES</item>
+        <item name="xxx">ACTIVIDAD 2 - USO DE LA B Y V</item>
+        <item name="xxx">ACTIVIDAD 3 - SELECCIONA LA RIMA ESCRITA CORRECTAMENTE</item>
     </string-array>
 
     <string-array name="li_op_5to_unidad4">
         <item name="xxx">ACTIVIDAD 1 - USO DE LA H</item>
-        <item name="xxx">ACTIVIDAD 2 - PALABRAS HOMOFONAS</item>
-        <item name="xxx">ACTIVIDAD 3 - SELECCIÓNE EL FRAGMENTO ESCRITO CORRECTAMENTE</item>
+        <item name="xxx">ACTIVIDAD 2 - PALABRAS HOMÓFONAS</item>
+        <item name="xxx">ACTIVIDAD 3 - SELECCIONA EL FRAGMENTO ESCRITO CORRECTAMENTE</item>
     </string-array>
 
 
     <!--XXXXXXXXXXXXXXX curso 6to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
     <string-array name="li_op_6to_unidad1">
-        <item name="xxx">ACTIVIDAD 1 - ORDENAR LA ESTRUCTURA DE UN ARTICULO INFOMATIVO</item>
-        <item name="xxx">ACTIVIDAD 2 - INDIQUE EL NUCLEO DEL SUJETO</item>
+        <item name="xxx">ACTIVIDAD 1 - ORDENAR LA ESTRUCTURA DE UN ARTÍCULO INFORMATIVO</item>
+        <item name="xxx">ACTIVIDAD 2 - INDICA EL NÚCLEO DEL SUJETO</item>
         <item name="xxx">ACTIVIDAD 3 - USO DEL PUNTO SUSPENSIVO</item>
     </string-array>
 
     <string-array name="li_op_6to_unidad2">
         <item name="xxx">ACTIVIDAD 1 - ORDENAR LOS RELATOS</item>
         <item name="xxx">ACTIVIDAD 2 - VERBO IMPERSONAL</item>
-        <item name="xxx">ACTIVIDAD 3 - SELECCIONE EL REFRAN</item>
+        <item name="xxx">ACTIVIDAD 3 - SELECCIONA EL REFRÁN</item>
     </string-array>
 
     <string-array name="li_op_6to_unidad3">
-        <item name="xxx">ACTIVIDAD 1 - COLOQUE LA LETRA EN EL RECUADRO</item>
-        <item name="xxx">ACTIVIDAD 2 - ASOCIE LA IMAGEN CON LA ORACIÓN</item>
+        <item name="xxx">ACTIVIDAD 1 - COLOCA LA LETRA EN EL RECUADRO</item>
+        <item name="xxx">ACTIVIDAD 2 - ASOCIA LA IMAGEN CON LA ORACIÓN</item>
     </string-array>
 
     <string-array name="li_op_6to_unidad4">
         <item name="xxx">ACTIVIDAD 1 - IDENTIFICA LA PALABRA MAL ESCRITA</item>
-        <item name="xxx">ACTIVIDAD 2 - SELECCIONE LA PALABRA CORRETA</item>
-        <item name="xxx">ACTIVIDAD 3 - SELECCIONE LA PALABRA BIEN ESCRITA</item>
+        <item name="xxx">ACTIVIDAD 2 - SELECCIONA LA PALABRA CORRECTA</item>
+        <item name="xxx">ACTIVIDAD 3 - SELECCIONA LA PALABRA BIEN ESCRITA</item>
     </string-array>
 
     <!--XXXXXXXXXXXXXXX curso 7to XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
     <string-array name="li_op_7to_unidad1">
-        <item name="xxx">ACTIVIDAD 1 - COLOQUE LA LETRA EN EL RECUADRO</item>
-        <item name="xxx">ACTIVIDAD 2 - ORDENE LA ESTRUCTURA DE UN FOLLETO</item>
-        <item name="xxx">ACTIVIDAD 3 - SELECCIONE LA LEYENDA</item>
+        <item name="xxx">ACTIVIDAD 1 - COLOCA LA LETRA EN EL RECUADRO</item>
+        <item name="xxx">ACTIVIDAD 2 - ORDENA LA ESTRUCTURA DE UN FOLLETO</item>
+        <item name="xxx">ACTIVIDAD 3 - SELECCIONA LA LEYENDA</item>
     </string-array>
 
     <string-array name="li_op_7to_unidad2">
-        <item name="xxx">ACTIVIDAD 1 - SELECCIONE EL CONCEPTO CORRECTO</item>
-        <item name="xxx">ACTIVIDAD 2 - ARRASTRAR Y SOLTAR LA ORACIÒN</item>
-        <item name="xxx">ACTIVIDAD 3 - ASOCIAR EL GRAFICO</item>
+        <item name="xxx">ACTIVIDAD 1 - ASOCIA EL GRÁFICO</item>
+        <item name="xxx">ACTIVIDAD 2 - ARRASTRAR Y SOLTAR LA ORACIÓN</item>
+        <item name="xxx">ACTIVIDAD 3 - SELECCIONA EL CONCEPTO CORRECTO</item>
     </string-array>
 
     <string-array name="li_op_7to_unidad3">
-        <item name="xxx">ACTIVIDAD 1 - ORDENAR ESTRUCTURA</item>
+        <item name="xxx">ACTIVIDAD 1 - ORDENA LA ESTRUCTURA</item>
         <item name="xxx">ACTIVIDAD 2 - TIEMPO DEL VERBO</item>
-        <item name="xxx">ACTIVIDAD 3 - SELECCIONE CUAL ES LA POESÌA</item>
+        <item name="xxx">ACTIVIDAD 3 - SELECCIONA CUÁL ES LA POESÍA</item>
     </string-array>
 
     <string-array name="li_op_7to_unidad4">
-        <item name="xxx">ACTIVIDAD 1 - SELECCIONE LA ORACIÒN ESCRITA CORRECTAMENTE</item>
-        <item name="xxx">ACTIVIDAD 2 - NUMERO DE IMAGEN</item>
+        <item name="xxx">ACTIVIDAD 1 - SELECCIONA LA ORACIÓN ESCRITA CORRECTAMENTE</item>
+        <item name="xxx">ACTIVIDAD 2 - NÚMERO DE IMAGEN</item>
         <item name="xxx">ACTIVIDAD 3 - TEXTO TEATRAL</item>
     </string-array>
 

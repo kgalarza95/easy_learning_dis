@@ -10,6 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,6 +23,7 @@ import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.EntityMap;
 import com.example.proyfragmentmodal.entity.Respuesta;
 import com.example.proyfragmentmodal.adapter.ListAdapterScore;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -38,6 +43,8 @@ public class HistorialAcademicoProfesor extends Fragment
     private View vistaG;
     private List<EntityMap> listaEstudiantes;
     private ProgressDialog progressDialog;
+
+    View vista;
 
     public HistorialAcademicoProfesor() {
     }
@@ -59,9 +66,55 @@ public class HistorialAcademicoProfesor extends Fragment
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_historial_academico_profesor, container, false);
         vistaG = vista;
-        progressDialog = new ProgressDialog(getActivity());
+        //consultar();
 
-        consultar();
+        try {
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("Cargando...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            WebView webView = vista.findViewById(R.id.webview);
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
+            //permitir que se carguen las fuentes externas
+            webView.getSettings().setLoadsImagesAutomatically(true);
+            webView.getSettings().setAllowFileAccess(true);
+            webView.getSettings().setAllowFileAccessFromFileURLs(true);
+
+            // Habilita el almacenamiento DOM para eventos de arrastrar y soltar
+            webView.getSettings().setDomStorageEnabled(true);
+
+            webView.setWebChromeClient(new WebChromeClient() {
+                @Override
+                public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                    Log.d("MiApp", consoleMessage.message() + " -- Desde JavaScript en WebView");
+                    return true;
+                }
+            });
+            webView.setWebChromeClient(new WebChromeClient() {
+                @Override
+                public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                    Log.d("otra consola", consoleMessage.message());
+                    return true;
+                }
+            });
+
+            webView.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    progressDialog.dismiss();
+                    //webView.evaluateJavascript("idEstudiante = '89';", null);
+                }
+            });
+
+            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/profesor/historial_academico.html");
+
+
+        } catch (Exception e) {
+            Log.e("====================>", String.valueOf(e));
+        }
 
         return vista;
     }

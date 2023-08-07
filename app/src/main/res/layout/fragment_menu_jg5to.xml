@@ -49,7 +49,7 @@
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:contentDescription="Musica"
-                android:src="@drawable/dibujo_j"></ImageButton>
+                android:src="@drawable/taaaask"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                 android:layout_width="63dp"
                 android:layout_height="63dp"
                 android:contentDescription="Musica"
-                android:src="@drawable/lib"></ImageButton>
+                android:src="@drawable/boooook"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"

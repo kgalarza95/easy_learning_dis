@@ -74,8 +74,7 @@ public class Tilde5to extends Fragment {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     progressDialog.dismiss();
-                    //webView.evaluateJavascript("idEstudiante = '89';", null);
-                    // webView.evaluateJavascript("asignarIdEstudiante('87');", null);
+                    webView.evaluateJavascript("idEstudiante = '" + GlobalAplicacion.getGlobalIdUsuario() + "';", null);
                 }
             });
             webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/5to/unidad1/oracion_correcta.html");

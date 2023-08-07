@@ -15,6 +15,7 @@ import com.example.proyfragmentmodal.R;
  * Use the {@link UsoH#newInstance} factory method to
  * create an instance of this fragment.
  */
+@Deprecated
 public class UsoH extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match

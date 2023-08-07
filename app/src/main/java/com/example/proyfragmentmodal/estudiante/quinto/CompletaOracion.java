@@ -74,7 +74,7 @@ public class CompletaOracion extends Fragment {
                 public void onPageFinished(WebView view, String url) {
                     progressDialog.dismiss();
                     //webView.evaluateJavascript("idEstudiante = '89';", null);
-                    // webView.evaluateJavascript("asignarIdEstudiante('87');", null);
+                    webView.evaluateJavascript("idEstudiante = '" + GlobalAplicacion.getGlobalIdUsuario() + "';", null);
                 }
             });
 

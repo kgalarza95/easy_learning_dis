@@ -74,7 +74,7 @@ public class ALetraEnElRecuadro7 extends Fragment {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     progressDialog.dismiss();
-                    //webView.evaluateJavascript("idEstudiante = '89';", null);
+                    webView.evaluateJavascript("idEstudiante = '" + GlobalAplicacion.getGlobalIdUsuario() + "';", null);
                 }
             });
 

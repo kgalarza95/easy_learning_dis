@@ -29,6 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="UNIDAD 1">
 
             </TextView>
@@ -54,6 +55,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="UNIDAD 2">
 
             </TextView>
@@ -79,6 +81,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="UNIDAD 3">
 
             </TextView>
@@ -104,6 +107,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="UNIDAD 4">
 
             </TextView>
@@ -131,12 +135,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perfil"></TextView>
+                android:textStyle="bold"
+                android:text="PERFIL"></TextView>
         </LinearLayout>
 
 
         <Space
-            android:layout_width="5dp"
+            android:layout_width="3dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -157,10 +162,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Aula Virtual"></TextView>
+                android:textStyle="bold"
+                android:text="AULA VIRTUAL"></TextView>
         </LinearLayout>
 
     </LinearLayout>
-
 
 </FrameLayout>

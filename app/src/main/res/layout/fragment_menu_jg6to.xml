@@ -24,7 +24,7 @@
                 android:layout_height="63dp"
                 android:contentDescription="Linterna"
                 android:src="@drawable/lib"
-                android:tooltipText="linterna"></ImageButton>
+                android:tooltipText="lib"></ImageButton>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="5dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -60,7 +60,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="5dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -85,7 +85,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="5dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -110,7 +110,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="10dp"
+            android:layout_width="5dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -134,7 +134,34 @@
                 android:text="Perfil"></TextView>
         </LinearLayout>
 
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_aula_v"
+                android:layout_width="63dp"
+                android:layout_height="63dp"
+
+                android:src="@drawable/a_virtual">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfil"></TextView>
+        </LinearLayout>
+
     </LinearLayout>
+
 
 
 </FrameLayout>

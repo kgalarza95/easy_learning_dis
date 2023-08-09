@@ -25,6 +25,7 @@ import com.example.proyfragmentmodal.estudiante.septimo.u2.J7U23AsociarGrafico;
 import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U31OrdernarEstructura;
 import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U32TiempoVerbo;
 import com.example.proyfragmentmodal.estudiante.septimo.u3.J7U33PPoesia;
+import com.example.proyfragmentmodal.general.MainActivity;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.profesor.MisCursosProfesor;
@@ -265,6 +266,15 @@ public class MenuJg7mo extends Fragment {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            }
+        });
+
+        vista.findViewById(R.id.btn_mn_aula_v).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                intent.putExtra("itOrigin", "loginEstudiante");
+                startActivity(intent);
             }
         });
 

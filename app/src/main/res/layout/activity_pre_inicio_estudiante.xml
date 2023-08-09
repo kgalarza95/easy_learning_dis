@@ -11,6 +11,7 @@
         android:id="@+id/btn_aula_virtaul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_marginTop="204dp"
         android:background="@drawable/btn_login"
         android:text="@string/btn_aula_vritual"
@@ -21,13 +22,14 @@
 
     <Button
         android:id="@+id/btn_juega_aprende"
-        android:layout_width="201dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="301dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="308dp"
         android:background="@drawable/btn_login"
         android:text="@string/btn_juega_aprende"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_aula_virtaul" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_aula_virtaul"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

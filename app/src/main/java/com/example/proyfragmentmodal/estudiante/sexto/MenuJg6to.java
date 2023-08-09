@@ -19,6 +19,7 @@ import com.example.proyfragmentmodal.estudiante.MisCursosEstudiante;
 import com.example.proyfragmentmodal.estudiante.quinto.JuArrastrarSoltar;
 import com.example.proyfragmentmodal.estudiante.quinto.PuntoComa;
 import com.example.proyfragmentmodal.estudiante.quinto.UsoDeLaH;
+import com.example.proyfragmentmodal.general.MainActivity;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.juego.CuentosDos;
@@ -259,6 +260,14 @@ public class MenuJg6to extends Fragment {
             }
         });
 
+        vista.findViewById(R.id.btn_mn_aula_v).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                intent.putExtra("itOrigin", "loginEstudiante");
+                startActivity(intent);
+            }
+        });
         return vista;
     }
 }

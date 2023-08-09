@@ -28,13 +28,6 @@
 
 
         <activity
-            android:name=".ActivityEliminarHtml"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ImagenesBase"
             android:exported="false">
             <meta-data

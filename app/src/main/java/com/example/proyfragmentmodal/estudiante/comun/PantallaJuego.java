@@ -58,20 +58,20 @@ public class PantallaJuego extends AppCompatActivity {
                 case 5:
                     miTrnsaccion.replace(R.id.menu, new MenuJg5to());
                     //Inicializar el juego uno de cada unidad
-                    ArrastrarSaltar5to arrastrarSaltar5to = new ArrastrarSaltar5to();
-                    miTrnContenedor.replace(R.id.contenedor_fragment, arrastrarSaltar5to);
+                    //ArrastrarSaltar5to arrastrarSaltar5to = new ArrastrarSaltar5to();
+                    //miTrnContenedor.replace(R.id.contenedor_fragment, arrastrarSaltar5to);
                     break;
                 case 6:
                     miTrnsaccion.replace(R.id.menu, new MenuJg6to());
                     //Inicializar el juego uno de cada unidad
-                    AOrdernarEstructuraArticulo juegoUnoxx = new AOrdernarEstructuraArticulo();
-                    miTrnContenedor.replace(R.id.contenedor_fragment, juegoUnoxx);
+                    //AOrdernarEstructuraArticulo juegoUnoxx = new AOrdernarEstructuraArticulo();
+                    //miTrnContenedor.replace(R.id.contenedor_fragment, juegoUnoxx);
                     break;
                 case 7:
                     miTrnsaccion.replace(R.id.menu, new MenuJg7mo());
                     //Inicializar el juego uno de cada unidad
-                    ALetraEnElRecuadro7 aLetraEnElRecuadro7 = new ALetraEnElRecuadro7();
-                    miTrnContenedor.replace(R.id.contenedor_fragment, aLetraEnElRecuadro7);
+                    //ALetraEnElRecuadro7 aLetraEnElRecuadro7 = new ALetraEnElRecuadro7();
+                    //miTrnContenedor.replace(R.id.contenedor_fragment, aLetraEnElRecuadro7);
                     break;
                 default:
             }

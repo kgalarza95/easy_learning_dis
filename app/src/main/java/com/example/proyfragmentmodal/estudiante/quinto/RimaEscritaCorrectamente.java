@@ -82,7 +82,7 @@ public class RimaEscritaCorrectamente extends Fragment {
                 }
             });
 
-            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/5to/unidad4/fragmento_correcto.html");
+            webView.loadUrl("http://" + GlobalAplicacion.IP + "/php_api_dislexia/juegos/5to/unidad3/rima_escrita_correctamente.html");
 
 
         } catch (Exception e) {

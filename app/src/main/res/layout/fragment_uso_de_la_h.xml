@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginRight="10dp"
                 android:text="Escribe “h” en las palabras que sea necesario."
@@ -49,8 +49,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:layout_marginRight="10dp"
+                android:textSize="20sp"
+                android:layout_marginRight="5dp"
                 android:text="Puntaje:"
                 android:layout_gravity="center_horizontal"/>
 
@@ -58,7 +58,7 @@
                 android:id="@+id/txt_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:text="0"
 
                 android:layout_gravity="center_horizontal"/>

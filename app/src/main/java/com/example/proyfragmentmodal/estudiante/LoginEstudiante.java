@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.proyfragmentmodal.dao.IDaoService;
 import com.example.proyfragmentmodal.entity.Respuesta;
+import com.example.proyfragmentmodal.estudiante.comun.PantallaJuego;
 import com.example.proyfragmentmodal.general.CambiarContrasenia;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.R;
@@ -110,7 +111,11 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
             if (data.getCodResponse().equals("00")) {
 
                 Map<String, Object> listFilas = (Map<String, Object>) data.getData();
-                Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+                //Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);/*anterior*/
+
+                Intent intent = new Intent(vista.getContext(), PantallaJuego.class);
+
+
 
                 if (listFilas.get("ROL").equals("ESTUDIANTE")) {
                     if (listFilas.get("CAMBIAR_CONTRASENIA").equals("N")) {
@@ -122,6 +127,13 @@ public class LoginEstudiante extends AppCompatActivity implements IDaoService.DA
                         intent.putExtra("itOrigin", "loginEstudiante");
                         Log.i("número de curso - login", String.valueOf(listFilas.get("CURSO")));
                         GlobalAplicacion.setGlobalNumCurso(Integer.parseInt((String) listFilas.get("CURSO")));
+
+                        intent.putExtra("nivel", 60000);
+                        intent.putExtra("tipoNivel", "F");
+
+                        GlobalAplicacion.miliSegundos = 60000;
+                        GlobalAplicacion.nivel = "F";
+
                         Log.i("número de curso - login", String.valueOf(GlobalAplicacion.getGlobalNumCurso()));
                     } else {
                         intent = new Intent(vista.getContext(), CambiarContrasenia.class);

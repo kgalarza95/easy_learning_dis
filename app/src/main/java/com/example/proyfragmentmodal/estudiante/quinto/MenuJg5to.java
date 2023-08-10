@@ -192,19 +192,19 @@ public class MenuJg5to extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0: // Dibujo Game
+                                    case 0: //
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new UsoDeLaH());
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1://Dibujo letras
+                                    case 1://
                                         FragmentManager miManejador2 = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion4 = miManejador2.beginTransaction();
                                         miTrnsaccion4.replace(R.id.contenedor_fragment, new Palabras_Homofonas());
                                         miTrnsaccion4.commit();
                                         break;
-                                    case 2://Dibujo letras
+                                    case 2://
                                         FragmentManager miManejador2X = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion2X = miManejador2X.beginTransaction();
                                         miTrnsaccion2X.replace(R.id.contenedor_fragment, new RimaEscritaCorrectamente());

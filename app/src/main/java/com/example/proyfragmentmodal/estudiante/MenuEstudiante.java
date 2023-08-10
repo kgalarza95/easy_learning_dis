@@ -17,9 +17,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.proyfragmentmodal.R;
+import com.example.proyfragmentmodal.estudiante.comun.PantallaJuego;
 import com.example.proyfragmentmodal.general.MenuProfEstud;
 import com.example.proyfragmentmodal.general.Usuarios;
 import com.example.proyfragmentmodal.profesor.CrearAsignacion;
+import com.example.proyfragmentmodal.util.GlobalAplicacion;
 
 
 public class MenuEstudiante extends Fragment {
@@ -235,8 +237,17 @@ public class MenuEstudiante extends Fragment {
                                         y.replace(R.id.contenedor_fragment, new HistorialAcademico());
                                         y.commit();
                                         break;
-                                    case 3://historial
-                                        Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+                                    case 3://juega y aprende
+                                        //Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
+                                        //startActivity(intent);
+
+                                        Intent intent = new Intent(v.getContext(), PantallaJuego.class);
+                                        intent.putExtra("nivel", 60000);
+                                        intent.putExtra("tipoNivel", "F");
+
+                                        GlobalAplicacion.miliSegundos = 60000;
+                                        GlobalAplicacion.nivel = "F";
+
                                         startActivity(intent);
                                         break;
                                     case 4://salir

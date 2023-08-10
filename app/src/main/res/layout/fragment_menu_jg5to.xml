@@ -117,7 +117,7 @@
             android:layout_width="10dp"
             android:layout_height="1dp"></Space>
 
-        <LinearLayout
+     <!--   <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="PERFIL"></TextView>
-        </LinearLayout>
+        </LinearLayout>-->
 
 
        <!-- <Space

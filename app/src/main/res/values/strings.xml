@@ -58,8 +58,7 @@
     </string-array>
 
     <string-array name="li_opciones_perfil_juego">
-        <item name="it_0">DATOS PERSONALES</item>
-        <item name="it_1">MIS CURSOS</item>
+        <item name="it_1">AULA VIRTUAL</item>
         <item name="it_2">SALIR</item>
     </string-array>
 

@@ -227,7 +227,14 @@ public class MenuJg7mo extends Fragment {
             }
         });
 
-        vista.findViewById(R.id.btn_mn_perfil_).setOnClickListener(new View.OnClickListener() {
+      /* vista.findViewById(R.id.btn_mn_perfil_).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
+
+        vista.findViewById(R.id.btn_mn_aula_v).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -236,15 +243,18 @@ public class MenuJg7mo extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 switch (which) {
-                                    case 0://datos personales
+                                    case 88://datos personales
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios(1));
                                         miTrnsaccion.commit();
                                         break;
-                                    case 1://mis cursos
-                                        startActivity(new Intent(v.getContext(), MisCursosProfesor.class));
+                                    case 0://mis cursos
+                                        //startActivity(new Intent(v.getContext(), MisCursosProfesor.class));
+                                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                                        intent.putExtra("itOrigin", "loginEstudiante");
+                                        startActivity(intent);
                                         break;
                                     case 99://historial academico
                                         FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
@@ -253,7 +263,7 @@ public class MenuJg7mo extends Fragment {
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new MisCursosEstudiante());
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 2://salir
+                                    case 1://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:
@@ -266,15 +276,6 @@ public class MenuJg7mo extends Fragment {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
-            }
-        });
-
-        vista.findViewById(R.id.btn_mn_aula_v).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                intent.putExtra("itOrigin", "loginEstudiante");
-                startActivity(intent);
             }
         });
 

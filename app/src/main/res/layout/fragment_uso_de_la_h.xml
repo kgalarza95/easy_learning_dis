@@ -26,6 +26,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_marginRight="10dp"
+                android:layout_marginStart="4dp"
                 android:text="Unidad 4 - Actividad 1"
                 android:layout_gravity="left"/>
             <TextView
@@ -33,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:textStyle="bold"
+                android:layout_marginStart="4dp"
                 android:layout_marginRight="10dp"
                 android:text="Escribe “h” en las palabras que sea necesario."
                 android:layout_gravity="center_horizontal"/>
@@ -43,6 +45,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginRight="10dp"
             android:gravity="right">
 

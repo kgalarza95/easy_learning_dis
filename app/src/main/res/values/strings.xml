@@ -47,13 +47,12 @@
         <item name="it_0">CREAR ASIGNACIONES</item>
         <item name="it_0">VER TODAS LAS ASIGNACIONES</item>
         <item name="it_0">VER ASIGNACIONES ENTREGADAS</item>
-        <item name="it_0">VER DIBUJOS</item>
     </string-array>
 
     <string-array name="li_opciones_perfil_prof">
         <item name="it_0">DATOS PERSONALES</item>
         <item name="it_1">MIS CURSOS</item>
-        <item name="it_1">HISTORIAL ACÁDEMICO</item>
+
         <item name="it_2">SALIR</item>
     </string-array>
 

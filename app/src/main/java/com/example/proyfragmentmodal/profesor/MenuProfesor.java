@@ -133,6 +133,53 @@ public class MenuProfesor extends Fragment {
             }
         });
 
+        vista.findViewById(R.id.btn_mn_histori).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
+                //remplazar fragmento actual con el nuevo indicado en el contenedor
+                miTrnsaccion_.replace(R.id.contenedor_fragment, new HistorialAcademicoProfesor());
+                miTrnsaccion_.commit();
+            }
+        });
+
+        //boton perfil
+        vista.findViewById(R.id.btn_mn_perfil_).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Lista de Opciones")
+                        .setItems(R.array.li_opciones_perfil_prof, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                switch (which) {
+                                    case 0://datos personales
+                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
+                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
+                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
+                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios(1));
+                                        miTrnsaccion.commit();
+                                        break;
+                                    case 1://mis cursos
+                                        startActivity(new Intent(v.getContext(), MisCursosProfesor.class));
+                                        break;
+                                    case 2://salir
+                                        startActivity(new Intent(v.getContext(), MenuProfEstud.class));
+                                        break;
+                                    default:
+                                        Toast.makeText(getActivity(), "Pantalla no configurada aún", Toast.LENGTH_SHORT).show();
+                                        break;
+                                }
+                            }
+                        });
+                //builder.create();
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         String[] listNotificaciones =
                 {"Notificacion_Uno", "Notificacion_Dos", "Notificacion_Tres"};
         //boton notificacion
@@ -162,48 +209,6 @@ public class MenuProfesor extends Fragment {
             }
         });
 */
-        //boton perfil
-        vista.findViewById(R.id.btn_mn_perfil_).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Lista de Opciones")
-                        .setItems(R.array.li_opciones_perfil_prof, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                switch (which) {
-                                    case 0://datos personales
-                                        FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                                        FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
-                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion.replace(R.id.contenedor_fragment, new Usuarios(1));
-                                        miTrnsaccion.commit();
-                                        break;
-                                    case 1://mis cursos
-                                        startActivity(new Intent(v.getContext(), MisCursosProfesor.class));
-                                        break;
-                                    case 2://historial academico
-                                        FragmentManager miManejador_ = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
-                                        FragmentTransaction miTrnsaccion_ = miManejador_.beginTransaction();
-                                        //remplazar fragmento actual con el nuevo indicado en el contenedor
-                                        miTrnsaccion_.replace(R.id.contenedor_fragment, new HistorialAcademicoProfesor());
-                                        miTrnsaccion_.commit();
-                                        break;
-                                    case 3://salir
-                                        startActivity(new Intent(v.getContext(), MenuProfEstud.class));
-                                        break;
-                                    default:
-                                        Toast.makeText(getActivity(), "Pantalla no configurada aún", Toast.LENGTH_SHORT).show();
-                                        break;
-                                }
-                            }
-                        });
-                //builder.create();
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
         return vista;
     }

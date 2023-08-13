@@ -37,7 +37,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="15dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -62,7 +62,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="15dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout
@@ -88,7 +88,32 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="25dp"
+            android:layout_width="10dp"
+            android:layout_height="1dp"></Space>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mn_histori"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+
+                android:src="@drawable/historial_a_prof">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Historial Académico"></TextView>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="15dp"
             android:layout_height="1dp"></Space>
 
         <LinearLayout

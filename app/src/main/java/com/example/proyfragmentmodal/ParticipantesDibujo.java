@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 
+@Deprecated
 public class ParticipantesDibujo extends Fragment
         implements IDaoService.DAOCallbackServicio {
 

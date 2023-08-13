@@ -207,7 +207,7 @@ public class MenuJg5to extends Fragment {
                                     case 2://
                                         FragmentManager miManejador2X = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion2X = miManejador2X.beginTransaction();
-                                        miTrnsaccion2X.replace(R.id.contenedor_fragment, new RimaEscritaCorrectamente());
+                                        miTrnsaccion2X.replace(R.id.contenedor_fragment, new FragmentoEscritoCorrectamente());
                                         miTrnsaccion2X.commit();
                                         break;
                                     default:

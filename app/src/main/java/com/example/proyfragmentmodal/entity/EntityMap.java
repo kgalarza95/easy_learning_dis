@@ -45,6 +45,7 @@ public class EntityMap {
     private String  ENTREGA;
     private String  FECHA_ENTREGA;
     private String  CALIFICACION;
+    private String  RUTA_FILE_TAREA;
 
     public EntityMap() {
     }
@@ -333,6 +334,14 @@ public class EntityMap {
 
     public void setCALIFICACION(String CALIFICACION) {
         this.CALIFICACION = CALIFICACION;
+    }
+
+    public String getRUTA_FILE_TAREA() {
+        return RUTA_FILE_TAREA;
+    }
+
+    public void setRUTA_FILE_TAREA(String RUTA_FILE_TAREA) {
+        this.RUTA_FILE_TAREA = RUTA_FILE_TAREA;
     }
 
     @Override

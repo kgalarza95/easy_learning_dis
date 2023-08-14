@@ -75,7 +75,7 @@ public class EntregaTarea extends AppCompatActivity
                 params.put("id_estudiante", String.valueOf(GlobalAplicacion.getGlobalIdUsuario()));
                 params.put("entrega", txtContenido.getText().toString());
                 params.put("fecha_entrega", fechaActual);
-                params.put("calificacion", "10");
+                params.put("calificacion", "0");
 
                 params.put("nombre", nombre);
                 params.put("encodedFile", encodedFile);

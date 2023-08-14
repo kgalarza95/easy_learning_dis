@@ -230,14 +230,14 @@ public class MenuEstudiante extends Fragment {
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new MisCursosEstudiante());
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 2://historial
+                                    case 99://historial
                                         FragmentManager x = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction y = x.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor
                                         y.replace(R.id.contenedor_fragment, new HistorialAcademico());
                                         y.commit();
                                         break;
-                                    case 3://juega y aprende
+                                    case 2://juega y aprende
                                         //Intent intent = new Intent(vista.getContext(), PreInicioEstudiante.class);
                                         //startActivity(intent);
 
@@ -250,7 +250,7 @@ public class MenuEstudiante extends Fragment {
 
                                         startActivity(intent);
                                         break;
-                                    case 4://salir
+                                    case 3://salir
                                         startActivity(new Intent(v.getContext(), MenuProfEstud.class));
                                         break;
                                     default:

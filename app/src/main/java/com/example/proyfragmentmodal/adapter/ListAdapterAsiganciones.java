@@ -104,6 +104,7 @@ public class ListAdapterAsiganciones
         TextView txtEstudiante;
         TextView txtContenido;
         TextView txtCalificacion;
+        TextView txtFechaEntrega;
 
         @SuppressLint("CutPasteId")
         public ViewHolder(@NonNull View itemView) {
@@ -113,6 +114,7 @@ public class ListAdapterAsiganciones
             txtEstudiante = itemView.findViewById(R.id.txt_estudiante);
             txtContenido = itemView.findViewById(R.id.txt_contenido);
             txtCalificacion = itemView.findViewById(R.id.txt_calificacion);
+            txtFechaEntrega = itemView.findViewById(R.id.txt_fch_entrega);
             txtCalificacionG = txtCalificacion;
         }
 
@@ -124,6 +126,7 @@ public class ListAdapterAsiganciones
             txtEstudiante.setText(itemCv.getNOMBRES());
             txtContenido.setText(itemCv.getENTREGA());
             txtCalificacion.setText(itemCv.getCALIFICACION());
+            txtFechaEntrega.setText(itemCv.getFECHA_ENTREGA());
 
             manejoVista.setOnClickListener(new View.OnClickListener() {
                 @Override

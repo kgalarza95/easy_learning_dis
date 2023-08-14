@@ -50,23 +50,23 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_fecha_a_asig" />
 
     <TextView
-        android:id="@+id/txt_fecha_a_asig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="60dp"
-        android:text="Fecha Entrega"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_contenido" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="96dp"
         android:text="Fecha de Entrega: "
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_contenido" />
+
+    <TextView
+        android:id="@+id/txt_fecha_a_asig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="60dp"
+        android:text="Fecha Entrega"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_contenido" />
 
     <TextView
@@ -78,5 +78,15 @@
         android:text="Contenido Entrega"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_e_titulo" />
+
+    <Button
+        android:id="@+id/btnSubirPdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:text="ADJUNTAR ARCHIVO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_contenido" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,8 @@ public class ListAdapterAsigancionesNoEntregada
         View view = layoutInflater.inflate(R.layout.cv_item_asignacion, null);
         view.findViewById(R.id.textView10).setVisibility(View.GONE);
         view.findViewById(R.id.textView12).setVisibility(View.GONE);
+        view.findViewById(R.id.txt_fch_entrega).setVisibility(View.GONE);
+        view.findViewById(R.id.textView11).setVisibility(View.GONE);
         return new ViewHolder(view);
     }
 

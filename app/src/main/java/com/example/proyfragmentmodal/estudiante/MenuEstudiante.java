@@ -156,7 +156,7 @@ public class MenuEstudiante extends Fragment {
                                         miTrnsaccion_.replace(R.id.contenedor_fragment, new MaterialEstudio(1));
                                         miTrnsaccion_.commit();
                                         break;
-                                    case 1://crear asignaciones
+                                    case 1://
                                         FragmentManager miManejador = getActivity().getSupportFragmentManager();//getFragmentManager(); //getParentFragmentManager();
                                         FragmentTransaction miTrnsaccion = miManejador.beginTransaction();
                                         //remplazar fragmento actual con el nuevo indicado en el contenedor

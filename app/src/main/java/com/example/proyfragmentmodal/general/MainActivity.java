@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.proyfragmentmodal.R;
 import com.example.proyfragmentmodal.profesor.MenuProfesor;
@@ -15,11 +16,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        Bundle extras = getIntent().getExtras();
-        establecerMenu(extras.getString("itOrigin"));
+            Bundle extras = getIntent().getExtras();
+            establecerMenu(extras.getString("itOrigin"));
+        } catch (Exception e) {
+            Log.e("Error controlado ", String.valueOf(e));
+        }
     }
 
     public void establecerMenu(String origin) {
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         //En caso de querer permitir volver atrás usa esta llamada:
         //super.onBackPressed();
     }

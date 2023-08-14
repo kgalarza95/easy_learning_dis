@@ -30,15 +30,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CrearAsignacion#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class CrearAsignacion extends Fragment implements IDaoService.DAOCallbackServicio {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
     private View vista;
     private Spinner spinnerCursos;
     private EditText tituloAsignacion;
@@ -52,23 +47,11 @@ public class CrearAsignacion extends Fragment implements IDaoService.DAOCallback
     private String mParam2;
 
     public CrearAsignacion() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CrearAsignacion.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CrearAsignacion newInstance(String param1, String param2) {
         CrearAsignacion fragment = new CrearAsignacion();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -76,10 +59,6 @@ public class CrearAsignacion extends Fragment implements IDaoService.DAOCallback
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
